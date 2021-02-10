@@ -3,7 +3,27 @@
  * e.g. rm-unit(16px) = 16
  */
 @function rm-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @if $value == '0' {
+    @return 0;
+  }
+
+  @if $value == '0px' {
+    @return 0;
+  }
+
+  @if $value == '0em' {
+    @return 0;
+  }
+
+  @if $value == '0rem' {
+    @return 0;
+  }
+
+  @return $value / 1;
 }
 
 /*

@@ -6,6 +6,21 @@
  */
 $base-font-size: 16px;
 
+$sizes: 0,1,2,3,4,8,16,24,32,40,48,56,64,72,80,96,128,256;
+$negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64;
+
+/*
+ * ORIENTATIONS - 'orientation label': (property)
+ */
+$orientations: (
+  't': ('top'),
+  'r': ('right'),
+  'b': ('bottom'),
+  'l': ('left'),
+  'x': ('right', 'left'),
+  'y': ('top', 'bottom')
+);
+
 /*
  * BREAKPOINTS - 'size label': (min, max)
  */

@@ -24,7 +24,7 @@
   }
 
   @else {
-    @warn 'Undefined breakpoint: `#{$size}`.';
+    @warn '🜍 Undefined breakpoint: `#{$size}`!';
   }
 
   @return $query;
@@ -53,6 +53,50 @@
   @else {
     @media #{generate-breakpoint($size, $explicit)} {
       @content;
+    }
+  }
+}
+
+@mixin class-generator($pref, $property, $sizes, $unit: '', $orientations: false, $responsive: true) {
+  @each $size in $sizes {
+    .#{$pref}-#{$size} {
+      #{$property}: #{$size}#{$unit};
+    }
+
+    @if $responsive {
+      @each $b-name, $b-value in $breakpoints {
+        @if $b-name != '' {
+          @media #{generate-breakpoint($b-name)} {
+            .#{$pref}-#{$b-name}-#{$size} {
+              #{$property}: #{$size}#{$unit};
+            }
+          }
+        }
+      }
+    }
+
+    @if $orientations {
+      @each $o-name, $o-value in $orientations {
+        .#{$pref}#{$o-name}-#{$size} {
+          @each $value in $o-value {
+            #{$property}-#{$value}: #{$size}#{$unit};
+          }
+        }
+
+        @if $responsive {
+          @each $b-name, $b-value in $breakpoints {
+            @if $b-name != '' {
+              @media #{generate-breakpoint($b-name)} {
+                .#{$pref}#{$o-name}-#{$b-name}-#{$size} {
+                  @each $value in $o-value {
+                    #{$property}-#{$value}: #{$size}#{$unit};
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,9 @@
+@include class-generator('t', 'top', $sizes, 'px');
+@include class-generator('r', 'right', $sizes, 'px');
+@include class-generator('b', 'bottom', $sizes, 'px');
+@include class-generator('l', 'left', $sizes, 'px');
+
+@include class-generator('t', 'top', $negative-sizes, 'px');
+@include class-generator('r', 'right', $negative-sizes, 'px');
+@include class-generator('b', 'bottom', $negative-sizes, 'px');
+@include class-generator('l', 'left', $negative-sizes, 'px');
