@@ -1,0 +1,20 @@
+@function generate-breakpoint($size, $query: 'only screen') {
+  $breakpoint: map-get($breakpoints, $size);
+
+  @if nth($breakpoint, 1) {
+    $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+  }
+
+  @if nth($breakpoint, 2) {
+    $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+  }
+
+  @return $query;
+}
+
+
+@mixin breakpoint($size) {
+  @media #{generate-breakpoint($size)} {
+    @content;
+  }
+}

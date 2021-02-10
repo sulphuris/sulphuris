@@ -1,0 +1,19 @@
+/*
+ * > If a font-size has not been set on any of the <p>'s ancestors,
+ *   then 1em will equal the default browser font-size, which is usually 16px.
+ *   So, by default 1em is equivalent to 16px.
+ *   - https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#ems
+ */
+$base-font-size: 16px;
+
+/*
+ * BREAKPOINTS - 'size label': (min, max)
+ */
+$breakpoints: (
+  '':     (false, 420px),
+  'sm':   (421px, 767px),
+  'md':   (768px, 1023px),
+  'lg':   (1024px, 1365px),
+  'xl':   (1366px, 1679px),
+  'xxl':  (1680px, false)
+);

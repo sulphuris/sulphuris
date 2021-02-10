@@ -1,0 +1,27 @@
+/*
+ * rm-unit - removes unit from a provided value
+ * e.g. rm-unit(16px) = 16
+ */
+@function rm-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/*
+ * em - converts PX to EM values
+ * e.g. em(16px) = 1em
+ *
+ * @see utils/_config.scss for $base-font-size
+ */
+@function em($value, $unit: 'em') {
+  @return #{rm-unit($value) / rm-unit($base-font-size)}#{$unit};
+}
+
+/*
+ * em - converts PX to REM values (document root relative EM)
+ * e.g. em(16px) = 1rem
+ *
+ * @see utils/_config.scss for $base-font-size
+ */
+@function rem($value) {
+  @return em($value, 'rem');
+}

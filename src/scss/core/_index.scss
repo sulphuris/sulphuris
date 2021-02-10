@@ -1,3 +1,11 @@
+@import 'utils/index';
+
 .hello {
-  color: green;
+  color: #000;
+  font-size: rem(80px);
+
+  @include breakpoint('md') {
+    color: #f00;
+    font-size: rem(16px);
+  }
 }
