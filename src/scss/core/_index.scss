@@ -2,10 +2,25 @@
 
 .hello {
   color: #000;
-  font-size: rem(80px);
+  font-size: rem(12px);
 
-  @include breakpoint('md') {
+  @include breakpoint(md) {
     color: #f00;
     font-size: rem(16px);
+  }
+
+  @include breakpoint(lg) {
+    color: #0f0;
+    font-size: rem(24px);
+  }
+
+  @include breakpoint(xl) {
+    color: #00f;
+    font-size: rem(48px);
+  }
+
+  @include breakpoint(xxl) {
+    color: #000;
+    font-size: rem(80px);
   }
 }

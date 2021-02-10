@@ -1,20 +1,58 @@
-@function generate-breakpoint($size, $query: 'only screen') {
+/*
+ * Generates media query via provided predefined breakpoint map item without
+ * @media. Used by `breakpoint` mixin.
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ *
+ * $size: breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * $explicit: (boolean | optional) for generating min-max queries
+ */
+@function generate-breakpoint($size, $explicit: false) {
+  $query: 'only screen';
   $breakpoint: map-get($breakpoints, $size);
 
-  @if nth($breakpoint, 1) {
-    $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+  @if $breakpoint != null {
+    @if nth($breakpoint, 1) {
+      $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+    }
+
+    @if $explicit {
+      /* stylelint-disable-next-line max-nesting-depth */
+      @if nth($breakpoint, 2) {
+        $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+      }
+    }
   }
 
-  @if nth($breakpoint, 2) {
-    $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+  @else {
+    @warn 'Undefined breakpoint: `#{$size}`.';
   }
 
   @return $query;
 }
 
+/*
+ * Mixin for generating media queries. Uses `generate-breakpoint` function
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ *
+ * $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * $explicit: (boolean | optional) for generating min-max queries
+ */
+@mixin breakpoint($size, $explicit: false) {
+  @if $explicit {
+    @if $size == '' {
+      @content;
+    }
 
-@mixin breakpoint($size) {
-  @media #{generate-breakpoint($size)} {
-    @content;
+    @else {
+      @media #{generate-breakpoint($size, $explicit)} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @media #{generate-breakpoint($size, $explicit)} {
+      @content;
+    }
   }
 }

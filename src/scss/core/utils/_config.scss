@@ -10,10 +10,10 @@ $base-font-size: 16px;
  * BREAKPOINTS - 'size label': (min, max)
  */
 $breakpoints: (
-  '':     (false, 420px),
-  'sm':   (421px, 767px),
-  'md':   (768px, 1023px),
-  'lg':   (1024px, 1365px),
+  'xxl':  (1680px, false),
   'xl':   (1366px, 1679px),
-  'xxl':  (1680px, false)
+  'lg':   (1024px, 1365px),
+  'md':   (768px, 1023px),
+  'sm':   (421px, 767px),
+  '':     (false, 420px)
 );

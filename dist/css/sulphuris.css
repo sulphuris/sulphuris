@@ -1,32 +1,26 @@
-/*
- * > If a font-size has not been set on any of the <p>'s ancestors,
- *   then 1em will equal the default browser font-size, which is usually 16px.
- *   So, by default 1em is equivalent to 16px.
- *   - https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#ems
- */
-/*
- * BREAKPOINTS - 'size label': (min, max)
- */
-/*
- * rm-unit - removes unit from a provided value
- * e.g. rm-unit(16px) = 16
- */
-/*
- * em - converts PX to EM values
- * e.g. em(16px) = 1em
- *
- * @see utils/_config.scss for $base-font-size
- */
-/*
- * em - converts PX to REM values (document root relative EM)
- * e.g. em(16px) = 1rem
- *
- * @see utils/_config.scss for $base-font-size
- */
+
+
+
+
+
+
+
 .hello {
   color: #000;
-  font-size: 5rem; }
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  font-size: 0.75rem; }
+  @media only screen and (min-width: 768px) {
     .hello {
       color: #f00;
       font-size: 1rem; } }
+  @media only screen and (min-width: 1024px) {
+    .hello {
+      color: #0f0;
+      font-size: 1.5rem; } }
+  @media only screen and (min-width: 1366px) {
+    .hello {
+      color: #00f;
+      font-size: 3rem; } }
+  @media only screen and (min-width: 1680px) {
+    .hello {
+      color: #000;
+      font-size: 5rem; } }

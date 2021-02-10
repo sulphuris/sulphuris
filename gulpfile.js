@@ -8,6 +8,7 @@ const connect              = require('gulp-connect');
 const autoprefixer         = require('gulp-autoprefixer');
 const sass                 = require('gulp-sass');
 sass.compiler              = require('node-sass');
+const stripCssComments  = require('gulp-strip-css-comments');
 const stylelint            = require('gulp-stylelint');
 const cleanCSS             = require('gulp-clean-css');
 const sourcemaps           = require('gulp-sourcemaps');
@@ -95,6 +96,7 @@ gulp.task('sass', function () {
     .pipe(gulpif(argv.production, cleanCSS()))
     .pipe(gulpif(argv.sourcemap, sourcemaps.write()))
     .pipe(gulpif(argv.production, rename({ suffix: '.min' })))
+    .pipe(stripCssComments())
     .pipe(gulp.dest('./dist/css'))
     .pipe(connect.reload());
 });
