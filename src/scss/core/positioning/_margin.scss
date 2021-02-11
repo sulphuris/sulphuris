@@ -1,2 +1,2 @@
-@include class-generator('m', 'margin', $sizes, 'px', $orientations);
-@include class-generator('m', 'margin', $negative-sizes, 'px', $orientations);
+@include class-generator('m', 'margin', $sizes, 'px', '', $orientations);
+@include class-generator('m', 'margin', $negative-sizes, 'px', '', $orientations);

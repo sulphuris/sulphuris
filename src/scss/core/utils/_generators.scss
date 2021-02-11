@@ -57,15 +57,15 @@
   }
 }
 
-@mixin class-generator($pref, $property, $sizes, $unit: '', $orientations: false, $responsive: true) {
+@mixin class-generator($pref, $property, $sizes, $unit: '', $suff: '', $orientations: false, $responsive: true) {
   @each $size in $sizes {
-    .#{$pref}-#{$size} {
+    .#{$pref}-#{$size}#{$suff} {
       #{$property}: #{$size}#{$unit};
     }
 
     @if $orientations {
       @each $o-name, $o-value in $orientations {
-        .#{$pref}#{$o-name}-#{$size} {
+        .#{$pref}#{$o-name}-#{$size}#{$suff} {
           @each $value in $o-value {
             #{$property}-#{$value}: #{$size}#{$unit};
           }
@@ -79,13 +79,13 @@
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
           @each $size in $sizes {
-            .#{$pref}-#{$b-name}-#{$size} {
+            .#{$pref}-#{$b-name}-#{$size}#{$suff} {
               #{$property}: #{$size}#{$unit};
             }
 
             @if $orientations {
               @each $o-name, $o-value in $orientations {
-                .#{$pref}#{$o-name}-#{$b-name}-#{$size} {
+                .#{$pref}#{$o-name}-#{$b-name}-#{$size}#{$suff} {
                   @each $value in $o-value {
                     #{$property}-#{$value}: #{$size}#{$unit};
                   }

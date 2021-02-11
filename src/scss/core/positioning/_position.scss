@@ -7,3 +7,13 @@
 @include class-generator('r', 'right', $negative-sizes, 'px');
 @include class-generator('b', 'bottom', $negative-sizes, 'px');
 @include class-generator('l', 'left', $negative-sizes, 'px');
+
+@include class-generator('t', 'top', $percent-sizes, '%', 'p');
+@include class-generator('r', 'right', $percent-sizes, '%', 'p');
+@include class-generator('b', 'bottom', $percent-sizes, '%', 'p');
+@include class-generator('l', 'left', $percent-sizes, '%', 'p');
+
+@include class-generator('t', 'top', $negative-percent-sizes, '%', 'p');
+@include class-generator('r', 'right', $negative-percent-sizes, '%', 'p');
+@include class-generator('b', 'bottom', $negative-percent-sizes, '%', 'p');
+@include class-generator('l', 'left', $negative-percent-sizes, '%', 'p');
