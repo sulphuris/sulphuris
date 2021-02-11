@@ -63,18 +63,6 @@
       #{$property}: #{$size}#{$unit};
     }
 
-    @if $responsive {
-      @each $b-name, $b-value in $breakpoints {
-        @if $b-name != '' {
-          @media #{generate-breakpoint($b-name)} {
-            .#{$pref}-#{$b-name}-#{$size} {
-              #{$property}: #{$size}#{$unit};
-            }
-          }
-        }
-      }
-    }
-
     @if $orientations {
       @each $o-name, $o-value in $orientations {
         .#{$pref}#{$o-name}-#{$size} {
@@ -82,11 +70,21 @@
             #{$property}-#{$value}: #{$size}#{$unit};
           }
         }
+      }
+    }
+  }
 
-        @if $responsive {
-          @each $b-name, $b-value in $breakpoints {
-            @if $b-name != '' {
-              @media #{generate-breakpoint($b-name)} {
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @each $size in $sizes {
+            .#{$pref}-#{$b-name}-#{$size} {
+              #{$property}: #{$size}#{$unit};
+            }
+
+            @if $orientations {
+              @each $o-name, $o-value in $orientations {
                 .#{$pref}#{$o-name}-#{$b-name}-#{$size} {
                   @each $value in $o-value {
                     #{$property}-#{$value}: #{$size}#{$unit};
