@@ -8,8 +8,9 @@ const connect              = require('gulp-connect');
 const autoprefixer         = require('gulp-autoprefixer');
 const sass                 = require('gulp-sass');
 sass.compiler              = require('node-sass');
-const stripCssComments  = require('gulp-strip-css-comments');
+const stripCssComments     = require('gulp-strip-css-comments');
 const stylelint            = require('gulp-stylelint');
+const gcmq                 = require('gulp-group-css-media-queries');
 const cleanCSS             = require('gulp-clean-css');
 const sourcemaps           = require('gulp-sourcemaps');
 const rename               = require("gulp-rename");
@@ -80,6 +81,7 @@ gulp.task('sass', function () {
 
   return gulp.src(['./src/scss/main.scss'])
     .pipe(sass(opts).on('error', sass.logError))
+    .pipe(gcmq())
     .pipe(autoprefixer(
       [
         'last 2 version',
