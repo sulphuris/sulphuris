@@ -37,6 +37,14 @@
   display: none;
 }
 
+.d-table {
+  display: table;
+}
+
+.d-table-cell {
+  display: table-cell;
+}
+
 .v-hidden {
   visibility: hidden;
 }
@@ -2258,6 +2266,14 @@
     display: none;
   }
 
+  .d-sm-table {
+    display: table;
+  }
+
+  .d-sm-table-cell {
+    display: table-cell;
+  }
+
   .v-sm-hidden {
     visibility: hidden;
   }
@@ -4473,6 +4489,14 @@
 
   .d-md-none {
     display: none;
+  }
+
+  .d-md-table {
+    display: table;
+  }
+
+  .d-md-table-cell {
+    display: table-cell;
   }
 
   .v-md-hidden {
@@ -6697,6 +6721,14 @@
     display: none;
   }
 
+  .d-lg-table {
+    display: table;
+  }
+
+  .d-lg-table-cell {
+    display: table-cell;
+  }
+
   .v-lg-hidden {
     visibility: hidden;
   }
@@ -8919,6 +8951,14 @@
     display: none;
   }
 
+  .d-xl-table {
+    display: table;
+  }
+
+  .d-xl-table-cell {
+    display: table-cell;
+  }
+
   .v-xl-hidden {
     visibility: hidden;
   }
@@ -11139,6 +11179,14 @@
 
   .d-xxl-none {
     display: none;
+  }
+
+  .d-xxl-table {
+    display: table;
+  }
+
+  .d-xxl-table-cell {
+    display: table-cell;
   }
 
   .v-xxl-hidden {
