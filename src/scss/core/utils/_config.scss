@@ -35,6 +35,10 @@ $breakpoints: (
   'xxl':  (1680px, false)
 );
 
+$container-offset: 56px;
+$container-offset-mobile: 16px;
+$container-breakpoint: 'lg';
+
 $colors: (
   black: #1a1a1d,
   white: #fff,
