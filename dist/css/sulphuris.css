@@ -22,6 +22,12 @@
           box-sizing: border-box;
 }
 
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 
@@ -2870,12 +2876,20 @@ template {
   height: auto;
 }
 
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1680px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .color-black {
   color: #1a1a1d;
 }
 
 .color-white {
-  color: #ffffff;
+  color: #fff;
 }
 
 .color-yellow {
@@ -2887,11 +2901,70 @@ template {
 }
 
 .bg-white {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .bg-yellow {
   background-color: #f6c026;
+}
+
+body {
+  font-family: "Nunito", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-thin {
+  font-weight: 100;
+}
+
+.text-ultra-light {
+  font-weight: 200;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-bolder {
+  font-weight: bolder;
+}
+
+.text-lighter {
+  font-weight: lighter;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
+.text-ultra-bold {
+  font-weight: 800;
+}
+
+.text-black {
+  font-weight: 900;
 }
 
 .hello {
@@ -10569,6 +10642,11 @@ template {
 
   .h-lg-auto {
     height: auto;
+  }
+
+  .container {
+    padding-left: 56px;
+    padding-right: 56px;
   }
 
   .hello {
