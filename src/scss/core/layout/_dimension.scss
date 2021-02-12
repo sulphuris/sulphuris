@@ -3,10 +3,5 @@
 @include class-generator('w', 'width', $percent-sizes, 'vw', 'vw');
 @include class-generator('h', 'height', $percent-sizes, 'vh', 'vw');
 
-@include class-generator('w', 'width', $negative-percent-sizes, '%', 'p');
-@include class-generator('h', 'height', $negative-percent-sizes, '%', 'p');
-@include class-generator('w', 'width', $negative-percent-sizes, 'vw', 'vw');
-@include class-generator('h', 'height', $negative-percent-sizes, 'vh', 'vw');
-
 @include class-generator('w', 'width', ('auto'));
 @include class-generator('h', 'height', ('auto'));
