@@ -22,6 +22,12 @@
           box-sizing: border-box;
 }
 
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 
