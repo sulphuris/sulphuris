@@ -3,8 +3,10 @@
  * @media. Used by `breakpoint` mixin.
  * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
  *
- * $size: breakpoint map item name ('', sm, md, lg, xl, xxl)
- * $explicit: (boolean | optional) for generating min-max queries
+ * @param $size: breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * @param $explicit: (boolean | optional) for generating min-max queries
+ *
+ * @return (string) e.g. `only screen and (min-width: 1366px)` or `only screen and (min-width: 1366px) and (max-width: 1679px)`
  */
 @function generate-breakpoint($size, $explicit: false) {
   $query: 'only screen';
@@ -34,8 +36,8 @@
  * Mixin for generating media queries. Uses `generate-breakpoint` function
  * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
  *
- * $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl)
- * $explicit: (boolean | optional) for generating min-max queries
+ * @param $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * @param $explicit: (boolean | optional) for generating min-max queries
  */
 @mixin breakpoint($size, $explicit: false) {
   @if $explicit {
@@ -57,12 +59,37 @@
   }
 }
 
-@mixin class-generator($pref, $property, $sizes, $unit: '', $suff: '', $orientations: false, $responsive: true) {
+/*
+ * Mixin for generating generic property classes. E.g. `.t-32` => `top: 32px`
+ * Uses `generate-breakpoint` function.
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ * @see utils/_config.scss $orientations. $orientations is a globally defined
+ * var.
+ *
+ * @param $pref: (string) base class name
+ * @param $property: (string) css property name
+ * @param $sizes: (list) list of property values
+ * @param $unit: (string) value unit
+ * @param $suff: (string) generated class name suffix
+ * @param $orientations: (map | optional) map of orientation property variations
+ * @param $responsive: (boolean | optional) whether to generate responsive classes
+ */
+@mixin class-generator(
+  $pref,
+  $property,
+  $sizes,
+  $unit: '',
+  $suff: '',
+  $orientations: false,
+  $responsive: true ) {
+
   @each $size in $sizes {
+    // generic
     .#{$pref}-#{$size}#{$suff} {
       #{$property}: #{$size}#{$unit};
     }
 
+    // orientation variations
     @if $orientations {
       @each $o-name, $o-value in $orientations {
         .#{$pref}#{$o-name}-#{$size}#{$suff} {
@@ -74,15 +101,18 @@
     }
   }
 
+  // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
           @each $size in $sizes {
+            // responsive generic
             .#{$pref}-#{$b-name}-#{$size}#{$suff} {
               #{$property}: #{$size}#{$unit};
             }
 
+            // responsive orientation variations
             @if $orientations {
               @each $o-name, $o-value in $orientations {
                 .#{$pref}#{$o-name}-#{$b-name}-#{$size}#{$suff} {
