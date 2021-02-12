@@ -74,7 +74,7 @@
  * @param $orientations: (map | optional) map of orientation property variations
  * @param $responsive: (boolean | optional) whether to generate responsive classes
  */
-@mixin class-generator(
+@mixin layout-class-generator(
   $pref,
   $property,
   $sizes,
@@ -121,6 +121,28 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin color-class-generator($pref, $property, $colors, $responsive: false) {
+  @each $c-name, $c-value in $colors {
+    .#{$pref}-#{$c-name} {
+      #{$property}: #{$c-value};
+    }
+  }
+
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @each $c-name, $c-value in $colors {
+            .#{$pref}-#{$b-name}-#{$c-name} {
+              #{$property}: #{$c-value};
             }
           }
         }
