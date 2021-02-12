@@ -1,20 +1,152 @@
-@function generate-breakpoint($size, $query: 'only screen') {
+/*
+ * Generates media query via provided predefined breakpoint map item without
+ * @media. Used by `breakpoint` mixin.
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ *
+ * @param $size: breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * @param $explicit: (boolean | optional) for generating min-max queries
+ *
+ * @return (string) e.g. `only screen and (min-width: 1366px)` or `only screen and (min-width: 1366px) and (max-width: 1679px)`
+ */
+@function generate-breakpoint($size, $explicit: false) {
+  $query: 'only screen';
   $breakpoint: map-get($breakpoints, $size);
 
-  @if nth($breakpoint, 1) {
-    $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+  @if $breakpoint != null {
+    @if nth($breakpoint, 1) {
+      $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+    }
+
+    @if $explicit {
+      /* stylelint-disable-next-line max-nesting-depth */
+      @if nth($breakpoint, 2) {
+        $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+      }
+    }
   }
 
-  @if nth($breakpoint, 2) {
-    $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+  @else {
+    @warn '🜍 Undefined breakpoint: `#{$size}`!';
   }
 
   @return $query;
 }
 
+/*
+ * Mixin for generating media queries. Uses `generate-breakpoint` function
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ *
+ * @param $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * @param $explicit: (boolean | optional) for generating min-max queries
+ */
+@mixin breakpoint($size, $explicit: false) {
+  @if $explicit {
+    @if $size == '' {
+      @content;
+    }
 
-@mixin breakpoint($size) {
-  @media #{generate-breakpoint($size)} {
-    @content;
+    @else {
+      @media #{generate-breakpoint($size, $explicit)} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @media #{generate-breakpoint($size, $explicit)} {
+      @content;
+    }
+  }
+}
+
+/*
+ * Mixin for generating generic property classes. E.g. `.t-32` => `top: 32px`
+ * Uses `generate-breakpoint` function.
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ * @see utils/_config.scss $orientations. $orientations is a globally defined
+ * var.
+ *
+ * @param $pref: (string) base class name
+ * @param $property: (string) css property name
+ * @param $sizes: (list) list of property values
+ * @param $unit: (string) value unit
+ * @param $suff: (string) generated class name suffix
+ * @param $orientations: (map | optional) map of orientation property variations
+ * @param $responsive: (boolean | optional) whether to generate responsive classes
+ */
+@mixin layout-class-generator(
+  $pref,
+  $property,
+  $sizes,
+  $unit: '',
+  $suff: '',
+  $orientations: false,
+  $responsive: true ) {
+
+  @each $size in $sizes {
+    // generic
+    .#{$pref}-#{$size}#{$suff} {
+      #{$property}: #{$size}#{$unit};
+    }
+
+    // orientation variations
+    @if $orientations {
+      @each $o-name, $o-value in $orientations {
+        .#{$pref}#{$o-name}-#{$size}#{$suff} {
+          @each $value in $o-value {
+            #{$property}-#{$value}: #{$size}#{$unit};
+          }
+        }
+      }
+    }
+  }
+
+  // responsive variations
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @each $size in $sizes {
+            // responsive generic
+            .#{$pref}-#{$b-name}-#{$size}#{$suff} {
+              #{$property}: #{$size}#{$unit};
+            }
+
+            // responsive orientation variations
+            @if $orientations {
+              @each $o-name, $o-value in $orientations {
+                .#{$pref}#{$o-name}-#{$b-name}-#{$size}#{$suff} {
+                  @each $value in $o-value {
+                    #{$property}-#{$value}: #{$size}#{$unit};
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin color-class-generator($pref, $property, $colors, $responsive: false) {
+  @each $c-name, $c-value in $colors {
+    .#{$pref}-#{$c-name} {
+      #{$property}: #{$c-value};
+    }
+  }
+
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @each $c-name, $c-value in $colors {
+            .#{$pref}-#{$b-name}-#{$c-name} {
+              #{$property}: #{$c-value};
+            }
+          }
+        }
+      }
+    }
   }
 }

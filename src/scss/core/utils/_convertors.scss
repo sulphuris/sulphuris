@@ -1,26 +1,30 @@
 /*
- * rm-unit - removes unit from a provided value
- * e.g. rm-unit(16px) = 16
+ * Removes unit from a provided value
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (number): e.g. `16`
  */
 @function rm-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return $value / 1;
 }
 
 /*
- * em - converts PX to EM values
- * e.g. em(16px) = 1em
- *
+ * Converts PX to EM values
  * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1em`
  */
 @function em($value, $unit: 'em') {
   @return #{rm-unit($value) / rm-unit($base-font-size)}#{$unit};
 }
 
 /*
- * em - converts PX to REM values (document root relative EM)
- * e.g. em(16px) = 1rem
- *
+ * Converts PX to REM values (document root relative EM)
  * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1rem`
  */
 @function rem($value) {
   @return em($value, 'rem');

@@ -1,0 +1,2 @@
+@include color-class-generator('color', 'color', $colors);
+@include color-class-generator('bg', 'background-color', $colors);

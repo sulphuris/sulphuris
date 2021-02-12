@@ -1,0 +1,10 @@
+@include layout-class-generator('w', 'width', $percent-sizes, '%', 'p');
+@include layout-class-generator('h', 'height', $percent-sizes, '%', 'p');
+@include layout-class-generator('w', 'width', $percent-sizes, 'vw', 'vw');
+@include layout-class-generator('h', 'height', $percent-sizes, 'vh', 'vw');
+
+@include layout-class-generator('w', 'width', $sizes, 'px');
+@include layout-class-generator('h', 'height', $sizes, 'px');
+
+@include layout-class-generator('w', 'width', ('auto'));
+@include layout-class-generator('h', 'height', ('auto'));
