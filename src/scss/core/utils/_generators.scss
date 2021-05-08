@@ -151,6 +151,12 @@
   }
 }
 
+@mixin color-variable-generator($colors) {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+}
+
 @mixin grid-column-generator($columns, $responsive: true) {
   $base: 100 / $columns;
   $unit: '%';
