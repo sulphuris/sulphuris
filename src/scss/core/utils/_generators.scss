@@ -184,14 +184,19 @@
   }
 }
 
+/* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
   $base: 100 / $columns;
   $unit: '%';
 
-  @for $i from 1 through $columns {
+  @for $i from 0 through $columns - 1 {
     .col-offset-#{$i} {
       $width: $base * $i;
       margin-left: #{$width}#{$unit};
+
+      .reversed & {
+        margin-right: #{$width}#{$unit};
+      }
     }
   }
 
@@ -199,10 +204,14 @@
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
-          @for $i from 1 through $columns {
+          @for $i from 0 through $columns - 1 {
             .col-offset-#{$b-name}-#{$i} {
               $width: $base * $i;
               margin-left: #{$width}#{$unit};
+
+              .reversed & {
+                margin-right: #{$width}#{$unit};
+              }
             }
           }
         }
@@ -210,3 +219,4 @@
     }
   }
 }
+/* stylelint-enable */
