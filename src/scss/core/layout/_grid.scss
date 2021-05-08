@@ -1,0 +1,44 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+
+  &.container {
+    padding-left: $container-offset-mobile - $grid-gutter-mobile/2;
+    padding-right: $container-offset-mobile - $grid-gutter-mobile/2;
+
+    @include breakpoint($container-breakpoint) {
+      padding-left: $container-offset - $grid-gutter/2;
+      padding-right: $container-offset - $grid-gutter/2;
+    }
+  }
+
+  &.container .col {
+    padding-left: $grid-gutter-mobile/2;
+    padding-right: $grid-gutter-mobile/2;
+
+    @include breakpoint($container-breakpoint) {
+      padding-left: $grid-gutter/2;
+      padding-right: $grid-gutter/2;
+    }
+  }
+
+  &.container .col:not(.col-*) {
+    flex-grow: 1;
+  }
+}
+
+.nested {
+  display: flex;
+  flex-flow: row wrap;
+
+  margin-left: -$grid-gutter-mobile/2;
+  margin-right: -$grid-gutter-mobile/2;
+
+  @include breakpoint($container-breakpoint) {
+    margin-left: -$grid-gutter/2;
+    margin-right: -$grid-gutter/2;
+  }
+}
+
+@include grid-column-generator($columns);
+@include grid-offset-generator($columns);

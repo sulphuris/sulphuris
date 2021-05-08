@@ -150,3 +150,57 @@
     }
   }
 }
+
+@mixin grid-column-generator($columns, $responsive: true) {
+  $base: 100 / $columns;
+  $unit: '%';
+
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      $width: $base * $i;
+      width: #{$width}#{$unit};
+    }
+  }
+
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @for $i from 1 through $columns {
+            .col-#{$b-name}-#{$i} {
+              $width: $base * $i;
+              width: #{$width}#{$unit};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin grid-offset-generator($columns, $responsive: true) {
+  $base: 100 / $columns;
+  $unit: '%';
+
+  @for $i from 1 through $columns {
+    .col-offset-#{$i} {
+      $width: $base * $i;
+      margin-left: #{$width}#{$unit};
+    }
+  }
+
+  @if $responsive {
+    @each $b-name, $b-value in $breakpoints {
+      @if $b-name != '' {
+        @media #{generate-breakpoint($b-name)} {
+          @for $i from 1 through $columns {
+            .col-offset-#{$b-name}-#{$i} {
+              $width: $base * $i;
+              margin-left: #{$width}#{$unit};
+            }
+          }
+        }
+      }
+    }
+  }
+}
