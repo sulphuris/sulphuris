@@ -1,7 +1,7 @@
 {
   "name": "sulphuris",
   "description": "Open-source CSS framework",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "css",
@@ -11,7 +11,7 @@
     "framework",
     "web"
   ],
-  "author": "Nikola Stamatovic <nikola@otilito.com>",
+  "author": "OTILITO <https://otilito.com>",
   "homepage": "",
   "private": false,
   "dependencies": {},
