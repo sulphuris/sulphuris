@@ -6,6 +6,7 @@
   "style": "dist/css/sulphuris.css",
   "sass": "src/scss/index.scss",
   "main": "dist/js/sulphuris.js",
+  "repository": "https://github.com/sulphuris/sulphuris.git",
   "keywords": [
     "css",
     "sass",
@@ -14,7 +15,7 @@
     "framework",
     "web"
   ],
-  "author": "OTILITO <https://otilito.com>",
+  "author": "OTILITO <nikola@otilito.com> (https://otilito.com)",
   "homepage": "http://sulphuris.github.io",
   "private": false,
   "dependencies": {},
