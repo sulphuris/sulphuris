@@ -3,6 +3,9 @@
   "description": "Open-source CSS framework",
   "version": "1.0.0",
   "license": "MIT",
+  "style": "dist/css/sulphuris.css",
+  "sass": "src/scss/index.scss",
+  "main": "dist/js/sulphuris.js",
   "keywords": [
     "css",
     "sass",
@@ -12,7 +15,7 @@
     "web"
   ],
   "author": "OTILITO <https://otilito.com>",
-  "homepage": "",
+  "homepage": "http://sulphuris.github.io",
   "private": false,
   "dependencies": {},
   "devDependencies": {
@@ -42,7 +45,6 @@
     "stylelint-config-sass-guidelines": "^8.0.0",
     "ts-node": "8.4.1",
     "tslib": "2.1.0",
-    "typescript": "4.1.5",
-    "yargs": "^16.1.1"
+    "typescript": "4.1.5"
   }
 }

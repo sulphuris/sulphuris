@@ -1,8 +1,6 @@
 'use strict';
 
-const argv                 = require('yargs').argv;
 const gulp                 = require('gulp');
-const gulpif               = require('gulp-if');
 const cache                = require('gulp-cached');
 const connect              = require('gulp-connect');
 const autoprefixer         = require('gulp-autoprefixer');
@@ -40,28 +38,37 @@ gulp.task('rollup', async function () {
       rollup_typescript(),
       rollup_commonjs({
         include: 'node_modules/**'
-      }),
-      argv.production && rollup_terser.terser()
+      })
     ]
   });
 
   let opts = {
-    file: './dist/js/sulphuris-bundle.js',
+    file: './dist/js/sulphuris.js',
     format: 'iife',
     sourcemap: false
   };
 
-  if (argv.production) {
-    opts.file = './dist/js/sulphuris-bundle.min.js';
-  }
-
-  if (argv.sourcemap) {
-    opts.sourcemap = true;
-  }
-
   await bundle.write(opts).then(() => {
     gulp.series('reload');
   });
+});
+
+gulp.task('rollup-minify', async function () {
+  const bundle = await rollup.rollup({
+    input: './dist/js/sulphuris.js',
+    context: 'window',
+    plugins: [
+      rollup_terser.terser()
+    ]
+  });
+
+  let opts = {
+    file: './dist/js/sulphuris.min.js',
+    format: 'iife',
+    sourcemap: true
+  };
+
+  await bundle.write(opts);
 });
 
 // ### SASS
@@ -79,7 +86,7 @@ gulp.task('sass', function () {
   }
 */
 
-  return gulp.src(['./src/scss/main.scss'])
+  return gulp.src(['./src/scss/index.scss'])
     .pipe(sass(opts).on('error', sass.logError))
     .pipe(gcmq())
     .pipe(autoprefixer(
@@ -94,13 +101,18 @@ gulp.task('sass', function () {
       ]
     ))
     .pipe(rename({ basename: 'sulphuris' }))
-    .pipe(gulpif(argv.sourcemap, sourcemaps.init()))
-    .pipe(gulpif(argv.production, cleanCSS()))
-    .pipe(gulpif(argv.sourcemap, sourcemaps.write()))
-    .pipe(gulpif(argv.production, rename({ suffix: '.min' })))
     .pipe(stripCssComments())
     .pipe(gulp.dest('./dist/css'))
     .pipe(connect.reload());
+});
+
+gulp.task('sass-minify', function () {
+  return gulp.src(['./dist/css/sulphuris.css'])
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./dist/css'));
 });
 
 // ### JSHint
@@ -143,8 +155,8 @@ gulp.task('server', async function () {
 });
 
 gulp.task('watch', async function () {
-  gulp.watch(['./src/**/*.scss'], gulp.series('lint-css', 'sass'));
-  gulp.watch(['./src/**/*.ts', './src/**/*.js'], gulp.series('lint-js', 'rollup'));
+  gulp.watch(['./src/**/*.scss'], gulp.series('lint-css', 'sass', 'sass-minify'));
+  gulp.watch(['./src/**/*.ts', './src/**/*.js'], gulp.series('lint-js', 'rollup', 'rollup-minify'));
   gulp.watch([
     './**/*.html',
     './**/*.png',
@@ -156,10 +168,10 @@ gulp.task('watch', async function () {
 
 // ### Build
 // `gulp build`
-gulp.task('build', gulp.series('rollup','sass'));
+gulp.task('build', gulp.series('rollup', 'rollup-minify', 'sass', 'sass-minify'));
 
 // ### Serve
 // `gulp serve`
-gulp.task('serve', gulp.series('lint-js', 'rollup', 'lint-css', 'sass', 'server', 'watch'));
+gulp.task('serve', gulp.series('lint-js', 'rollup', 'lint-css', 'rollup-minify', 'sass', 'sass-minify', 'server', 'watch'));
 
 gulp.task('default', gulp.series('serve'));

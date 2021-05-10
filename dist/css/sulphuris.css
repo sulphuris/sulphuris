@@ -3301,11 +3301,6 @@ h6 {
   text-align: center;
 }
 
-.hello {
-  color: #000;
-  font-size: 0.75rem;
-}
-
 @media only screen and (min-width: 421px) {
   .d-sm-block {
     display: block;
@@ -8836,11 +8831,6 @@ h6 {
   .text-md-center {
     text-align: center;
   }
-
-  .hello {
-    color: #f00;
-    font-size: 1rem;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -11627,11 +11617,6 @@ h6 {
   .text-lg-center {
     text-align: center;
   }
-
-  .hello {
-    color: #0f0;
-    font-size: 1.5rem;
-  }
 }
 
 @media only screen and (min-width: 1366px) {
@@ -14398,11 +14383,6 @@ h6 {
   .text-xl-center {
     text-align: center;
   }
-
-  .hello {
-    color: #00f;
-    font-size: 3rem;
-  }
 }
 
 @media only screen and (min-width: 1680px) {
@@ -17168,10 +17148,5 @@ h6 {
 
   .text-xxl-center {
     text-align: center;
-  }
-
-  .hello {
-    color: #000;
-    font-size: 5rem;
   }
 }
