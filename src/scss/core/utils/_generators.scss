@@ -85,7 +85,8 @@
 
   @each $size in $sizes {
     // generic
-    .#{$pref}-#{$size}#{$suff} {
+    $gen-pref: trim-end($pref, '-');
+    .#{$gen-pref}-#{$size}#{$suff} {
       #{$property}: #{$size}#{$unit};
     }
 

@@ -1,0 +1,9 @@
+.border {
+  border-color: currentcolor;
+  border-style: solid;
+  border-width: 1px;
+}
+
+@include layout-class-generator('border', 'border-width', $border-sizes, 'px', '');
+@include layout-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
+@include layout-class-generator('border-', 'border', ('none'), '', '', $orientations);

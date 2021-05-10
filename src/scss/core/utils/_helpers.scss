@@ -9,3 +9,14 @@
 @function color($color) {
   @return map-get($colors, $color);
 }
+
+@function trim-end($haystack, $needle) {
+  @if ends-with($haystack, $needle) {
+    @return str-slice($haystack, 1, -(str-length($needle) + 1));
+  }
+  @return $haystack;
+}
+
+@function ends-with($haystack, $needle) {
+  @return str-slice($haystack, str-length($haystack) - str-length($needle) + 1) == $needle;
+}
