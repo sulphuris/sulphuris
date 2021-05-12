@@ -1,0 +1,3 @@
+@include layout-class-generator('overflow', 'overflow', ('hidden', 'visible', 'auto'));
+@include layout-class-generator('overflow-x', 'overflow-x', ('hidden', 'visible', 'auto'));
+@include layout-class-generator('overflow-y', 'overflow-y', ('hidden', 'visible', 'auto'));
