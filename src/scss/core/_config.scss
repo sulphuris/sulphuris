@@ -4,14 +4,14 @@
  *   So, by default 1em is equivalent to 16px.
  *   - https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#ems
  */
-$base-font-size: 16px;
+$base-font-size: 16px !default;
 
-$sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256;
-$negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64;
-$percent-sizes: 5,10,15,20,25,50,75,100;
-$negative-percent-sizes: -5,-10,-15,-20,-25,-50,-75,-100;
+$sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
+$negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64 !default;
+$percent-sizes: 5,10,15,20,25,50,75,100 !default;
+$negative-percent-sizes: -5,-10,-15,-20,-25,-50,-75,-100 !default;
 
-$border-sizes: 1, 2, 3, 4, 6, 8;
+$border-sizes: 1, 2, 3, 4, 6, 8 !default;
 
 /*
  * ORIENTATIONS - 'orientation label': (property)
@@ -23,7 +23,7 @@ $orientations: (
   'l': ('left'),
   'x': ('right', 'left'),
   'y': ('top', 'bottom')
-);
+) !default;
 
 /*
  * BREAKPOINTS - 'size label': (min, max)
@@ -35,15 +35,15 @@ $breakpoints: (
   'lg':   (1024px, 1365px),
   'xl':   (1366px, 1679px),
   'xxl':  (1680px, false)
-);
+) !default;
 
-$container-offset: 56px;
-$container-offset-mobile: 16px;
-$container-breakpoint: 'lg';
+$container-offset: 56px !default;
+$container-offset-mobile: 16px !default;
+$container-breakpoint: 'lg' !default;
 
-$grid-gutter: 32px;
-$grid-gutter-mobile: 16px;
-$columns: 12;
+$grid-gutter: 32px !default;
+$grid-gutter-mobile: 16px !default;
+$columns: 12 !default;
 
 $colors: (
   black: #1a1a1d,
@@ -52,7 +52,7 @@ $colors: (
   gray-light: #f4f4fd,
   white: #fff,
   primary: #f6c026
-);
+) !default;
 
-$heading-font: 'Roboto', sans-serif;
-$paragraph-font: 'Nunito', serif;
+$heading-font: 'Roboto', sans-serif !default;
+$paragraph-font: 'Nunito', serif !default;
