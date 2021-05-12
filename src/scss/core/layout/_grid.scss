@@ -27,7 +27,7 @@
   }
 }
 
-.nested {
+.grid-nested {
   display: flex;
   flex-flow: row wrap;
 
@@ -43,6 +43,6 @@
 @include grid-column-generator($columns);
 @include grid-offset-generator($columns);
 
-.reversed {
+.grid-reversed {
   flex-direction: row-reverse;
 }
