@@ -2,6 +2,35 @@
   box-sizing: border-box;
 }
 
-.clearfix {
-  @include clearfix;
+[hidden] {
+  display: none !important;
+}
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.cover {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.bg-cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hide-native-scrollbar {
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* FF 64 */
+}
+
+.hide-native-scrollbar::-webkit-scrollbar { /* WebKit */
+  display: none;
 }

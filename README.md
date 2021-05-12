@@ -1,6 +1,6 @@
 ![Sulphuris logo](https://avatars.githubusercontent.com/u/83950228)
 
-# Sulphuris v1.0.0
+# Sulphuris v1.0.1
 Open-source CSS framework
 
 > Minimal, modular and flexible, 🜍 Sulphuris aims to be the soul of your next front-end project. Inspired by [Bootstrap](https://github.com/twbs/bootstrap) and [Primer](https://github.com/primer/css), but tailored to suit your everyday front-end development needs.

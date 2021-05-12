@@ -6,6 +6,9 @@
  */
 $base-font-size: 16px !default;
 
+/*
+ * SIZES
+ */
 $sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
 $negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64 !default;
 $percent-sizes: 5,10,15,20,25,50,75,100 !default;
@@ -37,6 +40,9 @@ $breakpoints: (
   'xxl':  (1680px, false)
 ) !default;
 
+/*
+ * CONTAINER + GRID
+ */
 $container-offset: 56px !default;
 $container-offset-mobile: 16px !default;
 $container-breakpoint: 'lg' !default;
@@ -45,6 +51,9 @@ $grid-gutter: 32px !default;
 $grid-gutter-mobile: 16px !default;
 $columns: 12 !default;
 
+/*
+ * COLORS
+ */
 $colors: (
   black: #1a1a1d,
   gray-dark: #4a4a4d,
@@ -54,5 +63,11 @@ $colors: (
   primary: #f6c026
 ) !default;
 
+/*
+ * TYPOGRAPHY
+ */
 $heading-font: 'Roboto', sans-serif !default;
 $paragraph-font: 'Nunito', serif !default;
+
+//Image directory default - change it to wherever you store images relative to the compiled .css
+$image_dir: '../images/' !default;
