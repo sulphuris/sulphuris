@@ -35,6 +35,20 @@
   background-size: cover;
 }
 
+.bg-contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
 .hide-native-scrollbar {
   -ms-overflow-style: none; /* IE 11 */
   scrollbar-width: none; /* FF 64 */
