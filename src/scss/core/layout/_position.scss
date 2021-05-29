@@ -1,21 +1,21 @@
-@include layout-class-generator('t', 'top', $sizes, 'px');
-@include layout-class-generator('r', 'right', $sizes, 'px');
-@include layout-class-generator('b', 'bottom', $sizes, 'px');
-@include layout-class-generator('l', 'left', $sizes, 'px');
+@include utility-class-generator('t', 'top', $sizes, 'px');
+@include utility-class-generator('r', 'right', $sizes, 'px');
+@include utility-class-generator('b', 'bottom', $sizes, 'px');
+@include utility-class-generator('l', 'left', $sizes, 'px');
 
-@include layout-class-generator('t', 'top', $negative-sizes, 'px');
-@include layout-class-generator('r', 'right', $negative-sizes, 'px');
-@include layout-class-generator('b', 'bottom', $negative-sizes, 'px');
-@include layout-class-generator('l', 'left', $negative-sizes, 'px');
+@include utility-class-generator('t', 'top', $negative-sizes, 'px');
+@include utility-class-generator('r', 'right', $negative-sizes, 'px');
+@include utility-class-generator('b', 'bottom', $negative-sizes, 'px');
+@include utility-class-generator('l', 'left', $negative-sizes, 'px');
 
-@include layout-class-generator('t', 'top', $percent-sizes, '%', 'p');
-@include layout-class-generator('r', 'right', $percent-sizes, '%', 'p');
-@include layout-class-generator('b', 'bottom', $percent-sizes, '%', 'p');
-@include layout-class-generator('l', 'left', $percent-sizes, '%', 'p');
+@include utility-class-generator('t', 'top', $percent-sizes, '%', 'p');
+@include utility-class-generator('r', 'right', $percent-sizes, '%', 'p');
+@include utility-class-generator('b', 'bottom', $percent-sizes, '%', 'p');
+@include utility-class-generator('l', 'left', $percent-sizes, '%', 'p');
 
-@include layout-class-generator('t', 'top', $negative-percent-sizes, '%', 'p');
-@include layout-class-generator('r', 'right', $negative-percent-sizes, '%', 'p');
-@include layout-class-generator('b', 'bottom', $negative-percent-sizes, '%', 'p');
-@include layout-class-generator('l', 'left', $negative-percent-sizes, '%', 'p');
+@include utility-class-generator('t', 'top', $negative-percent-sizes, '%', 'p');
+@include utility-class-generator('r', 'right', $negative-percent-sizes, '%', 'p');
+@include utility-class-generator('b', 'bottom', $negative-percent-sizes, '%', 'p');
+@include utility-class-generator('l', 'left', $negative-percent-sizes, '%', 'p');
 
-@include layout-class-generator('position', 'position', ('static', 'absolute', 'fixed', 'relative', 'sticky'));
+@include utility-class-generator('position', 'position', ('static', 'absolute', 'fixed', 'relative', 'sticky'));

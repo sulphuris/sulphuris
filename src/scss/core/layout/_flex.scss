@@ -1,8 +1,8 @@
-@include layout-class-generator('flex', 'flex-direction', ('row', 'row-reverse', 'column', 'column-reverse'));
-@include layout-class-generator('flex', 'flex-wrap', ('wrap', 'nowrap'));
-@include layout-class-generator('flex-grow', 'flex-grow', (0, 1));
-@include layout-class-generator('flex-shrink', 'flex-shrink', (0, 1));
-@include layout-class-generator('align', 'align-items', ('normal', 'center', 'flex-start', 'flex-end'));
-@include layout-class-generator('justify', 'justify-content', ('normal', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around'));
-@include layout-class-generator('align-self', 'align-self', ('normal', 'center', 'start', 'end'));
-@include layout-class-generator('justify-self', 'justify-self', ('normal', 'center', 'start', 'end'));
+@include utility-class-generator('flex', 'flex-direction', ('row', 'row-reverse', 'column', 'column-reverse'));
+@include utility-class-generator('flex', 'flex-wrap', ('wrap', 'nowrap'));
+@include utility-class-generator('flex-grow', 'flex-grow', (0, 1));
+@include utility-class-generator('flex-shrink', 'flex-shrink', (0, 1));
+@include utility-class-generator('align', 'align-items', ('normal', 'center', 'flex-start', 'flex-end'));
+@include utility-class-generator('justify', 'justify-content', ('normal', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around'));
+@include utility-class-generator('align-self', 'align-self', ('normal', 'center', 'start', 'end'));
+@include utility-class-generator('justify-self', 'justify-self', ('normal', 'center', 'start', 'end'));

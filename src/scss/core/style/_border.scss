@@ -4,9 +4,9 @@
   border-width: 1px;
 }
 
-@include layout-class-generator('border', 'border-width', $border-sizes, 'px', '');
-@include layout-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
-@include layout-class-generator('border-', 'border', ('none'), '', '', $orientations);
+@include utility-class-generator('border', 'border-width', $border-sizes, 'px', '');
+@include utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
+@include utility-class-generator('border-', 'border', ('none'), '', '', $orientations);
 
 .rounded {
   @include rounded-container-fix;
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-@include layout-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);
+@include utility-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);
 
 .rounded-tl-0 {
   border-top-left-radius: 0;
