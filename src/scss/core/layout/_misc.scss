@@ -20,6 +20,21 @@
   width: 100%;
 }
 
+%self-center {
+  transform: translate3d(-50%, -50%);
+}
+
+.self-center {
+  @extend %self-center;
+}
+
+.absolute-center {
+  @extend %self-center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
 .bg-cover {
   background-position: center;
   background-repeat: no-repeat;

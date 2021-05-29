@@ -56,6 +56,18 @@
   width: 100%;
 }
 
+.self-center,
+.absolute-center {
+  -webkit-transform: translate3d(-50%, -50%);
+          transform: translate3d(-50%, -50%);
+}
+
+.absolute-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
 .bg-cover {
   background-position: center;
   background-repeat: no-repeat;
