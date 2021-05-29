@@ -130,6 +130,28 @@
   }
 }
 
+@function color-palette-genrator($color-map, $color-name, $color-value, $mod: 10%) {
+  @for $i from 1 through 9 {
+    $grade: (10 - $i) * 100;
+    $percentage: $i * $mod;
+    $combined-name: #{$color-name}-#{$grade};
+    $color-lightened: lighten($color-value, $percentage);
+
+    $color-map: map-merge($color-map, ($combined-name: $color-lightened));
+  }
+
+  @return $color-map;
+}
+
+@function generate-color-palettes($color-map, $palette-map) {
+  @if $palette-map {
+    @each $name, $value in $palette-map {
+      $color-map: color-palette-genrator($color-map, $name, nth($value, 1), nth($value, 2));
+    }
+  }
+  @return $color-map;
+}
+
 @mixin color-class-generator($pref, $property, $colors, $responsive: false) {
   @each $c-name, $c-value in $colors {
     .#{$pref}-#{$c-name} {

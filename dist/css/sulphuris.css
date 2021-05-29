@@ -3414,18 +3414,6 @@ template {
   color: #1a1a1d;
 }
 
-.text-gray-dark {
-  color: #4a4a4d;
-}
-
-.text-gray {
-  color: #a4a4ad;
-}
-
-.text-gray-light {
-  color: #f4f4fd;
-}
-
 .text-white {
   color: #fff;
 }
@@ -3434,20 +3422,44 @@ template {
   color: #f6c026;
 }
 
+.text-gray-900 {
+  color: #323237;
+}
+
+.text-gray-800 {
+  color: #494952;
+}
+
+.text-gray-700 {
+  color: #61616c;
+}
+
+.text-gray-600 {
+  color: #797986;
+}
+
+.text-gray-500 {
+  color: #93939e;
+}
+
+.text-gray-400 {
+  color: #adadb6;
+}
+
+.text-gray-300 {
+  color: #c8c8cd;
+}
+
+.text-gray-200 {
+  color: #e2e2e5;
+}
+
+.text-gray-100 {
+  color: #fcfcfd;
+}
+
 .bg-black {
   background-color: #1a1a1d;
-}
-
-.bg-gray-dark {
-  background-color: #4a4a4d;
-}
-
-.bg-gray {
-  background-color: #a4a4ad;
-}
-
-.bg-gray-light {
-  background-color: #f4f4fd;
 }
 
 .bg-white {
@@ -3458,20 +3470,44 @@ template {
   background-color: #f6c026;
 }
 
+.bg-gray-900 {
+  background-color: #323237;
+}
+
+.bg-gray-800 {
+  background-color: #494952;
+}
+
+.bg-gray-700 {
+  background-color: #61616c;
+}
+
+.bg-gray-600 {
+  background-color: #797986;
+}
+
+.bg-gray-500 {
+  background-color: #93939e;
+}
+
+.bg-gray-400 {
+  background-color: #adadb6;
+}
+
+.bg-gray-300 {
+  background-color: #c8c8cd;
+}
+
+.bg-gray-200 {
+  background-color: #e2e2e5;
+}
+
+.bg-gray-100 {
+  background-color: #fcfcfd;
+}
+
 .border-black {
   border-color: #1a1a1d;
-}
-
-.border-gray-dark {
-  border-color: #4a4a4d;
-}
-
-.border-gray {
-  border-color: #a4a4ad;
-}
-
-.border-gray-light {
-  border-color: #f4f4fd;
 }
 
 .border-white {
@@ -3480,6 +3516,42 @@ template {
 
 .border-primary {
   border-color: #f6c026;
+}
+
+.border-gray-900 {
+  border-color: #323237;
+}
+
+.border-gray-800 {
+  border-color: #494952;
+}
+
+.border-gray-700 {
+  border-color: #61616c;
+}
+
+.border-gray-600 {
+  border-color: #797986;
+}
+
+.border-gray-500 {
+  border-color: #93939e;
+}
+
+.border-gray-400 {
+  border-color: #adadb6;
+}
+
+.border-gray-300 {
+  border-color: #c8c8cd;
+}
+
+.border-gray-200 {
+  border-color: #e2e2e5;
+}
+
+.border-gray-100 {
+  border-color: #fcfcfd;
 }
 
 body {

@@ -56,11 +56,12 @@ $columns: 12 !default;
  */
 $colors: (
   black: #1a1a1d,
-  gray-dark: #4a4a4d,
-  gray: #a4a4ad,
-  gray-light: #f4f4fd,
   white: #fff,
   primary: #f6c026
+) !default;
+
+$palettes: (
+  gray: (#1a1a1d, 9.8%)
 ) !default;
 
 /*
@@ -70,4 +71,4 @@ $heading-font: 'Roboto', sans-serif !default;
 $paragraph-font: 'Nunito', serif !default;
 
 //Image directory default - change it to wherever you store images relative to the compiled .css
-$image_dir: '../images/' !default;
+$image-dir: '../images/' !default;
