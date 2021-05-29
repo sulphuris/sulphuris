@@ -59,23 +59,7 @@
   }
 }
 
-/*
- * Mixin for generating generic property classes. E.g. `.t-32` => `top: 32px`
- * Uses `generate-breakpoint` function.
- * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
- * @see utils/_config.scss $orientations. $orientations is a globally defined
- * var.
- *
- * @param $pref: (string) base class name
- * @param $property: (string) css property name
- * @param $values: (list | map) list or a map of property values
- * @param $unit: (string) value unit
- * @param $suff: (string) generated class name suffix
- * @param $orientations: (map | optional) map of orientation property variations
- * @param $responsive: (boolean | optional) whether to generate responsive classes
- */
-
-@mixin utility-class-generator-generic($pref, $property, $b-name, $key, $value, $unit, $suff) {
+@mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
   $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have - in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
@@ -86,7 +70,7 @@
   }
 }
 
-@mixin utility-class-generator-orientated($pref, $property, $b-name, $key, $value, $unit, $suff) {
+@mixin orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
   @if $b-name {
     $b-name: -#{$b-name};
   }
@@ -100,6 +84,49 @@
   }
 }
 
+@mixin generic-and-orientaded-utility-class-generator(
+  $pref,
+  $property,
+  $b-name,
+  $values,
+  $unit: '',
+  $suff: '',
+  $orientations: false) {
+
+  @if type-of($values) == 'map' {
+    @each $key, $value in $values {
+      @include generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff);
+
+      @if $orientations {
+        @include orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff);
+      }
+    }
+  } @else {
+    @each $value in $values {
+      @include generic-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff);
+
+      @if $orientations {
+        @include orientated-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff);
+      }
+    }
+  }
+}
+
+/*
+ * Mixin for generating generic utility classes. E.g. `.t-32` => `top: 32px`
+ * Uses `generate-breakpoint` function.
+ * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
+ * @see utils/_config.scss $orientations. $orientations is a globally defined
+ * var.
+ *
+ * @param $pref: (string) base class name
+ * @param $property: (string) css property name
+ * @param $values: (list | map) list or a map of property values
+ * @param $unit: (string) value unit
+ * @param $suff: (string) generated class name suffix
+ * @param $orientations: (map | optional) map of orientation property variations
+ * @param $responsive: (boolean | optional) whether to generate responsive classes
+ */
 @mixin utility-class-generator(
   $pref,
   $property,
@@ -109,53 +136,21 @@
   $orientations: false,
   $responsive: true ) {
 
-  @if type-of($values) == 'map' {
-    @each $key, $value in $values {
-      @include utility-class-generator-generic($pref, $property, null, $key, $value, $unit, $suff);
-
-      @if $orientations {
-        @include utility-class-generator-orientated($pref, $property, null, $key, $value, $unit, $suff);
-      }
-    }
-  } @else {
-    @each $value in $values {
-      @include utility-class-generator-generic($pref, $property, null, $value, $value, $unit, $suff);
-
-      @if $orientations {
-        @include utility-class-generator-orientated($pref, $property, null, $value, $value, $unit, $suff);
-      }
-    }
-  }
+  @include generic-and-orientaded-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations);
 
   // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
-          @if type-of($values) == 'map' {
-            @each $key, $value in $values {
-              @include utility-class-generator-generic($pref, $property, $b-name, $key, $value, $unit, $suff);
-
-              @if $orientations {
-                @include utility-class-generator-orientated($pref, $property, $b-name, $key, $value, $unit, $suff);
-              }
-            }
-          } @else {
-            @each $value in $values {
-              @include utility-class-generator-generic($pref, $property, $b-name, $value, $value, $unit, $suff);
-
-              @if $orientations {
-                @include utility-class-generator-orientated($pref, $property, $b-name, $value, $value, $unit, $suff);
-              }
-            }
-          }
+          @include generic-and-orientaded-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations);
         }
       }
     }
   }
 }
 
-@function color-palette-genrator-helper($color-map, $color-name, $color-value, $mod: 10%) {
+@function color-palette-genrator($color-map, $color-name, $color-value, $mod: 10%) {
   @for $i from 1 through 9 {
     $grade: (10 - $i) * 100;
     $percentage: $i * $mod;
@@ -165,15 +160,6 @@
     $color-map: map-merge($color-map, ($combined-name: $color-lightened));
   }
 
-  @return $color-map;
-}
-
-@function color-palette-genrator($color-map, $palette-map) {
-  @if $palette-map {
-    @each $name, $value in $palette-map {
-      $color-map: color-palette-genrator-helper($color-map, $name, nth($value, 1), nth($value, 2));
-    }
-  }
   @return $color-map;
 }
 
