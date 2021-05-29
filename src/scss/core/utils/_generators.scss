@@ -68,30 +68,33 @@
  *
  * @param $pref: (string) base class name
  * @param $property: (string) css property name
- * @param $sizes: (list) list of property values
+ * @param $values: (list | map) list or a map of property values
  * @param $unit: (string) value unit
  * @param $suff: (string) generated class name suffix
  * @param $orientations: (map | optional) map of orientation property variations
  * @param $responsive: (boolean | optional) whether to generate responsive classes
  */
 
-@mixin utility-class-generator-helper($pref, $property, $b-name, $key, $size, $unit, $suff, $orientations: false) {
+@mixin utility-class-generator-generic($pref, $property, $b-name, $key, $value, $unit, $suff) {
   $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have - in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
 
   .#{$gen-pref}#{$b-name}-#{$key}#{$suff} {
-    #{$property}: #{$size}#{$unit};
+    #{$property}: #{$value}#{$unit};
+  }
+}
+
+@mixin utility-class-generator-orientated($pref, $property, $b-name, $key, $value, $unit, $suff) {
+  @if $b-name {
+    $b-name: -#{$b-name};
   }
 
-  // orientation variations
-  @if $orientations {
-    @each $o-name, $o-value in $orientations {
-      .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
-        @each $value in $o-value {
-          #{$property}-#{$value}: #{$size}#{$unit};
-        }
+  @each $o-name, $o-values in $orientations {
+    .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
+      @each $o-value in $o-values {
+        #{$property}-#{$o-value}: #{$value}#{$unit};
       }
     }
   }
@@ -100,33 +103,50 @@
 @mixin utility-class-generator(
   $pref,
   $property,
-  $sizes,
+  $values,
   $unit: '',
   $suff: '',
   $orientations: false,
   $responsive: true ) {
 
-  @if type-of($sizes) == 'map' {
-    @each $key, $size in $sizes {
-      @include utility-class-generator-helper($pref, $property, null, $key, $size, $unit, $suff, $orientations);
+  @if type-of($values) == 'map' {
+    @each $key, $value in $values {
+      @include utility-class-generator-generic($pref, $property, null, $key, $value, $unit, $suff);
+
+      @if $orientations {
+        @include utility-class-generator-orientated($pref, $property, null, $key, $value, $unit, $suff);
+      }
     }
   } @else {
-    @each $size in $sizes {
-      @include utility-class-generator-helper($pref, $property, null, $size, $size, $unit, $suff, $orientations);
+    @each $value in $values {
+      @include utility-class-generator-generic($pref, $property, null, $value, $value, $unit, $suff);
+
+      @if $orientations {
+        @include utility-class-generator-orientated($pref, $property, null, $value, $value, $unit, $suff);
+      }
     }
   }
+
   // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
-          @if type-of($sizes) == 'map' {
-            @each $key, $size in $sizes {
-              @include utility-class-generator-helper($pref, $property, $b-name, $key, $size, $unit, $suff, $orientations);
+          @if type-of($values) == 'map' {
+            @each $key, $value in $values {
+              @include utility-class-generator-generic($pref, $property, $b-name, $key, $value, $unit, $suff);
+
+              @if $orientations {
+                @include utility-class-generator-orientated($pref, $property, $b-name, $key, $value, $unit, $suff);
+              }
             }
           } @else {
-            @each $size in $sizes {
-              @include utility-class-generator-helper($pref, $property, $b-name, $size, $size, $unit, $suff, $orientations);
+            @each $value in $values {
+              @include utility-class-generator-generic($pref, $property, $b-name, $value, $value, $unit, $suff);
+
+              @if $orientations {
+                @include utility-class-generator-orientated($pref, $property, $b-name, $value, $value, $unit, $suff);
+              }
             }
           }
         }
