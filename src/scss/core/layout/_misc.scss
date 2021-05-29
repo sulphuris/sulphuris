@@ -6,12 +6,6 @@
   display: none !important;
 }
 
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
 .cover {
   height: 100%;
   left: 0;

@@ -1,0 +1,8 @@
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+@include utility-class-generator('float', 'float', ('left', 'right', 'none'), '', '', false, true);
+@include utility-class-generator('clear', 'clear', ('left', 'right', 'both', 'none'), '', '', false, true);
