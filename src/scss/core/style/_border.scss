@@ -4,6 +4,40 @@
   border-width: 1px;
 }
 
-@include layout-class-generator('border', 'border-width', $border-sizes, 'px', '');
-@include layout-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
-@include layout-class-generator('border-', 'border', ('none'), '', '', $orientations);
+@include utility-class-generator('border', 'border-width', $border-sizes, 'px', '');
+@include utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
+@include utility-class-generator('border-', 'border', ('none'), '', '', $orientations);
+
+.rounded {
+  @include rounded-container-fix;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@include utility-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);
+
+.rounded-tl-0 {
+  border-top-left-radius: 0;
+}
+
+.rounded-tr-0 {
+  border-top-right-radius: 0;
+}
+
+.rounded-t-0 {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rounded-bl-0 {
+  border-bottom-left-radius: 0;
+}
+
+.rounded-br-0 {
+  border-bottom-right-radius: 0;
+}
+
+.rounded-b-0 {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

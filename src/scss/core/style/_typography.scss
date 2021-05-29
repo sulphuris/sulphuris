@@ -25,7 +25,7 @@ h6 {
   font-weight: 300;
 }
 
-@include layout-class-generator('text', 'font-weight', ('normal', 'bold', 'bolder', 'lighter'), '', '', false, false);
+@include utility-class-generator('text', 'font-weight', ('normal', 'bold', 'bolder', 'lighter'), '', '', false, false);
 
 .text-medium {
   font-weight: 500;
@@ -43,4 +43,4 @@ h6 {
   font-weight: 900;
 }
 
-@include layout-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);
+@include utility-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);

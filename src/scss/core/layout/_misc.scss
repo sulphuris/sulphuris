@@ -6,12 +6,6 @@
   display: none !important;
 }
 
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
 .cover {
   height: 100%;
   left: 0;
@@ -20,10 +14,39 @@
   width: 100%;
 }
 
+%self-center {
+  transform: translate3d(-50%, -50%);
+}
+
+.self-center {
+  @extend %self-center;
+}
+
+.absolute-center {
+  @extend %self-center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
 .bg-cover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.bg-contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.object-cover {
+  object-fit: cover;
 }
 
 .hide-native-scrollbar {

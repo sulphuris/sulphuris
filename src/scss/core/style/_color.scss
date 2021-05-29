@@ -1,3 +1,7 @@
-@include color-class-generator('text', 'color', $colors);
-@include color-class-generator('bg', 'background-color', $colors);
-@include color-class-generator('border', 'border-color', $colors);
+@each $name, $value in $palettes {
+  $colors: color-palette-genrator($colors, $name, nth($value, 1), nth($value, 2));
+}
+
+@include utility-class-generator('text', 'color', $colors, '', '', false, false);
+@include utility-class-generator('bg', 'background-color', $colors, '', '', false, false);
+@include utility-class-generator('border', 'border-color', $colors, '', '', false, false);
