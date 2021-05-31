@@ -26,7 +26,7 @@
   }
 
   @else {
-    @warn '🜍 Undefined breakpoint: `#{$size}`!';
+    @warn '🜍 Undefined breakpoint: `#{$size}`! Please check your `_config.scss`.';
   }
 
   @return $query;
