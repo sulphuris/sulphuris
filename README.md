@@ -19,3 +19,9 @@ The goal of Sulphuris is to reduce the time of front-end development, not by off
 * **Spacing size classes in pixels** - e.g. `.pt-32` results in `padding-top: 32px;`, and `.pt--32` results in `padding-top: -32px;`.
 * **XXL screen breakpoint** -  from 1680px.
 * **REM units** - only for font sizes.
+
+### ToDo:
+* [ ] Does col-*-max need breakpoints?
+* [ ] Typography
+* [ ] Refactor color systems
+* [ ] Start working on modules
