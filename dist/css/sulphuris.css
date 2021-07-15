@@ -40,17 +40,12 @@
           box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 [hidden] {
   display: none !important;
 }
 
-.smooth-scroll {
+.smooth-touch {
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
 }
 
 .cover {
@@ -18796,5 +18791,11 @@ h6 {
 
   .text-xxl-center {
     text-align: center;
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
