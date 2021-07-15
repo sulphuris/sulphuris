@@ -227,6 +227,7 @@
   @for $i from 1 through $columns - 1 {
     .col-#{$i}-max {
       $width: $base * $i;
+      flex-grow: 1;
       max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * $width / 100;
 
       @include breakpoint($container-breakpoint) {

@@ -3343,46 +3343,90 @@ template {
 }
 
 .col-1-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 138.66667px;
 }
 
 .col-2-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 277.33333px;
 }
 
 .col-3-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 416px;
 }
 
 .col-4-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 554.66667px;
 }
 
 .col-5-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 693.33333px;
 }
 
 .col-6-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 832px;
 }
 
 .col-7-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 970.66667px;
 }
 
 .col-8-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 1109.33333px;
 }
 
 .col-9-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 1248px;
 }
 
 .col-10-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 1386.66667px;
 }
 
 .col-11-max {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 1525.33333px;
 }
 
