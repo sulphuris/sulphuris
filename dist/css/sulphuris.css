@@ -3186,36 +3186,21 @@ template {
           flex-flow: row wrap;
 }
 
-.grid.container {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.grid.container .col {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.grid.container .col:not(.col-*) {
-  -webkit-box-flex: 1;
-     -moz-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-.grid-nested {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-     -moz-box-orient: horizontal;
-     -moz-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+.grid-gutter {
   margin-left: -8px;
   margin-right: -8px;
+}
+
+.grid-gutter.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.grid-gutter > [class*='col-'] {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .col-1 {
@@ -3360,6 +3345,50 @@ template {
 
 .reversed .col-offset-11 {
   margin-right: 91.66667%;
+}
+
+.col-1-max {
+  max-width: 130.66667px;
+}
+
+.col-2-max {
+  max-width: 261.33333px;
+}
+
+.col-3-max {
+  max-width: 392px;
+}
+
+.col-4-max {
+  max-width: 522.66667px;
+}
+
+.col-5-max {
+  max-width: 653.33333px;
+}
+
+.col-6-max {
+  max-width: 784px;
+}
+
+.col-7-max {
+  max-width: 914.66667px;
+}
+
+.col-8-max {
+  max-width: 1045.33333px;
+}
+
+.col-9-max {
+  max-width: 1176px;
+}
+
+.col-10-max {
+  max-width: 1306.66667px;
+}
+
+.col-11-max {
+  max-width: 1437.33333px;
 }
 
 .grid-reversed {
@@ -12518,19 +12547,21 @@ h6 {
     justify-self: end;
   }
 
-  .grid.container {
+  .grid-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .grid-gutter.container {
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 40px;
     padding-right: 40px;
   }
 
-  .grid.container .col {
+  .grid-gutter > [class*='col-'] {
     padding-left: 16px;
     padding-right: 16px;
-  }
-
-  .grid-nested {
-    margin-left: -16px;
-    margin-right: -16px;
   }
 
   .col-lg-1 {

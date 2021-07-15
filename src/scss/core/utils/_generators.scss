@@ -196,6 +196,42 @@
   }
 }
 
+@function get-min-breakpoint-value() {
+  $value: 0;
+
+  @each $b-name, $b-value in $breakpoints {
+    @if $b-name == '' {
+      $value: nth($b-value, 2);
+    }
+  }
+
+  @return $value;
+}
+
+@function get-max-breakpoint-value() {
+  $value: 0;
+
+  @each $b-name, $b-value in $breakpoints {
+    @if nth($b-value, 2) == false {
+      $value: nth($b-value, 1);
+    }
+  }
+
+  @return $value;
+}
+
+@mixin grid-column-max-generator($columns) {
+  $base: 100 / $columns;
+  $max-breakpoint-value: get-max-breakpoint-value();
+
+  @for $i from 1 through $columns - 1 {
+    .col-#{$i}-max {
+      $width: $base * $i;
+      max-width: ($max-breakpoint-value - $container-offset * 2) * $width / 100;
+    }
+  }
+}
+
 /* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
   $base: 100 / $columns;
