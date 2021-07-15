@@ -3343,47 +3343,47 @@ template {
 }
 
 .col-1-max {
-  max-width: 130.66667px;
+  max-width: 138.66667px;
 }
 
 .col-2-max {
-  max-width: 261.33333px;
+  max-width: 277.33333px;
 }
 
 .col-3-max {
-  max-width: 392px;
+  max-width: 416px;
 }
 
 .col-4-max {
-  max-width: 522.66667px;
+  max-width: 554.66667px;
 }
 
 .col-5-max {
-  max-width: 653.33333px;
+  max-width: 693.33333px;
 }
 
 .col-6-max {
-  max-width: 784px;
+  max-width: 832px;
 }
 
 .col-7-max {
-  max-width: 914.66667px;
+  max-width: 970.66667px;
 }
 
 .col-8-max {
-  max-width: 1045.33333px;
+  max-width: 1109.33333px;
 }
 
 .col-9-max {
-  max-width: 1176px;
+  max-width: 1248px;
 }
 
 .col-10-max {
-  max-width: 1306.66667px;
+  max-width: 1386.66667px;
 }
 
 .col-11-max {
-  max-width: 1437.33333px;
+  max-width: 1525.33333px;
 }
 
 .grid-reversed {
@@ -12701,6 +12701,50 @@ h6 {
 
   .reversed .col-offset-lg-11 {
     margin-right: 91.66667%;
+  }
+
+  .col-1-max {
+    max-width: 133.33333px;
+  }
+
+  .col-2-max {
+    max-width: 266.66667px;
+  }
+
+  .col-3-max {
+    max-width: 400px;
+  }
+
+  .col-4-max {
+    max-width: 533.33333px;
+  }
+
+  .col-5-max {
+    max-width: 666.66667px;
+  }
+
+  .col-6-max {
+    max-width: 800px;
+  }
+
+  .col-7-max {
+    max-width: 933.33333px;
+  }
+
+  .col-8-max {
+    max-width: 1066.66667px;
+  }
+
+  .col-9-max {
+    max-width: 1200px;
+  }
+
+  .col-10-max {
+    max-width: 1333.33333px;
+  }
+
+  .col-11-max {
+    max-width: 1466.66667px;
   }
 
   .float-lg-left {

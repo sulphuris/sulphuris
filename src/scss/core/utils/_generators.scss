@@ -227,7 +227,11 @@
   @for $i from 1 through $columns - 1 {
     .col-#{$i}-max {
       $width: $base * $i;
-      max-width: ($max-breakpoint-value - $container-offset * 2) * $width / 100;
+      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * $width / 100;
+
+      @include breakpoint($container-breakpoint) {
+        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * $width / 100;
+      }
     }
   }
 }
