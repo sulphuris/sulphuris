@@ -1,4 +1,9 @@
+html {
+  line-height: $line-height;
+}
+
 body {
+  color: #{color('black')};
   font-family: $paragraph-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,8 +44,143 @@ h6 {
   font-weight: 800;
 }
 
-.text-black {
+.text-heavy {
   font-weight: 900;
 }
 
 @include utility-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);
+
+.text-italic {
+  font-style: italic;
+}
+
+@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through'), '', '', false, true);
+@include utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width'), '', '', false, true);
+
+.p1 {
+  font-size: rem(20px);
+  letter-spacing: 0.25px;
+  line-height: $paragraph-line-height;
+}
+
+p,
+.p2 {
+  letter-spacing: 0.15px;
+  line-height: $paragraph-line-height;
+}
+
+.caption,
+.p3,
+figcaption {
+  font-size: rem(14px);
+  letter-spacing: rem(0.4px);
+}
+
+small,
+.p4 {
+  font-size: rem(12px);
+  letter-spacing: rem(0.6px);
+}
+
+.supertitle {
+  font-size: rem(14px);
+  font-weight: 500;
+  letter-spacing: rem(2px);
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-bottom: 0.33em;
+}
+
+h1,
+.h1 {
+  font-size: rem(64px);
+  letter-spacing: rem(-0.5px);
+  line-height: $heading-line-height;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(96px);
+    letter-spacing: rem(-1.5px);
+  }
+}
+
+h2 {
+  margin-bottom: 0.42em;
+}
+
+h2,
+.h2 {
+  font-size: rem(48px);
+  letter-spacing: 0;
+  line-height: $heading-line-height;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(64px);
+    letter-spacing: rem(-0.5px);
+  }
+}
+
+h3 {
+  margin-bottom: 0.5em;
+}
+
+h3,
+.h3 {
+  font-size: rem(32px);
+  letter-spacing: rem(0.25px);
+  line-height: $heading-line-height;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(48px);
+    letter-spacing: 0;
+  }
+}
+
+h4 {
+  margin-bottom: 0.65em;
+}
+
+h4,
+.h4 {
+  font-size: rem(24px);
+  letter-spacing: 0;
+  line-height: $heading-line-height;
+  margin-bottom: 0.65em;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(32px);
+    letter-spacing: rem(0.25px);
+  }
+}
+
+h5 {
+  margin-bottom: 0.8em;
+}
+
+h5,
+.h5 {
+  font-size: rem(20px);
+  letter-spacing: rem(0.15px);
+  line-height: $heading-line-height;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(24px);
+    letter-spacing: 0;
+  }
+}
+
+h6 {
+  margin-bottom: 1em;
+}
+
+h6,
+.h6 {
+  font-size: rem(16px);
+  letter-spacing: rem(0.15px);
+  line-height: $heading-line-height;
+
+  @include breakpoint($container-breakpoint) {
+    font-size: rem(20px);
+  }
+}

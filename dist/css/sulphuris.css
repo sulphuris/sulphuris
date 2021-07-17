@@ -111,10 +111,7 @@
 
 
 html {
-  line-height: 1.15;
-  
   -webkit-text-size-adjust: 100%;
-  
 }
 
 
@@ -129,13 +126,6 @@ body {
 
 main {
   display: block;
-}
-
-
-
-h1 {
-  font-size: 2em;
-  margin: 0.0625em 0;
 }
 
 
@@ -387,12 +377,6 @@ summary {
 
 
 template {
-  display: none;
-}
-
-
-
-[hidden] {
   display: none;
 }
 
@@ -3541,9 +3525,14 @@ template {
   border-bottom: none;
 }
 
-.rounded {
+.round {
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   border-radius: 50%;
+  overflow: hidden;
+}
+
+[class*='rounded-'] {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   overflow: hidden;
 }
 
@@ -3588,6 +3577,11 @@ template {
   border-top-right-radius: 0;
 }
 
+.rounded-r-0 {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .rounded-bl-0 {
   border-bottom-left-radius: 0;
 }
@@ -3599,6 +3593,11 @@ template {
 .rounded-b-0 {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.rounded-l-0 {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .text-black {
@@ -3745,6 +3744,10 @@ template {
   border-color: #fcfcfd;
 }
 
+html {
+  line-height: 1.2;
+}
+
 body {
   font-family: "Nunito", serif;
   -webkit-font-smoothing: antialiased;
@@ -3800,7 +3803,7 @@ h6 {
   font-weight: 800;
 }
 
-.text-black {
+.text-heavy {
   font-weight: 900;
 }
 
@@ -3814,6 +3817,137 @@ h6 {
 
 .text-center {
   text-align: center;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-overline {
+  text-decoration: overline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-full-width {
+  text-transform: full-width;
+}
+
+.p1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.25px;
+  line-height: 1.5;
+}
+
+p,
+.p2 {
+  letter-spacing: 0.15px;
+  line-height: 1.5;
+}
+
+.caption,
+.p3,
+figcaption {
+  font-size: 0.875rem;
+  letter-spacing: 0.025rem;
+}
+
+small,
+.p4 {
+  font-size: 0.75rem;
+  letter-spacing: 0.0375rem;
+}
+
+.supertitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-bottom: 0.33em;
+}
+
+h1,
+.h1 {
+  font-size: 4rem;
+  letter-spacing: -0.03125rem;
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 0.42em;
+}
+
+h2,
+.h2 {
+  font-size: 3rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+h3 {
+  margin-bottom: 0.5em;
+}
+
+h3,
+.h3 {
+  font-size: 2rem;
+  letter-spacing: 0.01562rem;
+  line-height: 1;
+}
+
+h4 {
+  margin-bottom: 0.65em;
+}
+
+h4,
+.h4 {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 0.65em;
+}
+
+h5 {
+  margin-bottom: 0.8em;
+}
+
+h5,
+.h5 {
+  font-size: 1.25rem;
+  letter-spacing: 0.00937rem;
+  line-height: 1;
+}
+
+h6 {
+  margin-bottom: 1em;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+  letter-spacing: 0.00937rem;
+  line-height: 1;
 }
 
 @media only screen and (min-width: 421px) {
@@ -6814,6 +6948,34 @@ h6 {
   .text-sm-center {
     text-align: center;
   }
+
+  .text-sm-underline {
+    text-decoration: underline;
+  }
+
+  .text-sm-overline {
+    text-decoration: overline;
+  }
+
+  .text-sm-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-sm-uppercase {
+    text-transform: uppercase;
+  }
+
+  .text-sm-lowercase {
+    text-transform: lowercase;
+  }
+
+  .text-sm-capitalize {
+    text-transform: capitalize;
+  }
+
+  .text-sm-full-width {
+    text-transform: full-width;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -9813,6 +9975,34 @@ h6 {
 
   .text-md-center {
     text-align: center;
+  }
+
+  .text-md-underline {
+    text-decoration: underline;
+  }
+
+  .text-md-overline {
+    text-decoration: overline;
+  }
+
+  .text-md-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-md-uppercase {
+    text-transform: uppercase;
+  }
+
+  .text-md-lowercase {
+    text-transform: lowercase;
+  }
+
+  .text-md-capitalize {
+    text-transform: capitalize;
+  }
+
+  .text-md-full-width {
+    text-transform: full-width;
   }
 }
 
@@ -12880,6 +13070,69 @@ h6 {
   .text-lg-center {
     text-align: center;
   }
+
+  .text-lg-underline {
+    text-decoration: underline;
+  }
+
+  .text-lg-overline {
+    text-decoration: overline;
+  }
+
+  .text-lg-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-lg-uppercase {
+    text-transform: uppercase;
+  }
+
+  .text-lg-lowercase {
+    text-transform: lowercase;
+  }
+
+  .text-lg-capitalize {
+    text-transform: capitalize;
+  }
+
+  .text-lg-full-width {
+    text-transform: full-width;
+  }
+
+  h1,
+  .h1 {
+    font-size: 6rem;
+    letter-spacing: -0.09375rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 4rem;
+    letter-spacing: -0.03125rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 3rem;
+    letter-spacing: 0;
+  }
+
+  h4,
+  .h4 {
+    font-size: 2rem;
+    letter-spacing: 0.01562rem;
+  }
+
+  h5,
+  .h5 {
+    font-size: 1.5rem;
+    letter-spacing: 0;
+  }
+
+  h6,
+  .h6 {
+    font-size: 1.25rem;
+  }
 }
 
 @media only screen and (min-width: 1366px) {
@@ -15880,6 +16133,34 @@ h6 {
   .text-xl-center {
     text-align: center;
   }
+
+  .text-xl-underline {
+    text-decoration: underline;
+  }
+
+  .text-xl-overline {
+    text-decoration: overline;
+  }
+
+  .text-xl-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-xl-uppercase {
+    text-transform: uppercase;
+  }
+
+  .text-xl-lowercase {
+    text-transform: lowercase;
+  }
+
+  .text-xl-capitalize {
+    text-transform: capitalize;
+  }
+
+  .text-xl-full-width {
+    text-transform: full-width;
+  }
 }
 
 @media only screen and (min-width: 1680px) {
@@ -18879,6 +19160,34 @@ h6 {
 
   .text-xxl-center {
     text-align: center;
+  }
+
+  .text-xxl-underline {
+    text-decoration: underline;
+  }
+
+  .text-xxl-overline {
+    text-decoration: overline;
+  }
+
+  .text-xxl-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-xxl-uppercase {
+    text-transform: uppercase;
+  }
+
+  .text-xxl-lowercase {
+    text-transform: lowercase;
+  }
+
+  .text-xxl-capitalize {
+    text-transform: capitalize;
+  }
+
+  .text-xxl-full-width {
+    text-transform: full-width;
   }
 }
 

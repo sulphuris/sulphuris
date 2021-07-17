@@ -70,6 +70,9 @@ $palettes: (
  */
 $heading-font: 'Roboto', sans-serif !default;
 $paragraph-font: 'Nunito', serif !default;
+$line-height: 1.2 !default;
+$heading-line-height: 1 !default;
+$paragraph-line-height: 1.5 !default;
 
 //Image directory default - change it to wherever you store images relative to the compiled .css
 $image-dir: '../images/' !default;

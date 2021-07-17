@@ -8,9 +8,14 @@
 @include utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
 @include utility-class-generator('border-', 'border', ('none'), '', '', $orientations);
 
-.rounded {
+.round {
   @include rounded-container-fix;
   border-radius: 50%;
+  overflow: hidden;
+}
+
+[class*='rounded-'] {
+  @include rounded-container-fix;
   overflow: hidden;
 }
 
@@ -29,6 +34,11 @@
   border-top-right-radius: 0;
 }
 
+.rounded-r-0 {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .rounded-bl-0 {
   border-bottom-left-radius: 0;
 }
@@ -40,4 +50,9 @@
 .rounded-b-0 {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.rounded-l-0 {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }

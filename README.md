@@ -21,7 +21,7 @@ The goal of Sulphuris is to reduce the time of front-end development, not by off
 * **REM units** - only for font sizes.
 
 ### ToDo:
-* [ ] Does col-*-max need breakpoints?
 * [ ] Typography
-* [ ] Refactor color systems
+* [ ] Refactor color system
+* [ ] Forms
 * [ ] Start working on modules
