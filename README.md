@@ -22,5 +22,6 @@ The goal of Sulphuris is to reduce the time of front-end development, not by off
 
 ### ToDo:
 * [ ] Test and refactor color generators, usage of CSS variables and color theming
+* [ ] Animations and transitions
 * [ ] Forms
 * [ ] Start working on modules
