@@ -1,7 +1,7 @@
 {
   "name": "sulphuris",
   "description": "Open-source CSS framework",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "style": "dist/css/sulphuris.css",
   "sass": "src/scss/index.scss",
