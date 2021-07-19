@@ -26,7 +26,7 @@
   }
 
   @else {
-    @warn '🜍 Undefined breakpoint: `#{$size}`!';
+    @warn '🜍 Undefined breakpoint: `#{$size}`! Please check your `_config.scss`.';
   }
 
   @return $query;
@@ -196,6 +196,47 @@
   }
 }
 
+@function get-min-breakpoint-value() {
+  $value: 0;
+
+  @each $b-name, $b-value in $breakpoints {
+    @if $b-name == '' {
+      $value: nth($b-value, 2);
+    }
+  }
+
+  @return $value;
+}
+
+@function get-max-breakpoint-value() {
+  $value: 0;
+
+  @each $b-name, $b-value in $breakpoints {
+    @if nth($b-value, 2) == false {
+      $value: nth($b-value, 1);
+    }
+  }
+
+  @return $value;
+}
+
+@mixin grid-column-max-generator($columns) {
+  $base: 100 / $columns;
+  $max-breakpoint-value: get-max-breakpoint-value();
+
+  @for $i from 1 through $columns - 1 {
+    .col-#{$i}-max {
+      $width: $base * $i;
+      flex-grow: 1;
+      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * $width / 100;
+
+      @include breakpoint($container-breakpoint) {
+        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * $width / 100;
+      }
+    }
+  }
+}
+
 /* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
   $base: 100 / $columns;
@@ -232,3 +273,82 @@
   }
 }
 /* stylelint-enable */
+
+@mixin typography-rules-generator($typography-rules-array) {
+  $font-size: null;
+  $letter-spacing: null;
+  $line-height: null;
+  $font-weight: null;
+  $text-transform: null;
+
+  @if length($typography-rules-array) > 0 {
+    $font-size: nth($typography-rules-array, 1);
+  }
+
+  @if length($typography-rules-array) > 1 {
+    $letter-spacing: nth($typography-rules-array, 2);
+  }
+
+  @if length($typography-rules-array) > 2 {
+    $line-height: nth($typography-rules-array, 3);
+  }
+
+  @if length($typography-rules-array) > 3 {
+    $font-weight: nth($typography-rules-array, 4);
+  }
+
+  @if length($typography-rules-array) > 4 {
+    $text-transform: nth($typography-rules-array, 5);
+  }
+
+  @if $font-size {
+    font-size: rem($font-size);
+  }
+
+  @if $letter-spacing {
+    letter-spacing: rem($letter-spacing);
+  }
+
+  @if $line-height {
+    line-height: $line-height;
+  }
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+
+  @if $text-transform {
+    text-transform: $text-transform;
+  }
+}
+
+@mixin typography-generator($map) {
+  @each $key, $value in $map {
+    #{$key} {
+      @if type-of($value) == 'map'
+        and map-has-key($value, mobile)
+        and map-has-key($value, desktop) {
+        $mobile: map-get($value, mobile);
+        $desktop: map-get($value, desktop);
+
+        @include typography-rules-generator($mobile);
+
+        @include breakpoint($container-breakpoint) {
+          @include typography-rules-generator($desktop);
+        }
+      }
+
+      @else {
+        @if type-of($value) == 'map'
+          and map-has-key($value, desktop) {
+          $desktop: map-get($value, desktop);
+          @include typography-rules-generator($desktop);
+        }
+
+        @else {
+          @include typography-rules-generator($value);
+        }
+      }
+    }
+  }
+}

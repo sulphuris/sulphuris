@@ -1,4 +1,10 @@
+html {
+  font-size: $base-font-size;
+  line-height: $line-height;
+}
+
 body {
+  color: color(black);
   font-family: $paragraph-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,8 +45,41 @@ h6 {
   font-weight: 800;
 }
 
-.text-black {
+.text-heavy {
   font-weight: 900;
 }
 
 @include utility-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);
+
+.text-italic {
+  font-style: italic;
+}
+
+@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through'), '', '', false, true);
+@include utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width'), '', '', false, true);
+
+h1 {
+  margin-bottom: 0.33em;
+}
+
+h2 {
+  margin-bottom: 0.42em;
+}
+
+h3 {
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  margin-bottom: 0.65em;
+}
+
+h5 {
+  margin-bottom: 0.8em;
+}
+
+h6 {
+  margin-bottom: 1em;
+}
+
+@include typography-generator($typography);

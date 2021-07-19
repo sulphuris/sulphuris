@@ -1,12 +1,4 @@
 /*
- * > If a font-size has not been set on any of the <p>'s ancestors,
- *   then 1em will equal the default browser font-size, which is usually 16px.
- *   So, by default 1em is equivalent to 16px.
- *   - https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#ems
- */
-$base-font-size: 16px !default;
-
-/*
  * SIZES
  */
 $sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
@@ -68,8 +60,58 @@ $palettes: (
 /*
  * TYPOGRAPHY
  */
+
+/*
+ * > If a font-size has not been set on any of the <p>'s ancestors,
+ *   then 1em will equal the default browser font-size, which is usually 16px.
+ *   So, by default 1em is equivalent to 16px.
+ *   - https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#ems
+ */
+$base-font-size: 16px !default;
+
 $heading-font: 'Roboto', sans-serif !default;
-$paragraph-font: 'Nunito', serif !default;
+$paragraph-font: 'Nunito', sans-serif !default;
+$line-height: 1.2 !default;
+$heading-line-height: 1 !default;
+$paragraph-line-height: 1.5 !default;
+
+
+/*
+ * Breakpoint: $container-breakpoint
+ *
+ * (font-size, letter-spacing, line-height, font-weight, text-transform)
+ */
+$typography: (
+  'h1, .h1': (
+    desktop: (96px, -1.5px, $heading-line-height, bold),
+    mobile: (64px, -0.5px, $heading-line-height, bold)
+  ),
+  'h2, .h2': (
+    desktop: (64px, -0.5px, $heading-line-height, bold),
+    mobile: (48px, 0, $heading-line-height, bold)
+  ),
+  'h3, .h3': (
+    desktop: (48px, 0, $heading-line-height, bold),
+    mobile: (32px, 0.25px, $heading-line-height, bold)
+  ),
+  'h4, .h4': (
+    desktop: (32px, 0.25px, $heading-line-height, bold),
+    mobile: (24px, 0, $heading-line-height, bold)
+  ),
+  'h5, .h5': (
+    desktop: (24px, 0, $heading-line-height, bold),
+    mobile: (20px, 0.15px, $heading-line-height, bold)
+  ),
+  'h6, .h6': (
+    desktop: (20px, 0.15px, $heading-line-height, bold),
+    mobile: (16px, 0.15px, $heading-line-height, bold)
+  ),
+  '.p1': (20px, 0.3px, $paragraph-line-height),
+  '.p2, p': ($base-font-size, 0.2px, $paragraph-line-height),
+  '.p3, figcaption': (14px, 0.4px, $paragraph-line-height),
+  '.p4, small': (12px, 0.6px, $paragraph-line-height),
+  '.supertitle': (14px, 2px, $paragraph-line-height, 500, uppercase)
+) !default;
 
 //Image directory default - change it to wherever you store images relative to the compiled .css
 $image-dir: '../images/' !default;
