@@ -16,7 +16,13 @@
  * @return (string): e.g. `1em`
  */
 @function em($value, $unit: 'em') {
-  @return #{rm-unit($value) / rm-unit($base-font-size)}#{$unit};
+  $rm-unit-value: rm-unit($value);
+
+  @if $rm-unit-value == 0 {
+    @return 0;
+  }
+
+  @return #{$rm-unit-value / rm-unit($base-font-size)}#{$unit};
 }
 
 /*

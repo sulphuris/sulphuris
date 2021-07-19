@@ -1,6 +1,6 @@
 ![Sulphuris logo](https://avatars.githubusercontent.com/u/83950228)
 
-# Sulphuris v1.0.2
+# Sulphuris v1.0.3
 [![npm version](https://img.shields.io/npm/v/sulphuris)](https://www.npmjs.com/package/sulphuris)
 [![CSS gzip size](https://img.badgesize.io/sulphuris/sulphuris/main/dist/css/sulphuris.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/sulphuris/sulphuris/blob/main/dist/css/sulphuris.min.css)
 
@@ -21,7 +21,6 @@ The goal of Sulphuris is to reduce the time of front-end development, not by off
 * **REM units** - only for font sizes.
 
 ### ToDo:
-* [ ] Typography
-* [ ] Refactor color system
+* [ ] Test and refactor color generators, usage of CSS variables and color theming
 * [ ] Forms
 * [ ] Start working on modules
