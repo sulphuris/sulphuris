@@ -1,0 +1,11 @@
+ul.reset,
+ol.reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-indent: 0;
+
+  li {
+    display: inline-block;
+  }
+}
