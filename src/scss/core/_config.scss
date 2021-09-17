@@ -5,6 +5,7 @@ $sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
 $negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64 !default;
 $percent-sizes: 5,10,15,20,25,50,75,100 !default;
 $negative-percent-sizes: -5,-10,-15,-20,-25,-50,-75,-100 !default;
+$z-index: -1,0,1,2,3,4,5,10,15,20,25,50,100 !default;
 
 $border-sizes: 2,3,4,6,8 !default;
 $border-radiuses: 0,4,6,8,16,24,32 !default;
