@@ -383,6 +383,9 @@
     }
   }
   @else {
+    @if map-has-key($custom-easings, $easings) {
+      $easings: map-get($custom-easings, $easings);
+    }
     $transition: '#{$properties} #{$durations} #{$easings}';
   }
 
