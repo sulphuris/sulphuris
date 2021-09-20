@@ -353,7 +353,7 @@
   }
 }
 
-@function generate-transition($properties, $durations: 250ms, $easings: linear) {
+@function generate-transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
   $transition: '';
 
   @if type-of($properties) == 'list' {
@@ -361,7 +361,6 @@
     $i: 0;
     @each $property in $properties {
       $i: $i+1;
-
       $duration: $durations;
       @if type-of($durations) == 'list' {
         $duration: nth($durations, $i);
@@ -387,9 +386,9 @@
     $transition: '#{$properties} #{$durations} #{$easings}';
   }
 
-  @return $transition;
+  @return unquote($transition);
 }
 
-@mixin transition($properties, $durations: 250ms, $easings: linear) {
+@mixin transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
   transition: generate-transition($properties, $durations, $easings);
 }

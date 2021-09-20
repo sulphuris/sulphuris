@@ -119,5 +119,8 @@ $custom-easings: (
   'ease-in-out-quint': cubic-bezier(0.86, 0, 0.07, 1)
 ) !default;
 
+$default-transition-duration: 250ms !default;
+$default-transition-easing: 'ease-in-out-quint' !default;
+
 //Image directory default - change it to wherever you store images relative to the compiled .css
 $image-dir: '../images/' !default;
