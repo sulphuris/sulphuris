@@ -413,6 +413,13 @@ template {
   display: table-cell;
 }
 
+.d-inline-flex {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 .v-hidden {
   visibility: hidden;
 }
@@ -4069,6 +4076,13 @@ small {
     display: table-cell;
   }
 
+  .d-sm-inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+
   .v-sm-hidden {
     visibility: hidden;
   }
@@ -7149,6 +7163,13 @@ small {
     display: table-cell;
   }
 
+  .d-md-inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+
   .v-md-hidden {
     visibility: hidden;
   }
@@ -10227,6 +10248,13 @@ small {
 
   .d-lg-table-cell {
     display: table-cell;
+  }
+
+  .d-lg-inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
   }
 
   .v-lg-hidden {
@@ -13423,6 +13451,13 @@ small {
     display: table-cell;
   }
 
+  .d-xl-inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+
   .v-xl-hidden {
     visibility: hidden;
   }
@@ -16501,6 +16536,13 @@ small {
 
   .d-xxl-table-cell {
     display: table-cell;
+  }
+
+  .d-xxl-inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
   }
 
   .v-xxl-hidden {
