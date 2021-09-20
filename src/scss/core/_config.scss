@@ -122,5 +122,13 @@ $custom-easings: (
 $default-transition-duration: 250ms !default;
 $default-transition-easing: 'ease-in-out-quint' !default;
 
+$button: (
+  height: 56px,
+  padding-x: 32px,
+  padding-y: 16px,
+  border-width: 2px,
+  border-radius: 4px
+) !default;
+
 //Image directory default - change it to wherever you store images relative to the compiled .css
 $image-dir: '../images/' !default;
