@@ -186,6 +186,7 @@
           align-items: center;
   -webkit-appearance: none;
   background-color: #f6c026;
+  border: 0;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
