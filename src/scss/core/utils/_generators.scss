@@ -352,3 +352,44 @@
     }
   }
 }
+
+@function generate-transition($properties, $durations: 250ms, $easings: linear) {
+  $transition: '';
+
+  @if type-of($properties) == 'list' {
+    $properties-ln: length($properties);
+    $i: 0;
+    @each $property in $properties {
+      $i: $i+1;
+
+      $duration: $durations;
+      @if type-of($durations) == 'list' {
+        $duration: nth($durations, $i);
+      }
+
+      $easing: $easings;
+      @if type-of($easings) == 'list' {
+        $easing: nth($easings, $i);
+      }
+      @if map-has-key($custom-easings, $easing) {
+        $easing: map-get($custom-easings, $easing);
+      }
+
+      $comma: ',';
+      @if $i == $properties-ln {
+        $comma: '';
+      }
+
+      $transition: '#{$transition} #{$property} #{$duration} #{$easing}#{$comma}';
+    }
+  }
+  @else {
+    $transition: '#{$properties} #{$durations} #{$easings}';
+  }
+
+  @return $transition;
+}
+
+@mixin transition($properties, $durations: 250ms, $easings: linear) {
+  transition: generate-transition($properties, $durations, $easings);
+}
