@@ -1,8 +1,8 @@
-ul.reset,
-ol.reset {
+//stylelint-disable-next-line selector-no-qualifying-type
+ul.reset {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
   text-indent: 0;
 
   li {

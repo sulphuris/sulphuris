@@ -3798,16 +3798,14 @@ template {
   border-color: #fcfcfd;
 }
 
-ul.reset,
-ol.reset {
+ul.reset {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
   text-indent: 0;
 }
 
-ul.reset li,
-ol.reset li {
+ul.reset li {
   display: inline-block;
 }
 
@@ -3830,6 +3828,18 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", sans-serif;
+}
+
+.font-paragraph {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-heading {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-mono {
+  font-family: monospace;
 }
 
 .text-thin {
