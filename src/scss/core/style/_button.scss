@@ -10,6 +10,7 @@
   min-height: map-get($button, height);
   padding: map-get($button, padding-y) map-get($button, padding-x);
   text-align: center;
+  text-decoration: none;
   @include transition((color, background));
 
   @include breakpoint($container-breakpoint) {
