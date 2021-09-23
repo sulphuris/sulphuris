@@ -40,7 +40,7 @@
  * @param $explicit: (boolean | optional) for generating min-max queries
  */
 @mixin breakpoint($size, $explicit: false) {
-  @if $explicit {
+  @if not $explicit {
     @if $size == '' {
       @content;
     }
