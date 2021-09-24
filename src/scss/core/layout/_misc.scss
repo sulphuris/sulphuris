@@ -24,16 +24,12 @@
   width: 100%;
 }
 
-%self-center {
+.absolute-center,
+.self-center {
   transform: translate3d(-50%, -50%);
 }
 
-.self-center {
-  @extend %self-center;
-}
-
 .absolute-center {
-  @extend %self-center;
   left: 50%;
   position: absolute;
   top: 50%;

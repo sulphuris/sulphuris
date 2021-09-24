@@ -629,8 +629,8 @@ small {
   width: 100%;
 }
 
-.self-center,
-.absolute-center {
+.absolute-center,
+.self-center {
   -webkit-transform: translate3d(-50%, -50%);
           transform: translate3d(-50%, -50%);
 }
