@@ -302,27 +302,15 @@
   }
 
   @if $font-size {
-    @if (str-index('' + $font-size, 'px') != null) {
-      $font-size: rem($font-size);
-    }
-
-    font-size: $font-size;
+    font-size: rem($font-size);
   }
 
   @if $letter-spacing {
-    @if (str-index('' + $letter-spacing, 'px') != null) {
-      $letter-spacing: rem($letter-spacing);
-    }
-
-    letter-spacing: $letter-spacing;
+    letter-spacing: rem($letter-spacing);
   }
 
   @if $line-height {
-    @if (str-index('' + $line-height, 'px') != null) {
-      $line-height: rem($line-height);
-    }
-
-    line-height: $line-height;
+    line-height: rem($line-height);
   }
 
   @if $font-weight {

@@ -33,5 +33,8 @@
  * @return (string): e.g. `1rem`
  */
 @function rem($value) {
-  @return em($value, 'rem');
+  @if ends-with($value + '', 'px') {
+    @return em($value, 'rem');
+  }
+  @return $value;
 }
