@@ -63,3 +63,19 @@
 .hide-native-scrollbar::-webkit-scrollbar { /* WebKit */
   display: none;
 }
+
+.spacer {
+  display: block;
+  height: auto !important;
+  pointer-events: none;
+  visibility: hidden;
+  width: 100% !important;
+}
+
+.overlay {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
