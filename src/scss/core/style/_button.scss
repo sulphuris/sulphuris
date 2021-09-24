@@ -1,17 +1,24 @@
-//stylelint-disable  property-no-vendor-prefix, color-named, order/order
+//stylelint-disable  property-no-vendor-prefix, color-named, order/order, selector-no-qualifying-type
+
+button.reset,
 .btn {
   align-items: center;
   -webkit-appearance: none;
-  background-color: color(primary);
+  background: none;
   border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.btn {
+  background-color: color(primary);
   border-radius: map-get($button, border-radius);
   color: color(white);
-  cursor: pointer;
   display: inline-flex;
   min-height: map-get($button, height);
   padding: map-get($button, padding-y) map-get($button, padding-x);
   text-align: center;
-  text-decoration: none;
   @include transition((color, background));
 
   @include breakpoint($container-breakpoint) {
