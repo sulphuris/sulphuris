@@ -197,6 +197,7 @@ button.reset,
   background-color: #f6c026;
   border-radius: 4px;
   color: #fff;
+  cursor: pointer;
   display: -webkit-inline-box;
   display: -moz-inline-box;
   display: -ms-inline-flexbox;
