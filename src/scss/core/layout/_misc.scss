@@ -19,7 +19,6 @@
 .cover {
   height: 100%;
   left: 0;
-  position: absolute;
   top: 0;
   width: 100%;
 }
@@ -70,12 +69,4 @@
   pointer-events: none;
   visibility: hidden;
   width: 100% !important;
-}
-
-.overlay {
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
