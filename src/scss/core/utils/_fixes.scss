@@ -14,3 +14,11 @@
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}

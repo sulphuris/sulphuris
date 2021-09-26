@@ -1,7 +1,5 @@
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
+.clearfix {
+  @include clearfix;
 }
 
 @include utility-class-generator('float', 'float', ('left', 'right', 'none'), '', '', false, true);
