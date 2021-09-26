@@ -17,9 +17,9 @@ button.reset,
   color: color(white);
   cursor: pointer;
   display: inline-flex;
+  justify-content: center;
   min-height: map-get($button, height);
   padding: map-get($button, padding-y) map-get($button, padding-x);
-  text-align: center;
   @include transition((color, background));
 
   @include breakpoint($container-breakpoint) {
