@@ -629,8 +629,18 @@ small {
 
 .absolute-center,
 .self-center {
-  -webkit-transform: translate3d(-50%, -50%);
-          transform: translate3d(-50%, -50%);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.self-center-vertical {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.self-center-horizontal {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .absolute-center {

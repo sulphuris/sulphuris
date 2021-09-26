@@ -25,7 +25,15 @@
 
 .absolute-center,
 .self-center {
-  transform: translate3d(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.self-center-vertical {
+  transform: translateY(-50%);
+}
+
+.self-center-horizontal {
+  transform: translateX(-50%);
 }
 
 .absolute-center {
