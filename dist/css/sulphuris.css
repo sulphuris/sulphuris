@@ -375,10 +375,6 @@ ul.reset {
   text-indent: 0;
 }
 
-ul.reset li {
-  display: inline-block;
-}
-
 html {
   font-size: 16px;
   line-height: 1.2;
