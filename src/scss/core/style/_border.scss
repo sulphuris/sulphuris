@@ -9,14 +9,16 @@
 @include utility-class-generator('border-', 'border', ('none'), '', '', $orientations);
 
 .round {
-  @include rounded-container-fix;
   border-radius: 50%;
   overflow: hidden;
 }
 
 [class*='rounded-'] {
-  @include rounded-container-fix;
   overflow: hidden;
+}
+
+.rounded-fix {
+  @include rounded-container-fix; //FYI: rounded fix is for fixing images only, if enabled on rounded block with shadow it will disable the shadow.
 }
 
 @include utility-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);

@@ -12,6 +12,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@include typography-generator($typography);
+
 h1,
 h2,
 h3,
@@ -69,7 +71,7 @@ h6 {
   font-style: italic;
 }
 
-@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through'), '', '', false, true);
+@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through', 'none'), '', '', false, true);
 @include utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width'), '', '', false, true);
 
 h1 {
@@ -95,5 +97,3 @@ h5 {
 h6 {
   margin-bottom: 1em;
 }
-
-@include typography-generator($typography);
