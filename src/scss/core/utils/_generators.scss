@@ -247,7 +247,8 @@
       $width: $base * $i;
       margin-left: #{$width}#{$unit};
 
-      .reversed & {
+      .grid-reversed & {
+        margin-left: auto;
         margin-right: #{$width}#{$unit};
       }
     }
@@ -262,7 +263,8 @@
               $width: $base * $i;
               margin-left: #{$width}#{$unit};
 
-              .reversed & {
+              .grid-reversed & {
+                margin-left: auto;
                 margin-right: #{$width}#{$unit};
               }
             }
