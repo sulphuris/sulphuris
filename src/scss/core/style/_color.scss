@@ -3,5 +3,10 @@
 }
 
 @include utility-class-generator('text', 'color', $colors, '', '', false, false);
+
+.text-transparent {
+  color: transparent;
+}
+
 @include utility-class-generator('bg', 'background-color', $colors, '', '', false, false);
 @include utility-class-generator('border', 'border-color', $colors, '', '', false, false);
