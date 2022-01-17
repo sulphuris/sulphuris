@@ -41,6 +41,6 @@
 @include grid-offset-generator($columns);
 @include grid-column-max-generator($columns);
 
-.grid-reversed {
+.grid-reverse {
   flex-direction: row-reverse;
 }
