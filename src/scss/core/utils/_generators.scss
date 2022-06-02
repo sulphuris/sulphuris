@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
  * Generates media query via provided predefined breakpoint map item without
  * @media. Used by `breakpoint` mixin.
@@ -170,7 +172,7 @@
 }
 
 @mixin grid-column-generator($columns, $responsive: true) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 1 through $columns {
@@ -221,17 +223,17 @@
 }
 
 @mixin grid-column-max-generator($columns) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $max-breakpoint-value: get-max-breakpoint-value();
 
   @for $i from 1 through $columns - 1 {
     .col-#{$i}-max {
       $width: $base * $i;
       flex-grow: 1;
-      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * $width / 100;
+      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * math.div($width, 100);
 
       @include breakpoint($container-breakpoint) {
-        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * $width / 100;
+        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * math.div($width, 100);
       }
     }
   }
@@ -239,7 +241,7 @@
 
 /* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 0 through $columns - 1 {
