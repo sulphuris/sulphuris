@@ -1,5 +1,4 @@
 import scss from 'rollup-plugin-scss';
-import cleanup from 'rollup-plugin-cleanup';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -7,20 +6,32 @@ import { terser } from 'rollup-plugin-terser';
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import fg from 'fast-glob';
-import serve from 'rollup-plugin-serve'
-import livereload from 'rollup-plugin-livereload'
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
+import strip from 'strip-comments';
+import eslint from '@rollup/plugin-eslint';
 
 export default function config(args) {
   const sass_opts = {
     output: 'dist/css/sulphuris.css',
-    processor: () => postcss({
-      plugins: [autoprefixer()]
-    })
+    processor: (css, map) => postcss([autoprefixer]).process(css, {
+        from: undefined,
+        to: sass_opts.output,
+        map: map ? { prev: map, inline: false } : null
+    }).then(result => strip(result.css, {
+      line: true,
+      block: true,
+      keepProtected: true
+    }))
   };
 
   if (args.production) {
     sass_opts.output = 'dist/css/sulphuris.min.css';
     sass_opts.outputStyle = 'compressed';
+  }
+
+  if (args.sourcemap) {
+    sass_opts.sourceMap = true;
   }
 
   const opts = {
@@ -29,7 +40,6 @@ export default function config(args) {
       file: 'dist/js/sulphuris.js'
     },
     format: 'iife',
-    sourcemap: false,
     context: 'window',
     inlineDynamicImports: true,
     plugins: [
@@ -42,12 +52,28 @@ export default function config(args) {
           moduleDirectory: ['node_modules']
         }
       }),
+      eslint(),
       typescript(),
       commonjs({
         include: 'node_modules/**'
       }),
-      cleanup(),
       args.production && terser(),
+      {
+        name: 'strip-comments',
+        transform(code, id) {
+          return new Promise((resolve) => {
+            try {
+              resolve(strip(code, {
+                line: true,
+                block: true,
+                keepProtected: true
+              }))
+            } catch (err) {
+              this.error(err.message);
+            }
+          })
+        }
+      },
       scss(sass_opts),
       args.watch && {
         name: 'watch-external',
