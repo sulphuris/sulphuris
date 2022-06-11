@@ -62,10 +62,12 @@
 }
 
 @mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
-  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have - in front of orientation
+  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
+
+  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
 
   .#{$gen-pref}#{$b-name}-#{$key}#{$suff} {
     #{$property}: #{$value}#{$unit};
@@ -76,6 +78,8 @@
   @if $b-name {
     $b-name: -#{$b-name};
   }
+
+  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
 
   @each $o-name, $o-values in $orientations {
     .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
