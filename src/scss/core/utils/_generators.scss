@@ -361,6 +361,14 @@
   }
 }
 
+@function get-transiton-fn($easing) {
+  @if map-has-key($custom-easings, $easing) {
+    $easing: map-get($custom-easings, $easing);
+  }
+
+  @return $easing;
+}
+
 @function generate-transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
   $transition: '';
 
@@ -378,9 +386,7 @@
       @if type-of($easings) == 'list' {
         $easing: nth($easings, $i);
       }
-      @if map-has-key($custom-easings, $easing) {
-        $easing: map-get($custom-easings, $easing);
-      }
+      $easing: get-transiton-fn($easing);
 
       $comma: ',';
       @if $i == $properties-ln {
@@ -391,9 +397,7 @@
     }
   }
   @else {
-    @if map-has-key($custom-easings, $easings) {
-      $easings: map-get($custom-easings, $easings);
-    }
+    $easings: get-transiton-fn($easings);
     $transition: '#{$properties} #{$durations} #{$easings}';
   }
 
