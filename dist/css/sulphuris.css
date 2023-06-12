@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /*! Sulphuris 🜍 1.0.4 */
-/*! Sulphuris 🜍 */
 .border, .border-y, .border-x, .border-r, .border-l, .border-b, .border-t {
   border-color: currentcolor;
   border-style: solid;
@@ -1250,7 +1249,7 @@ h6 {
   width: 100% !important;
 }
 
-.pointer-events-none {
+.events-none {
   pointer-events: none;
 }
 
