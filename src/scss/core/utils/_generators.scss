@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
  * Generates media query via provided predefined breakpoint map item without
  * @media. Used by `breakpoint` mixin.
@@ -40,7 +42,7 @@
  * @param $explicit: (boolean | optional) for generating min-max queries
  */
 @mixin breakpoint($size, $explicit: false) {
-  @if $explicit {
+  @if not $explicit {
     @if $size == '' {
       @content;
     }
@@ -60,10 +62,12 @@
 }
 
 @mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
-  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have - in front of orientation
+  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
+
+  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
 
   .#{$gen-pref}#{$b-name}-#{$key}#{$suff} {
     #{$property}: #{$value}#{$unit};
@@ -74,6 +78,8 @@
   @if $b-name {
     $b-name: -#{$b-name};
   }
+
+  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
 
   @each $o-name, $o-values in $orientations {
     .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
@@ -170,7 +176,7 @@
 }
 
 @mixin grid-column-generator($columns, $responsive: true) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 1 through $columns {
@@ -221,17 +227,17 @@
 }
 
 @mixin grid-column-max-generator($columns) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $max-breakpoint-value: get-max-breakpoint-value();
 
   @for $i from 1 through $columns - 1 {
     .col-#{$i}-max {
       $width: $base * $i;
       flex-grow: 1;
-      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * $width / 100;
+      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * math.div($width, 100);
 
       @include breakpoint($container-breakpoint) {
-        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * $width / 100;
+        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * math.div($width, 100);
       }
     }
   }
@@ -239,7 +245,7 @@
 
 /* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
-  $base: 100 / $columns;
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 0 through $columns - 1 {
@@ -247,7 +253,8 @@
       $width: $base * $i;
       margin-left: #{$width}#{$unit};
 
-      .reversed & {
+      .grid-reverse & {
+        margin-left: auto;
         margin-right: #{$width}#{$unit};
       }
     }
@@ -262,7 +269,8 @@
               $width: $base * $i;
               margin-left: #{$width}#{$unit};
 
-              .reversed & {
+              .grid-reverse & {
+                margin-left: auto;
                 margin-right: #{$width}#{$unit};
               }
             }
@@ -310,7 +318,7 @@
   }
 
   @if $line-height {
-    line-height: $line-height;
+    line-height: rem($line-height);
   }
 
   @if $font-weight {
@@ -351,4 +359,51 @@
       }
     }
   }
+}
+
+@function get-transiton-fn($easing) {
+  @if map-has-key($custom-easings, $easing) {
+    $easing: map-get($custom-easings, $easing);
+  }
+
+  @return $easing;
+}
+
+@function generate-transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
+  $transition: '';
+
+  @if type-of($properties) == 'list' {
+    $properties-ln: length($properties);
+    $i: 0;
+    @each $property in $properties {
+      $i: $i+1;
+      $duration: $durations;
+      @if type-of($durations) == 'list' {
+        $duration: nth($durations, $i);
+      }
+
+      $easing: $easings;
+      @if type-of($easings) == 'list' {
+        $easing: nth($easings, $i);
+      }
+      $easing: get-transiton-fn($easing);
+
+      $comma: ',';
+      @if $i == $properties-ln {
+        $comma: '';
+      }
+
+      $transition: '#{$transition} #{$property} #{$duration} #{$easing}#{$comma}';
+    }
+  }
+  @else {
+    $easings: get-transiton-fn($easings);
+    $transition: '#{$properties} #{$durations} #{$easings}';
+  }
+
+  @return unquote($transition);
+}
+
+@mixin transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
+  transition: generate-transition($properties, $durations, $easings);
 }

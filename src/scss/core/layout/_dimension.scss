@@ -8,3 +8,8 @@
 
 @include utility-class-generator('w', 'width', ('auto'));
 @include utility-class-generator('h', 'height', ('auto'));
+
+@include utility-class-generator('w-max', 'max-width', (100), '%', 'p');
+@include utility-class-generator('h-max', 'max-height', (100), '%', 'p');
+@include utility-class-generator('w-max', 'max-width', ('none'));
+@include utility-class-generator('h-max', 'max-height', ('none'));

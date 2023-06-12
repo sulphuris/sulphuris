@@ -4,19 +4,61 @@
   border-width: 1px;
 }
 
+.border-t {
+  @extend .border;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.border-b {
+  @extend .border;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.border-l {
+  @extend .border;
+  border-bottom: none;
+  border-top: none;
+  border-right: none;
+}
+
+.border-r {
+  @extend .border;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+}
+
+.border-x {
+  @extend .border;
+  border-bottom: none;
+  border-top: none;
+}
+
+.border-y {
+  @extend .border;
+  border-left: none;
+  border-right: none;
+}
+
 @include utility-class-generator('border', 'border-width', $border-sizes, 'px', '');
 @include utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
-@include utility-class-generator('border-', 'border', ('none'), '', '', $orientations);
+@include utility-class-generator('border-', 'border', (0), '', '', $orientations);
 
 .round {
-  @include rounded-container-fix;
   border-radius: 50%;
   overflow: hidden;
 }
 
 [class*='rounded-'] {
-  @include rounded-container-fix;
   overflow: hidden;
+}
+
+.rounded-fix {
+  @include rounded-container-fix; //FYI: rounded fix is for fixing images only, if enabled on rounded block with shadow it will disable the shadow.
 }
 
 @include utility-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);

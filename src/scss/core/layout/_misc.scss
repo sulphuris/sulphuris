@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.content-box {
+  box-sizing: content-box;
+}
+
 @media screen and (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -19,21 +23,24 @@
 .cover {
   height: 100%;
   left: 0;
-  position: absolute;
   top: 0;
   width: 100%;
 }
 
-%self-center {
-  transform: translate3d(-50%, -50%);
+.absolute-center,
+.self-center {
+  transform: translate3d(-50%, -50%, 0);
 }
 
-.self-center {
-  @extend %self-center;
+.self-center-vertical {
+  transform: translateY(-50%);
+}
+
+.self-center-horizontal {
+  transform: translateX(-50%);
 }
 
 .absolute-center {
-  @extend %self-center;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -66,4 +73,16 @@
 
 .hide-native-scrollbar::-webkit-scrollbar { /* WebKit */
   display: none;
+}
+
+.spacer {
+  display: block;
+  height: auto !important;
+  pointer-events: none;
+  visibility: hidden;
+  width: 100% !important;
+}
+
+.events-none {
+  pointer-events: none;
 }

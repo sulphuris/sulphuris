@@ -5,6 +5,7 @@ $sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
 $negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64 !default;
 $percent-sizes: 5,10,15,20,25,50,75,100 !default;
 $negative-percent-sizes: -5,-10,-15,-20,-25,-50,-75,-100 !default;
+$z-index: -1,0,1,2,3,4,5,10,15,20,25,50,100 !default;
 
 $border-sizes: 2,3,4,6,8 !default;
 $border-radiuses: 0,4,6,8,16,24,32 !default;
@@ -36,6 +37,7 @@ $breakpoints: (
 /*
  * CONTAINER + GRID
  */
+$container-max-width: 1680px !default;
 $container-offset: 56px !default;
 $container-offset-mobile: 16px !default;
 $container-breakpoint: 'lg' !default;
@@ -71,10 +73,10 @@ $base-font-size: 16px !default;
 
 $heading-font: 'Roboto', sans-serif !default;
 $paragraph-font: 'Nunito', sans-serif !default;
+$mono-font: monospace !default;
 $line-height: 1.2 !default;
 $heading-line-height: 1 !default;
 $paragraph-line-height: 1.5 !default;
-
 
 /*
  * Breakpoint: $container-breakpoint
@@ -111,6 +113,21 @@ $typography: (
   '.p3, figcaption': (14px, 0.4px, $paragraph-line-height),
   '.p4, small': (12px, 0.6px, $paragraph-line-height),
   '.supertitle': (14px, 2px, $paragraph-line-height, 500, uppercase)
+) !default;
+
+$custom-easings: (
+  'ease-in-out-quint': cubic-bezier(0.86, 0, 0.07, 1)
+) !default;
+
+$default-transition-duration: 250ms !default;
+$default-transition-easing: 'ease-in-out-quint' !default;
+
+$button: (
+  height: 56px,
+  padding-x: 32px,
+  padding-y: 16px,
+  border-width: 2px,
+  border-radius: 4px
 ) !default;
 
 //Image directory default - change it to wherever you store images relative to the compiled .css

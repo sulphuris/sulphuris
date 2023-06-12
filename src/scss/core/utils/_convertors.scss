@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
  * Removes unit from a provided value
  *
@@ -5,7 +7,7 @@
  * @return (number): e.g. `16`
  */
 @function rm-unit($value) {
-  @return $value / 1;
+  @return math.div($value, 1);
 }
 
 /*
@@ -22,7 +24,7 @@
     @return 0;
   }
 
-  @return #{$rm-unit-value / rm-unit($base-font-size)}#{$unit};
+  @return #{math.div($rm-unit-value, rm-unit($base-font-size))}#{$unit};
 }
 
 /*
@@ -33,5 +35,8 @@
  * @return (string): e.g. `1rem`
  */
 @function rem($value) {
-  @return em($value, 'rem');
+  @if ends-with($value + '', 'px') {
+    @return em($value, 'rem');
+  }
+  @return $value;
 }

@@ -1,0 +1,68 @@
+//stylelint-disable  property-no-vendor-prefix, color-named, order/order, selector-no-qualifying-type
+
+button.reset,
+.btn {
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  background-color: color(primary);
+  border-radius: map-get($button, border-radius);
+  color: color(white);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  min-height: map-get($button, height);
+  padding: map-get($button, padding-y) map-get($button, padding-x);
+  @include transition((color, background));
+
+  @include breakpoint($container-breakpoint) {
+    &:hover {
+      background-color: color(black);
+    }
+  }
+}
+
+.btn-inverted {
+  background-color: color(black);
+
+  @include breakpoint($container-breakpoint) {
+    &:hover {
+      background-color: color(primary);
+    }
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  border: solid map-get($button, border-width) color(black);
+  color: color(black);
+  padding: map-get($button, padding-y - map-get($button, border-width)) map-get($button, padding-x - map-get($button, border-width));
+
+  @include breakpoint($container-breakpoint) {
+    &:hover {
+      background-color: color(black);
+      color: color(white);
+    }
+  }
+
+  &.btn-inverted {
+    border-color: color(white);
+    color: color(white);
+
+    @include breakpoint($container-breakpoint) {
+      &:hover {
+        background-color: color(white);
+        color: color(black);
+      }
+    }
+  }
+}
