@@ -10,10 +10,16 @@ import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import strip from 'strip-comments';
 import eslint from '@rollup/plugin-eslint';
+import { readFileSync } from 'fs';
+
+const packagesJson = readFileSync('./package.json', 'utf-8');
+const packages = JSON.parse(packagesJson);
 
 export default function config(args) {
   const sass_opts = {
     output: 'dist/css/sulphuris.css',
+    sourceMap: false,
+    prefix: `/*! Sulphuris 🜍 ${packages.version} */`,
     processor: (css, map) => postcss([autoprefixer]).process(css, {
         from: undefined,
         to: sass_opts.output,
@@ -30,10 +36,6 @@ export default function config(args) {
     sass_opts.outputStyle = 'compressed';
   }
 
-  if (args.sourcemap) {
-    sass_opts.sourceMap = true;
-  }
-
   const opts = {
     input: 'src/index.ts',
     output: {
@@ -42,6 +44,7 @@ export default function config(args) {
     format: 'iife',
     context: 'window',
     inlineDynamicImports: true,
+    sourcemap: false,
     plugins: [
       nodeResolve({
         main: false,
@@ -91,10 +94,6 @@ export default function config(args) {
 
   if (args.production) {
     opts.output.file = 'dist/js/sulphuris.min.js';
-  }
-
-  if (args.sourcemap) {
-    opts.sourcemap = true;
   }
 
   return opts;
