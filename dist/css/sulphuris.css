@@ -648,7 +648,8 @@ button.reset,
   border-color: #fcfcfd;
 }
 
-ul.reset {
+ul.reset,
+ol.reset {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -18594,7 +18595,6 @@ template {
 .container {
   margin-left: auto;
   margin-right: auto;
-  box-sizing: content-box;
   max-width: 1680px;
   padding-left: 16px;
   padding-right: 16px;
