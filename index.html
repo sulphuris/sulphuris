@@ -3,69 +3,91 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>🜍 Sulphuris | Open-source CSS framework</title>
-    <meta name="description" content="Minimal, modular and flexible, 🜍 Sulphuris aims to be the soul of your next front-end project. Inspired by Bootstrap and Primer, but tailored to suit your everyday front-end development needs.">
+    <title>Sulphuris | An adaptable CSS ultility library</title>
+    <meta name="description" content="Sulphuris aims to be the soul of your next front-end project. Inspired by Bootstrap and Primer, but tailored to suit your everyday front-end development needs.">
     <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <link rel="stylesheet" href="dist/css/sulphuris.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
   </head>
-  <body>
-    <div class="background h-100vh w-100vw position-fixed t-0 l-0 text-gray-200" style="z-index: -1;">
+  <body class="bg-primary">
+    <div class="background h-100vh w-100vw position-fixed t-0 l-0 z--1">
       <div class="container grid grid-gutter h-100p">
         <div class="col-3 col-lg-1 h-100p">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-3 col-lg-1 h-100p">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-3 col-lg-1 h-100p">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-3 col-lg-1 h-100p">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
         <div class="col-1 h-100p d-none d-lg-block">
-          <div class="h-100p border border-dashed border-y-none"></div>
+          <div class="h-100p border border-dashed border-y-0"></div>
         </div>
       </div>
     </div>
-    <main role="main">
-      <!--[if IE]>
-        <div class="outdated-browser-warning" style="background:red;color:white;padding:10px 16px;font-size:18px;text-align:center;">
-          <div class="center">
-            ⚠️ You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" style="color: inherit;">upgrade your browser</a> to improve your experience.
-          </div>
+
+    <!--[if IE]>
+      <div class="outdated-browser-warning" style="background:red;color:white;padding:10px 16px;font-size:18px;text-align:center;">
+        <div class="center">
+          ⚠️ You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" style="color: inherit;">upgrade your browser</a> to improve your experience.
         </div>
-      <![endif]-->
-      <div class="container">
-        <h1 class="hello py-32 py-xl-64 py-xxl-32 m-0">Hey there!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum facilisis finibus. Morbi ac dapibus nibh. Quisque libero ipsum, pulvinar sit amet rhoncus quis, fermentum et lectus. Ut ac ipsum eget dolor bibendum elementum ut non sapien. In tincidunt lacus sit amet ex volutpat placerat. Vestibulum ullamcorper mi erat, vel facilisis elit convallis vitae. Sed vitae accumsan ligula, vel vehicula neque. In id tristique nisl, sed ultricies justo. Pellentesque lacinia justo urna, eget blandit urna interdum in. Vivamus sit amet molestie libero.</p>
+      </div>
+    <![endif]-->
+
+    <header class="bg-primary border-b">
+      <div class="container py-24 d-flex align-center">
+        <div class="h5 d-flex align-center"><img src="sulphuris-logo.svg" alt="🜍" height="22" width="18" class="w-100p h-auto mr-8" style="max-width: 18px;"> Sulphuris 1.0.4</div>
+        <div class="ml-auto h6 d-flex align-center">
+          <a href="https://sulphuris.github.io" class="text-black text-bold text-none d-flex align-center ml-lg-24 ml-16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <span class="ml-4 border-b border-2 pb-2">Docs</span></a>
+          <a href="https://github.com/sulphuris/sulphuris" class="text-black text-bold text-none d-flex align-center ml-lg-24 ml-16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg> <span class="ml-4 border-b border-2 pb-2">Repo</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+      <div class="container text-center py-32 d-flex align-center justify-center">
+        <div class="text-center">
+          <img src="sulphuris-logo.svg" alt="🜍" height="538" width="432" class="w-100p h-auto mt-32 mt-lg-64" style="max-width: 200px;">
+          <h1 class="hello py-32 py-xl-64 py-xxl-32 m-0">An <span class="text-underline">adaptable</span> CSS<br class="d-none d-sm-block"> ultility library.</h1>
+          <p class="col-8-max mx-auto p1"><strong>Imagine this:</strong> You are embarking on a new web project, and you find yourself in need of a CSS utility library. The abundance of options is overwhelming, but unfortunately, most of them come bundled with a bunch of unnecessary features and complexities that you have no desire to deal with. To make matters worse, the documentation provided with these libraries is often weird to navigate and grasp. And all you want is to create. Are you frustrated yet?</p>
+          <p class="col-8-max mx-auto p1 mt-24">Imagine how great it would be, that you could quickly create your own utility library for every project? Well, you don't have to imagine anymore.</p>
+        </div>
       </div>
 
-      <div class="container grid grid-gutter text-white text-center">
+      <div class="container grid grid-gutter text-center">
         <div class="col-6 col-lg-3">
-          <div class="h-128 bg-primary">
-            <div class="grid grid-gutter">
+          <div class="h-128 bg-primary border">
+            <div class="grid grid-gutter text-white">
               <div class="col-4">
                 <div class="h-64 bg-black">1</div>
               </div>
@@ -81,8 +103,8 @@
           </div>
         </div>
         <div class="col-6 col-lg-3">
-          <div class="h-128 bg-primary">
-            <div class="grid grid-gutter">
+          <div class="h-128 bg-primary border">
+            <div class="grid grid-gutter text-white">
               <div class="col-4">
                 <div class="h-64 bg-black">4</div>
               </div>
@@ -98,8 +120,8 @@
           </div>
         </div>
         <div class="col-6 col-lg-3">
-          <div class="h-128 bg-primary">
-            <div class="grid grid-gutter">
+          <div class="h-128 bg-primary border">
+            <div class="grid grid-gutter text-white">
               <div class="col-4">
                 <div class="h-64 bg-black">7</div>
               </div>
@@ -115,8 +137,8 @@
           </div>
         </div>
         <div class="col-6 col-lg-3">
-          <div class="h-128 bg-primary">
-            <div class="grid grid-gutter">
+          <div class="h-128 bg-primary border">
+            <div class="grid grid-gutter text-white">
               <div class="col-4">
                 <div class="h-64 bg-black">10</div>
               </div>
@@ -170,21 +192,37 @@
 
       <div class="container grid grid-gutter mt-128">
         <div class="col-6 col-lg-3">
-          <div class="h-128 bg-primary"></div>
+          <div class="h-128 bg-primary border"></div>
         </div>
 
         <div class="col-6 col-offset-lg-1">
-          <div class="h-128 bg-primary"></div>
+          <div class="h-128 bg-primary border"></div>
         </div>
       </div>
 
       <div class="container grid grid-gutter mt-128">
         <div class="col-6-max mx-auto">
-          <div class="h-128 bg-primary"></div>
+          <div class="h-128 bg-primary border"></div>
         </div>
       </div>
 
       <div class="container my-128">
+        <pre><code class="hljs language-typescript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> {
+          <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-attr">myValue</span>: <span class="hljs-built_in">string</span>;
+          <span class="hljs-title function_">constructor</span>(<span class="hljs-params">init: <span class="hljs-built_in">string</span></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">myValue</span> = init;
+          }
+        }
+        <span class="hljs-keyword">import</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
+        <span class="hljs-variable language_">module</span> <span class="hljs-title class_">MyModule</span> {
+          <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyInterface</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Other</span> {
+            <span class="hljs-attr">myProperty</span>: <span class="hljs-built_in">any</span>;
+          }
+        }
+        <span class="hljs-keyword">declare</span> magicNumber <span class="hljs-built_in">number</span>;
+        myArray.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">() =&gt;</span> { }); <span class="hljs-comment">// fat arrow syntax</span>
+        </code></pre>
+        
         <h1>Heading 1</h1>
         <p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum facilisis finibus. Morbi ac dapibus nibh. Quisque libero ipsum, pulvinar sit amet rhoncus quis, fermentum et lectus. Ut ac ipsum eget dolor bibendum elementum ut non sapien. In tincidunt lacus sit amet ex volutpat placerat. Vestibulum ullamcorper mi erat, vel facilisis elit convallis vitae. Sed vitae accumsan ligula, vel vehicula neque. In id tristique nisl, sed ultricies justo. Pellentesque lacinia justo urna, eget blandit urna interdum in. Vivamus sit amet molestie libero.</p>
         <h2>Heading 2</h2>
@@ -207,6 +245,11 @@
         </div>
       </div>
     </main>
-    <script src="dist/js/sulphuris.js"></script>
+
+
+    <!-- livereload script-->
+    <script>
+      (function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+    </script>
   </body>
 </html>
