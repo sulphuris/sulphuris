@@ -108,8 +108,9 @@ $typography: (
     desktop: (20px, 0.15px, $heading-line-height, bold),
     mobile: (16px, 0.15px, $heading-line-height, bold)
   ),
-  '.p1': (20px, 0.3px, $paragraph-line-height),
-  '.p2, p': ($base-font-size, 0.2px, $paragraph-line-height),
+  '.p1': (24px, 0.3px, $paragraph-line-height),
+  '.p2': (20px, 0.2px, $paragraph-line-height),
+  'p': ($base-font-size, 0.2px, $paragraph-line-height),
   '.p3, figcaption': (14px, 0.4px, $paragraph-line-height),
   '.p4, small': (12px, 0.6px, $paragraph-line-height),
   '.supertitle': (14px, 2px, $paragraph-line-height, 500, uppercase)

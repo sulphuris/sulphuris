@@ -7,12 +7,19 @@
     <meta name="description" content="Sulphuris aims to be the soul of your next front-end project. Inspired by Bootstrap and Primer, but tailored to suit your everyday front-end development needs.">
     <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <link rel="stylesheet" href="dist/css/sulphuris.css">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
+
+    <style>
+      pre {
+        border: 1px solid black;
+        box-shadow: 10px 10px black;
+      }
+    </style>
   </head>
   <body class="bg-primary">
     <div class="background h-100vh w-100vw position-fixed t-0 l-0 z--1">
@@ -79,8 +86,9 @@
         <div class="text-center">
           <img src="sulphuris-logo.svg" alt="🜍" height="538" width="432" class="w-100p h-auto mt-32 mt-lg-64" style="max-width: 200px;">
           <h1 class="hello py-32 py-xl-64 py-xxl-32 m-0">An <span class="text-underline">adaptable</span> CSS<br class="d-none d-sm-block"> ultility library.</h1>
-          <p class="col-8-max mx-auto p1"><strong>Imagine this:</strong> You are embarking on a new web project, and you find yourself in need of a CSS utility library. The abundance of options is overwhelming, but unfortunately, most of them come bundled with a bunch of unnecessary features and complexities that you have no desire to deal with. To make matters worse, the documentation provided with these libraries is often weird to navigate and grasp. And all you want is to create. Are you frustrated yet?</p>
-          <p class="col-8-max mx-auto p1 mt-24">Imagine how great it would be, that you could quickly create your own utility library for every project? Well, you don't have to imagine anymore.</p>
+          <p class="col-8-max mx-auto p1">Imagine how great it would be, that you could quickly create your own utility library for every project? Well, you don't have to imagine anymore.</p>
+
+          <pre><code class="hljs language-bash text-left">$ npm install sulphuris</code></pre>
         </div>
       </div>
 
