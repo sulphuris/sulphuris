@@ -1,8 +1,8 @@
 /*
  * SIZES
  */
-$sizes: 0,1,2,3,4,6,8,16,24,32,40,48,56,64,80,96,128,256 !default;
-$negative-sizes: -1,-2,-3,-4,-8,-16,-24,-32,-40,-48,-56,-64 !default;
+$sizes: 0,1,2,3,4,6,8,12,14,16,24,32,40,48,56,64,80,96,128,256 !default;
+$negative-sizes: -1,-2,-3,-4,-8,-12,-14,-16,-24,-32,-40,-48,-56,-64 !default;
 $percent-sizes: 5,10,15,20,25,50,75,100 !default;
 $negative-percent-sizes: -5,-10,-15,-20,-25,-50,-75,-100 !default;
 $z-index: -1,0,1,2,3,4,5,10,15,20,25,50,100 !default;
@@ -108,8 +108,9 @@ $typography: (
     desktop: (20px, 0.15px, $heading-line-height, bold),
     mobile: (16px, 0.15px, $heading-line-height, bold)
   ),
-  '.p1': (20px, 0.3px, $paragraph-line-height),
-  '.p2, p': ($base-font-size, 0.2px, $paragraph-line-height),
+  '.p1': (24px, 0.3px, $paragraph-line-height),
+  '.p2': (20px, 0.2px, $paragraph-line-height),
+  'p': ($base-font-size, 0.2px, $paragraph-line-height),
   '.p3, figcaption': (14px, 0.4px, $paragraph-line-height),
   '.p4, small': (12px, 0.6px, $paragraph-line-height),
   '.supertitle': (14px, 2px, $paragraph-line-height, 500, uppercase)

@@ -4,9 +4,9 @@
 [![npm version](https://img.shields.io/npm/v/sulphuris)](https://www.npmjs.com/package/sulphuris)
 [![CSS gzip size](https://img.badgesize.io/sulphuris/sulphuris/main/dist/css/sulphuris.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/sulphuris/sulphuris/blob/main/dist/css/sulphuris.min.css)
 
-Adaptable CSS utility framework
+An adaptable CSS ultility library
 
-> Minimal, modular and flexible, 🜍 Sulphuris aims to be the soul of your next front-end project. Inspired by [Bootstrap](https://github.com/twbs/bootstrap) and [Primer](https://github.com/primer/css), but tailored to suit your everyday front-end development needs.
+> Sulphuris aims to be the soul of your next front-end project. Inspired by [Bootstrap](https://github.com/twbs/bootstrap) and [Primer](https://github.com/primer/css), but tailored to suit your everyday front-end development needs.
 
 ## WIP 🚧
 
