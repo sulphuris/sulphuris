@@ -1,7 +1,7 @@
 name: NPM Publish
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,8 +11,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-    - run: npm ci
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish to npm registry
+      run: |
+          echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" >> .npmrc
+          npm publish
