@@ -52,6 +52,7 @@
     "build-prod": "npx rollup -c --production"
   },
   "dependencies": {
+    "@primer/css": "^21.0.3",
     "connect": "^3.7.0",
     "connect-livereload": "^0.6.1",
     "es-module-lexer": "^1.3.0",

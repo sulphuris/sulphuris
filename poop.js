@@ -1,6 +1,5 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const fs = require('fs');
 const sass = require('sass');
 const { exec } = require('child_process');
 const livereload = require('livereload');
@@ -13,6 +12,15 @@ const { pathToFileURL } = require('url');
 const http = require('http');
 const static = require('serve-static');
 
+const fs = require('node:fs');
+const path = require('node:path');
+
+function getPackageInfo(pkg) {
+  const pkgPath = resolve.sync(`${pkg}/package.json`, {
+    basedir: process.cwd(),
+  });
+  return JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+}
 
 // Compile Sass to CSS
 const compiledSass = sass.compile('src/scss/index.scss', {
@@ -23,8 +31,10 @@ const compiledSass = sass.compile('src/scss/index.scss', {
     // An importer that redirects relative URLs starting with "~" to
     // `node_modules`.
     findFileUrl(url) {
-      if (!url.startsWith('~')) return null;
-      return new URL(url.substring(1), pathToFileURL('node_modules'));
+      if (fs.existsSync(url)) return null;
+      const urlPath = path.join(pathToFileURL('node_modules').pathname, url);
+      console.log(fs.existsSync(path.relative(process.cwd(), urlPath)), path.relative(process.cwd(), urlPath));
+      return new URL(path.relative(process.cwd(), urlPath), pathToFileURL('node_modules'));
     }
   }]
 });
