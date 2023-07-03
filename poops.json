@@ -1,0 +1,19 @@
+{
+  "styles": {
+    "in": "src/index.scss",
+    "out": "dist/sulphuris.css",
+    "options": {
+      "sourcemap": true,
+      "minify": true
+    }
+  },
+  "banner": "/* {{ name }} v{{ version }} | {{ homepage }} | {{ license }} License */",
+  "serve" : {
+    "port": 4040,
+    "base": "/"
+  },
+  "livereload": true,
+  "watch": [
+    "src"
+  ]
+}
