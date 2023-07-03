@@ -14,30 +14,11 @@ An adaptable CSS ultility library
 
 Don't forget to `npm install` and have `Node 14+`! Then you can decide on one of the following commands.
 
-Build and watch
+Build and watch, builds also minified version
 
 ```bash
-$ npm run watch
+$ npm run dev
 ```
-
-Build and watch for production (minified)
-
-```bash
-$ npm run watch-prod
-```
-
-Build
-
-```bash
-$ npm run build
-```
-
-Build for production (minified)
-
-```bash
-$ npm run build-prod
-```
-
 
 ### Highlights
 
