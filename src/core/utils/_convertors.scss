@@ -15,7 +15,7 @@
  * @param $value (string): e.g. `16px`
  * @return (string): e.g. `1em`
  */
-@function em($value, $unit: 'em') {
+@function toEm($value, $unit: 'em') {
   $rm-unit-value: rm-unit($value);
 
   @if $rm-unit-value == 0 {
@@ -32,9 +32,9 @@
  * @param $value (string): e.g. `16px`
  * @return (string): e.g. `1rem`
  */
-@function rem($value) {
+@function toRem($value) {
   @if ends-with($value + '', 'px') {
-    @return em($value, 'rem');
+    @return toEm($value, 'rem');
   }
   @return $value;
 }
