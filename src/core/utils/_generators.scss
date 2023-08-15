@@ -308,15 +308,15 @@
   }
 
   @if $font-size {
-    font-size: rem($font-size);
+    font-size: toRem($font-size);
   }
 
   @if $letter-spacing {
-    letter-spacing: rem($letter-spacing);
+    letter-spacing: toRem($letter-spacing);
   }
 
   @if $line-height {
-    line-height: rem($line-height);
+    line-height: toRem($line-height);
   }
 
   @if $font-weight {
