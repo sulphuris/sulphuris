@@ -59,7 +59,7 @@
   }
 }
 
-@mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
+@mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
   $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
@@ -68,11 +68,19 @@
   $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
 
   .#{$gen-pref}#{$b-name}-#{$key}#{$suff} {
-    #{$property}: #{$value}#{$unit};
+    @if $var {
+      @if type-of($var) == 'string' {
+        #{$property}: var(--#{$var}-#{$key}#{$suff}, #{$value}#{$unit});
+      } @else {
+        #{$property}: var(--#{$property}-#{$key}#{$suff}, #{$value}#{$unit});
+      }
+    } @else {
+      #{$property}: #{$value}#{$unit};
+    }
   }
 }
 
-@mixin orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff) {
+@mixin orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
   @if $b-name {
     $b-name: -#{$b-name};
   }
@@ -82,7 +90,15 @@
   @each $o-name, $o-values in $orientations {
     .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
       @each $o-value in $o-values {
-        #{$property}-#{$o-value}: #{$value}#{$unit};
+        @if $var {
+          @if type-of($var) == 'string' {
+            #{$property}-#{$o-value}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}, #{$value}#{$unit}));
+          } @else {
+            #{$property}-#{$o-value}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}, #{$value}#{$unit}));
+          }
+        } @else {
+          #{$property}-#{$o-value}: #{$value}#{$unit};
+        }
       }
     }
   }
@@ -95,22 +111,23 @@
   $values,
   $unit: '',
   $suff: '',
-  $orientations: false) {
+  $orientations: false,
+  $var: false) {
 
   @if type-of($values) == 'map' {
     @each $key, $value in $values {
-      @include generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff);
+      @include generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var);
 
       @if $orientations {
-        @include orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff);
+        @include orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var);
       }
     }
   } @else {
     @each $value in $values {
-      @include generic-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff);
+      @include generic-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff, $var);
 
       @if $orientations {
-        @include orientated-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff);
+        @include orientated-utility-class-generator($pref, $property, $b-name, $value, $value, $unit, $suff, $var);
       }
     }
   }
@@ -138,16 +155,17 @@
   $unit: '',
   $suff: '',
   $orientations: false,
-  $responsive: true ) {
+  $responsive: true,
+  $var: false ) {
 
-  @include generic-and-orientaded-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations);
+  @include generic-and-orientaded-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations, $var);
 
   // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
-          @include generic-and-orientaded-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations);
+          @include generic-and-orientaded-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
         }
       }
     }

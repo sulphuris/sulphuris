@@ -2,11 +2,15 @@
   $colors: color-palette-genrator($colors, $name, nth($value, 1), nth($value, 2));
 }
 
-@include utility-class-generator('text', 'color', $colors, '', '', false, false);
+:root {
+  @include css-variable-generator('color', $colors);
+}
+
+@include utility-class-generator('text', 'color', $colors, '', '', false, false, true);
 
 .text-transparent {
   color: transparent;
 }
 
-@include utility-class-generator('bg', 'background-color', $colors, '', '', false, false);
-@include utility-class-generator('border', 'border-color', $colors, '', '', false, false);
+@include utility-class-generator('bg', 'background-color', $colors, '', '', false, false, 'color');
+@include utility-class-generator('border', 'border-color', $colors, '', '', false, false, 'color');
