@@ -1,5 +1,5 @@
 @each $name, $value in $palettes {
-  $colors: color-palette-genrator($colors, $name, nth($value, 1), nth($value, 2));
+  $colors: color-palette-generator($colors, $name, nth($value, 1), nth($value, 2));
 }
 
 :root {
@@ -12,8 +12,6 @@
   values: $colors,
   variable: true
 ));
-  
-//'text', 'color', $colors, '', '', false, false, true);
 
 .text-transparent {
   color: transparent;

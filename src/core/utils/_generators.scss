@@ -203,7 +203,7 @@
   }
 }
 
-@function color-palette-genrator($color-map, $color-name, $color-value, $mod: 10%) {
+@function color-palette-generator($color-map, $color-name, $color-value, $mod: 10%) {
   @for $i from 1 through 9 {
     $grade: (10 - $i) * 100;
     $percentage: $i * $mod;
