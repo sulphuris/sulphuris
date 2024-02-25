@@ -1,5 +1,9 @@
 @each $name, $value in $palettes {
-  $colors: color-palette-generator($colors, $name, nth($value, 1), nth($value, 2));
+  @if type-of($value) == 'color' {
+    $colors: color-palette-generator($colors, $name, $value);
+  } @else {
+    $colors: color-palette-generator($colors, $name, nth($value, 1), nth($value, 2));
+  }
 }
 
 :root {

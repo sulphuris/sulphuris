@@ -209,11 +209,25 @@
 }
 
 @function color-palette-generator($color-map, $color-name, $color-value, $mod: 10%) {
-  @for $i from 1 through 9 {
-    $grade: (10 - $i) * 100;
-    $percentage: $i * $mod;
+  $grade: 500;
+  $combined-name: #{$color-name}-#{$grade};
+  $color-map: map-merge($color-map, ($combined-name: $color-value));
+
+  @for $i from 1 through 4 {
+    $count: 5 + $i;
+    $grade: $count * 100;
+    $percentage: $i * $mod * 2;
     $combined-name: #{$color-name}-#{$grade};
-    $color-lightened: lighten($color-value, $percentage);
+    $color-lightened: mix(#000000, $color-value, $percentage);
+
+    $color-map: map-merge($color-map, ($combined-name: $color-lightened));
+  }
+
+  @for $i from 1 through 4 {
+    $grade: $i * 100;
+    $percentage: $i * $mod * 2;
+    $combined-name: #{$color-name}-#{$grade};
+    $color-lightened: mix($color-value, #ffffff, $percentage);
 
     $color-map: map-merge($color-map, ($combined-name: $color-lightened));
   }
@@ -223,6 +237,7 @@
 
 @mixin css-variable-generator($pref, $map) {
   @each $name, $value in $map {
+    $name: '' + $name;
     --#{$pref}-#{$name}: #{$value};
   }
 }
