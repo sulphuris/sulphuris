@@ -104,7 +104,7 @@
   }
 }
 
-@mixin generic-and-orientaded-utility-class-generator(
+@mixin generic-and-orientated-utility-class-generator(
   $pref,
   $property,
   $b-name,
@@ -189,14 +189,14 @@
     $pref: map-get($pref, 'prefix'); 
   }
 
-  @include generic-and-orientaded-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations, $var);
+  @include generic-and-orientated-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations, $var);
 
   // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' {
         @media #{generate-breakpoint($b-name)} {
-          @include generic-and-orientaded-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
+          @include generic-and-orientated-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
         }
       }
     }
