@@ -3,7 +3,11 @@
 }
 
 @function color($color) {
-  @return map-get($colors, $color) or $color;
+  @if map-has-key($colors, $color) {
+    @return var(--color-#{$color});
+  } @else {
+    @return $color;
+  }
 }
 
 @function trim-end($haystack, $needle) {
