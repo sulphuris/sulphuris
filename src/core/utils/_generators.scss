@@ -46,7 +46,7 @@
   }
 
   @if not $explicit {
-    @if $size == '' {
+    @if $size == '' or $size == min or $size == minimal {
       @content;
     }
 
@@ -199,7 +199,7 @@
   // responsive variations
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
-      @if $b-name != '' {
+      @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @include generic-and-orientated-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
         }
@@ -240,7 +240,7 @@
 
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
-      @if $b-name != '' {
+      @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 1 through $columns {
             .col-#{$b-name}-#{$i} {
@@ -314,7 +314,7 @@
 
   @if $responsive {
     @each $b-name, $b-value in $breakpoints {
-      @if $b-name != '' {
+      @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 0 through $columns - 1 {
             .col-offset-#{$b-name}-#{$i} {
