@@ -6,11 +6,29 @@
   @include css-variable-generator('color', $colors);
 }
 
-@include utility-class-generator('text', 'color', $colors, '', '', false, false, true);
+@include utility-class-generator((
+  prefix: 'text',
+  property: 'color',
+  values: $colors,
+  variable: true
+));
+  
+//'text', 'color', $colors, '', '', false, false, true);
 
 .text-transparent {
   color: transparent;
 }
 
-@include utility-class-generator('bg', 'background-color', $colors, '', '', false, false, 'color');
-@include utility-class-generator('border', 'border-color', $colors, '', '', false, false, 'color');
+@include utility-class-generator((
+  prefix: 'bg',
+  property: 'background-color',
+  values: $colors,
+  variable: 'color'
+));
+
+@include utility-class-generator((
+  prefix: 'border',
+  property: 'border-color',
+  values: $colors,
+  variable: 'color'
+));

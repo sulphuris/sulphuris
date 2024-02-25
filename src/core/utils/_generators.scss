@@ -150,13 +150,44 @@
  */
 @mixin utility-class-generator(
   $pref,
-  $property,
-  $values,
+  $property: null,
+  $values: null,
   $unit: '',
   $suff: '',
   $orientations: false,
   $responsive: true,
   $var: false ) {
+
+  @if type-of($pref) == 'map' {
+    $property: map-get($pref, 'property');
+    $values: map-get($pref, 'values');
+    @if map-has-key($pref, 'unit') {
+      $unit: map-get($pref, 'unit');
+    } @else {
+      $unit: '';
+    }
+    @if map-has-key($pref, 'suffix') {
+      $suff: map-get($pref, 'suffix');
+    } @else {
+      $suff: '';
+    }
+    @if map-has-key($pref, 'orientations') {
+      $orientations: map-get($pref, 'orientations');
+    } @else {
+      $orientations: false;
+    }
+    @if map-has-key($pref, 'responsive') {
+      $responsive: map-get($pref, 'responsive');
+    } @else {
+      $responsive: true;
+    }
+    @if map-has-key($pref, 'variable') {
+      $var: map-get($pref, 'variable');
+    } @else {
+      $var: false;
+    }
+    $pref: map-get($pref, 'prefix'); 
+  }
 
   @include generic-and-orientaded-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations, $var);
 
