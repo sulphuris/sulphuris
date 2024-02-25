@@ -6657,48 +6657,58 @@ h6 {
   font-family: monospace !important;
 }
 
-.text-thin {
+.text-thin,
+.font-thin {
   font-weight: 100 !important;
 }
 
-.text-ultra-light {
+.text-ultra-light,
+.font-ultra-light {
   font-weight: 200 !important;
 }
 
-.text-light {
+.text-light,
+.font-light {
   font-weight: 300 !important;
 }
 
-.text-normal {
-  font-weight: normal !important;
+.text-normal,
+.font-normal {
+  font-weight: 400 !important;
 }
 
-.text-bold {
-  font-weight: bold !important;
-}
-
-.text-bolder {
-  font-weight: bolder !important;
-}
-
-.text-lighter {
-  font-weight: lighter !important;
-}
-
-.text-medium {
+.text-medium,
+.font-medium {
   font-weight: 500 !important;
 }
 
-.text-semi-bold {
+.text-semi-bold,
+.font-semi-bild {
   font-weight: 600 !important;
 }
 
-.text-ultra-bold {
+.text-bold,
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.text-ultra-bold,
+.font-ultra-bold {
   font-weight: 800 !important;
 }
 
-.text-heavy {
+.text-heavy .font-black {
   font-weight: 900 !important;
+}
+
+.text-lighter,
+.font-lighter {
+  font-weight: lighter !important;
+}
+
+.text-bolder,
+.font-bolder {
+  font-weight: bolder !important;
 }
 
 .text-left {
@@ -6768,7 +6778,8 @@ h6 {
     text-align: center;
   }
 }
-.text-italic {
+.text-italic,
+.font-italic {
   font-style: italic;
 }
 
