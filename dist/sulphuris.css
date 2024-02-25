@@ -64,7 +64,7 @@
  * Mixin for generating media queries. Uses `generate-breakpoint` function
  * @see utils/_config.scss $breakpoints. $breakpoints is a globally defined var.
  *
- * @param $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl)
+ * @param $size: (string) breakpoint map item name ('', sm, md, lg, xl, xxl). Size can be `min` or `minimal` which renders as $size: '' and $explicit: true
  * @param $explicit: (boolean | optional) for generating min-max queries
  */
 /*
