@@ -1,3 +1,6 @@
-.filter-invert {
-  filter: invert(1);
-}
+@include utility-class-generator((
+  prefix: 'filter',
+  property: 'filter',
+  values: (invert: 'invert(1)'),
+  responsive: false
+));
