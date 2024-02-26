@@ -1,4 +1,6 @@
-@include utility-class-generator('m', 'margin', $sizes, 'px', '', $orientations);
-@include utility-class-generator('m', 'margin', $negative-sizes, 'px', '', $orientations);
+$margin-sizes: append($sizes, 'auto');
+@if $negative-sizes {
+  $margin-sizes: join($margin-sizes, $negative-sizes);
+}
 
-@include utility-class-generator('m', 'margin', ('auto'), '', '', $orientations);
+@include utility-class-generator('m', 'margin', $margin-sizes, 'px', '', $orientations);
