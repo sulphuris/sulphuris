@@ -6920,7 +6920,7 @@ h6 {
   text-decoration: line-through;
 }
 
-.text-none {
+.text-none, .decoration-none {
   text-decoration: none;
 }
 
@@ -6934,7 +6934,7 @@ h6 {
   .text-sm-line-through {
     text-decoration: line-through;
   }
-  .text-sm-none {
+  .text-sm-none, .decoration-none {
     text-decoration: none;
   }
 }
@@ -6948,7 +6948,7 @@ h6 {
   .text-md-line-through {
     text-decoration: line-through;
   }
-  .text-md-none {
+  .text-md-none, .decoration-none {
     text-decoration: none;
   }
 }
@@ -6962,7 +6962,7 @@ h6 {
   .text-lg-line-through {
     text-decoration: line-through;
   }
-  .text-lg-none {
+  .text-lg-none, .decoration-none {
     text-decoration: none;
   }
 }
@@ -6976,7 +6976,7 @@ h6 {
   .text-xl-line-through {
     text-decoration: line-through;
   }
-  .text-xl-none {
+  .text-xl-none, .decoration-none {
     text-decoration: none;
   }
 }
@@ -6990,7 +6990,7 @@ h6 {
   .text-xxl-line-through {
     text-decoration: line-through;
   }
-  .text-xxl-none {
+  .text-xxl-none, .decoration-none {
     text-decoration: none;
   }
 }

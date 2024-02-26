@@ -65,14 +65,44 @@
 }
 
 @mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
+  $alias: '';
+  $unit-copy: null;
+
+  @if type-of($value) == 'map' {
+    @if map-has-key($value, 'prefix') {
+      $pref: map-get($value, 'prefix');
+    }
+    @if map-has-key($value, 'suffix') {
+      $suff: map-get($value, 'suffix');
+    }
+    @if map-has-key($value, 'alias') {
+      $alias: map-get($value, 'alias');
+      $alias: ', .' + $alias;
+    }
+    @if map-has-key($value, 'unit') {
+      $unit: map-get($value, 'unit');
+      $unit-copy: map-get($value, 'unit');
+    }
+    $value: map-get($value, 'value');
+  }
+
+  @if type-of($value) == 'string' {
+    @if $unit-copy == null {
+      $unit: '';
+    }
+  }
+  
   $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
 
-  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
+  @if type-of($key) == 'map' {
+    $key: map-get($key, 'value');
+  }
+  $key: '' + $key; // cause values create dart-sass warns
 
-  .#{$gen-pref}#{$b-name}-#{$key}#{$suff} {
+  .#{$gen-pref}#{$b-name}-#{$key}#{$suff}#{$alias} {
     @if $var {
       @if type-of($var) == 'string' {
         #{$property}: var(--#{$var}-#{$key}#{$suff});
@@ -86,11 +116,43 @@
 }
 
 @mixin orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
+  $alias: '';
+  $unit-copy: null;
+  $suff-copy: null;
+
+  @if type-of($value) == 'map' {
+    @if map-has-key($value, 'prefix') {
+      $pref: map-get($value, 'prefix');
+    }
+    @if map-has-key($value, 'suffix') {
+      $suff: map-get($value, 'suffix');
+    }
+    @if map-has-key($value, 'alias') {
+      $alias: map-get($value, 'alias');
+      $alias: ', .' + $alias;
+    }
+    @if map-has-key($value, 'unit') {
+      $unit: map-get($value, 'unit');
+      $unit-copy: map-get($value, 'unit');
+    }
+    $value: map-get($value, 'value');
+  }
+
+  @if type-of($value) == 'string' {
+    @if $unit-copy == null {
+      $unit: '';
+    }
+  }
+
+  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
 
-  $key: '' + $key; // cause values create dart-sass warns, gotta think more about colors
+  @if type-of($key) == 'map' {
+    $key: map-get($key, 'value');
+  }
+  $key: '' + $key; // cause values create dart-sass warns
 
   @each $o-name, $o-values in $orientations {
     .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {

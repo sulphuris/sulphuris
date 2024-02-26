@@ -36,6 +36,8 @@ h6 {
   font-family: $mono-font !important;
 }
 
+//TODO: Prefer font over text for weight utility classes
+
 .text-thin,
 .font-thin {
   font-weight: 100 !important;
@@ -101,7 +103,7 @@ h6 {
   font-style: italic;
 }
 
-@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through', 'none'), '', '', false, true);
+@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through', (value: 'none', alias: 'decoration-none')), '', '', false, true);
 @include utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width'), '', '', false, true);
 
 h1 {
