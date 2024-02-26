@@ -3,4 +3,10 @@ $margin-sizes: append($sizes, 'auto');
   $margin-sizes: join($margin-sizes, $negative-sizes);
 }
 
-@include utility-class-generator('m', 'margin', $margin-sizes, 'px', '', $orientations);
+@include utility-class-generator((
+  prefix: 'm',
+  property: 'margin',
+  values: $margin-sizes,
+  unit: 'px',
+  orientations: $orientations
+));
