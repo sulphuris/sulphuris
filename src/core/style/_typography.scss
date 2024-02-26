@@ -6,8 +6,9 @@ html {
 }
 
 body {
-  color: color(black);
+  color: color('foreground');
   font-family: $paragraph-font;
+  background-color: color('background');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

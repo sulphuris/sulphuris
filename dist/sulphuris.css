@@ -6626,8 +6626,9 @@ html {
 }
 
 body {
-  color: var(--color-black);
+  color: var(--color-foreground);
   font-family: "Nunito", sans-serif;
+  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
