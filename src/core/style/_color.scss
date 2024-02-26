@@ -34,3 +34,24 @@
   values: $colors,
   variable: 'color'
 ));
+
+@if $color-modes and length($color-modes) > 0 {
+  @each $key, $mode in $color-modes {
+    $selector: str-replace($color-modes-selector, 'VALUE', $key);
+    $mode-colors: map-get($mode, 'colors');
+
+    @if map-has-key($mode, 'palettes') {
+      @each $name, $value in map-get($mode, 'palettes') {
+        @if type-of($value) == 'color' {
+          $mode-colors: color-palette-generator($mode-colors, $name, $value);
+        } @else {
+          $mode-colors: color-palette-generator($mode-colors, $name, nth($value, 1), nth($value, 2));
+        }
+      }
+    }
+    
+    #{$selector} {
+      @include css-variable-generator('color', $mode-colors);
+    }
+  }
+}

@@ -6604,6 +6604,14 @@ button.reset,
     border-color: var(--color-lime-400);
   }
 }
+[data-color-scheme=dark] {
+  --color-foreground: #ffffff;
+  --color-background: #1a1a1d;
+  --color-black: #1a1a1d;
+  --color-white: #ffffff;
+  --color-primary: #3F00FF;
+}
+
 ul.reset,
 ol.reset {
   list-style: none;
