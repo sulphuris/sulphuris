@@ -6920,7 +6920,7 @@ h6 {
   text-decoration: line-through;
 }
 
-.text-none, .decoration-none {
+.text-none, .text-decoration-none {
   text-decoration: none;
 }
 
@@ -6934,7 +6934,7 @@ h6 {
   .text-sm-line-through {
     text-decoration: line-through;
   }
-  .text-sm-none, .decoration-none {
+  .text-sm-none, .text-decoration-none {
     text-decoration: none;
   }
 }
@@ -6948,7 +6948,7 @@ h6 {
   .text-md-line-through {
     text-decoration: line-through;
   }
-  .text-md-none, .decoration-none {
+  .text-md-none, .text-decoration-none {
     text-decoration: none;
   }
 }
@@ -6962,7 +6962,7 @@ h6 {
   .text-lg-line-through {
     text-decoration: line-through;
   }
-  .text-lg-none, .decoration-none {
+  .text-lg-none, .text-decoration-none {
     text-decoration: none;
   }
 }
@@ -6976,7 +6976,7 @@ h6 {
   .text-xl-line-through {
     text-decoration: line-through;
   }
-  .text-xl-none, .decoration-none {
+  .text-xl-none, .text-decoration-none {
     text-decoration: none;
   }
 }
@@ -6990,7 +6990,7 @@ h6 {
   .text-xxl-line-through {
     text-decoration: line-through;
   }
-  .text-xxl-none, .decoration-none {
+  .text-xxl-none, .text-decoration-none {
     text-decoration: none;
   }
 }
@@ -7010,6 +7010,10 @@ h6 {
   text-transform: full-width;
 }
 
+.text-transform-none {
+  text-transform: none;
+}
+
 @media only screen and (min-width: 421px) {
   .text-sm-uppercase {
     text-transform: uppercase;
@@ -7022,6 +7026,9 @@ h6 {
   }
   .text-sm-full-width {
     text-transform: full-width;
+  }
+  .text-transform-sm-none {
+    text-transform: none;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -7037,6 +7044,9 @@ h6 {
   .text-md-full-width {
     text-transform: full-width;
   }
+  .text-transform-md-none {
+    text-transform: none;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .text-lg-uppercase {
@@ -7050,6 +7060,9 @@ h6 {
   }
   .text-lg-full-width {
     text-transform: full-width;
+  }
+  .text-transform-lg-none {
+    text-transform: none;
   }
 }
 @media only screen and (min-width: 1366px) {
@@ -7065,6 +7078,9 @@ h6 {
   .text-xl-full-width {
     text-transform: full-width;
   }
+  .text-transform-xl-none {
+    text-transform: none;
+  }
 }
 @media only screen and (min-width: 1680px) {
   .text-xxl-uppercase {
@@ -7078,6 +7094,9 @@ h6 {
   }
   .text-xxl-full-width {
     text-transform: full-width;
+  }
+  .text-transform-xxl-none {
+    text-transform: none;
   }
 }
 h1 {
