@@ -490,7 +490,7 @@ button.reset,
 .btn {
   background-color: var(--color-primary);
   border-radius: 4px;
-  color: var(--color-white);
+  color: var(--color-background);
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -500,12 +500,12 @@ button.reset,
 }
 @media only screen and (min-width: 1024px) {
   .btn:hover {
-    background-color: var(--color-black);
+    background-color: var(--color-foreground);
   }
 }
 
 .btn-inverted {
-  background-color: var(--color-black);
+  background-color: var(--color-foreground);
 }
 @media only screen and (min-width: 1024px) {
   .btn-inverted:hover {
@@ -515,23 +515,23 @@ button.reset,
 
 .btn-outline {
   background: transparent;
-  border: solid 2px var(--color-black);
-  color: var(--color-black);
+  border: solid 2px var(--color-foreground);
+  color: var(--color-foreground);
 }
 @media only screen and (min-width: 1024px) {
   .btn-outline:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
   }
 }
 .btn-outline.btn-inverted {
-  border-color: var(--color-white);
-  color: var(--color-white);
+  border-color: var(--color-background);
+  color: var(--color-background);
 }
 @media only screen and (min-width: 1024px) {
   .btn-outline.btn-inverted:hover {
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }
 

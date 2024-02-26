@@ -16,7 +16,7 @@ button.reset,
 .btn {
   background-color: color(primary);
   border-radius: map-get($button, border-radius);
-  color: color(white);
+  color: color('background');
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -26,13 +26,13 @@ button.reset,
 
   @include breakpoint($container-breakpoint) {
     &:hover {
-      background-color: color(black);
+      background-color: color('foreground');
     }
   }
 }
 
 .btn-inverted {
-  background-color: color(black);
+  background-color: color('foreground');
 
   @include breakpoint($container-breakpoint) {
     &:hover {
@@ -43,25 +43,25 @@ button.reset,
 
 .btn-outline {
   background: transparent;
-  border: solid map-get($button, border-width) color(black);
-  color: color(black);
+  border: solid map-get($button, border-width) color('foreground');
+  color: color('foreground');
   padding: map-get($button, padding-y - map-get($button, border-width)) map-get($button, padding-x - map-get($button, border-width));
 
   @include breakpoint($container-breakpoint) {
     &:hover {
-      background-color: color(black);
-      color: color(white);
+      background-color: color('foreground');
+      color: color('background');
     }
   }
 
   &.btn-inverted {
-    border-color: color(white);
-    color: color(white);
+    border-color: color('background');
+    color: color('background');
 
     @include breakpoint($container-breakpoint) {
       &:hover {
-        background-color: color(white);
-        color: color(black);
+        background-color: color('background');
+        color: color('foreground');
       }
     }
   }
