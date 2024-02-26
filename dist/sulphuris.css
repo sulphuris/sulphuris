@@ -536,8 +536,10 @@ button.reset,
 }
 
 :root {
+  --color-foreground: #1a1a1d;
+  --color-background: #ffffff;
   --color-black: #1a1a1d;
-  --color-white: #fff;
+  --color-white: #ffffff;
   --color-primary: #f6c026;
   --color-gray-500: #8c8c8e;
   --color-gray-600: #707072;
@@ -638,6 +640,14 @@ button.reset,
   --color-lime-200: #dbe799;
   --color-lime-300: #c8dc66;
   --color-lime-400: #b6d033;
+}
+
+.text-foreground {
+  color: var(--color-foreground);
+}
+
+.text-background {
+  color: var(--color-background);
 }
 
 .text-black {
@@ -1049,6 +1059,12 @@ button.reset,
 }
 
 @media only screen and (min-width: 421px) {
+  .text-sm-foreground {
+    color: var(--color-foreground);
+  }
+  .text-sm-background {
+    color: var(--color-background);
+  }
   .text-sm-black {
     color: var(--color-black);
   }
@@ -1357,6 +1373,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 768px) {
+  .text-md-foreground {
+    color: var(--color-foreground);
+  }
+  .text-md-background {
+    color: var(--color-background);
+  }
   .text-md-black {
     color: var(--color-black);
   }
@@ -1665,6 +1687,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1024px) {
+  .text-lg-foreground {
+    color: var(--color-foreground);
+  }
+  .text-lg-background {
+    color: var(--color-background);
+  }
   .text-lg-black {
     color: var(--color-black);
   }
@@ -1973,6 +2001,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1366px) {
+  .text-xl-foreground {
+    color: var(--color-foreground);
+  }
+  .text-xl-background {
+    color: var(--color-background);
+  }
   .text-xl-black {
     color: var(--color-black);
   }
@@ -2281,6 +2315,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1680px) {
+  .text-xxl-foreground {
+    color: var(--color-foreground);
+  }
+  .text-xxl-background {
+    color: var(--color-background);
+  }
   .text-xxl-black {
     color: var(--color-black);
   }
@@ -2590,6 +2630,14 @@ button.reset,
 }
 .text-transparent {
   color: transparent;
+}
+
+.bg-foreground {
+  background-color: var(--color-foreground);
+}
+
+.bg-background {
+  background-color: var(--color-background);
 }
 
 .bg-black {
@@ -3001,6 +3049,12 @@ button.reset,
 }
 
 @media only screen and (min-width: 421px) {
+  .bg-sm-foreground {
+    background-color: var(--color-foreground);
+  }
+  .bg-sm-background {
+    background-color: var(--color-background);
+  }
   .bg-sm-black {
     background-color: var(--color-black);
   }
@@ -3309,6 +3363,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 768px) {
+  .bg-md-foreground {
+    background-color: var(--color-foreground);
+  }
+  .bg-md-background {
+    background-color: var(--color-background);
+  }
   .bg-md-black {
     background-color: var(--color-black);
   }
@@ -3617,6 +3677,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1024px) {
+  .bg-lg-foreground {
+    background-color: var(--color-foreground);
+  }
+  .bg-lg-background {
+    background-color: var(--color-background);
+  }
   .bg-lg-black {
     background-color: var(--color-black);
   }
@@ -3925,6 +3991,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1366px) {
+  .bg-xl-foreground {
+    background-color: var(--color-foreground);
+  }
+  .bg-xl-background {
+    background-color: var(--color-background);
+  }
   .bg-xl-black {
     background-color: var(--color-black);
   }
@@ -4233,6 +4305,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1680px) {
+  .bg-xxl-foreground {
+    background-color: var(--color-foreground);
+  }
+  .bg-xxl-background {
+    background-color: var(--color-background);
+  }
   .bg-xxl-black {
     background-color: var(--color-black);
   }
@@ -4540,6 +4618,14 @@ button.reset,
     background-color: var(--color-lime-400);
   }
 }
+.border-foreground {
+  border-color: var(--color-foreground);
+}
+
+.border-background {
+  border-color: var(--color-background);
+}
+
 .border-black {
   border-color: var(--color-black);
 }
@@ -4949,6 +5035,12 @@ button.reset,
 }
 
 @media only screen and (min-width: 421px) {
+  .border-sm-foreground {
+    border-color: var(--color-foreground);
+  }
+  .border-sm-background {
+    border-color: var(--color-background);
+  }
   .border-sm-black {
     border-color: var(--color-black);
   }
@@ -5257,6 +5349,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 768px) {
+  .border-md-foreground {
+    border-color: var(--color-foreground);
+  }
+  .border-md-background {
+    border-color: var(--color-background);
+  }
   .border-md-black {
     border-color: var(--color-black);
   }
@@ -5565,6 +5663,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1024px) {
+  .border-lg-foreground {
+    border-color: var(--color-foreground);
+  }
+  .border-lg-background {
+    border-color: var(--color-background);
+  }
   .border-lg-black {
     border-color: var(--color-black);
   }
@@ -5873,6 +5977,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1366px) {
+  .border-xl-foreground {
+    border-color: var(--color-foreground);
+  }
+  .border-xl-background {
+    border-color: var(--color-background);
+  }
   .border-xl-black {
     border-color: var(--color-black);
   }
@@ -6181,6 +6291,12 @@ button.reset,
   }
 }
 @media only screen and (min-width: 1680px) {
+  .border-xxl-foreground {
+    border-color: var(--color-foreground);
+  }
+  .border-xxl-background {
+    border-color: var(--color-background);
+  }
   .border-xxl-black {
     border-color: var(--color-black);
   }
