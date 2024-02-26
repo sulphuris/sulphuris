@@ -1,1 +1,7 @@
-@include utility-class-generator('p', 'padding', $sizes, 'px', '', $orientations);
+@include utility-class-generator((
+  prefix: 'p',
+  property: 'padding',
+  values: $sizes,
+  unit: 'px',
+  orientations: $orientations
+));
