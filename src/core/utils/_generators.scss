@@ -235,6 +235,22 @@
   @return $color-map;
 }
 
+@function generate-color-palettes($color-map, $palette-map) {
+  @if $palette-map == null {
+    @return $color-map;
+  }
+  
+  @each $name, $value in $palette-map {
+    @if type-of($value) == 'color' {
+      $color-map: color-palette-generator($color-map, $name, $value);
+    } @else {
+      $color-map: color-palette-generator($color-map, $name, nth($value, 1), nth($value, 2));
+    }
+  }
+
+  @return $color-map;
+}
+
 @mixin css-variable-generator($pref, $map) {
   @each $name, $value in $map {
     $name: '' + $name;
