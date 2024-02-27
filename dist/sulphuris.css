@@ -7164,10 +7164,12 @@ h6 {
   transform: translate3d(-50%, -50%, 0);
 }
 
+.absolute-center-vertical,
 .self-center-vertical {
   transform: translateY(-50%);
 }
 
+.absolute-center-horizontal,
 .self-center-horizontal {
   transform: translateX(-50%);
 }
@@ -7176,6 +7178,16 @@ h6 {
   left: 50%;
   position: absolute;
   top: 50%;
+}
+
+.absolute-center-vertical {
+  position: absolute;
+  top: 50%;
+}
+
+.absolute-center-horizontal {
+  left: 50%;
+  position: absolute;
 }
 
 .bg-cover {
@@ -7188,6 +7200,10 @@ h6 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.object-fill {
+  object-fit: fill;
 }
 
 .object-contain {
