@@ -58,9 +58,6 @@ h6 {
   font-weight: 400 !important;
 }
 
-// @include utility-class-generator('text', 'font-weight', ('normal', 'bold', 'bolder', 'lighter'), ' !important', '', false, false);
-// @include utility-class-generator('font', 'font-weight', ('normal', 'bold', 'bolder', 'lighter'), ' !important', '', false, false);
-
 .text-medium,
 .font-medium {
   font-weight: 500 !important;
