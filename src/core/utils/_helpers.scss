@@ -57,7 +57,7 @@
 }
 
 
-@function reverse-map($map, $rm-unit: true) {
+@function reverse-map($map, $rm-unit: false) {
   $reverse-map: ();
 
   @each $key, $value in $map {
@@ -74,7 +74,7 @@
  * Turns a format of ('xxl': 1680px, 'xl': 1366px, 'lg': 1024px, 'md': 768px, 'sm': 420px) into a map of breakpoints: ("": (false, 419px), "sm": (420px, 767px), "md": (768px, 1023px), "lg": (1024px, 1365px), "xl": (1366px, 1679px), "xxl": (1680px, false))
  */
 @function breakpoints($map) {
-  $reverse-map: reverse-map($map, true);
+  $reverse-map: reverse-map($map);
   $values-list: map-keys($reverse-map);
   $sorted-values: bubble-sort($values-list);
   $breakpoints: ();
@@ -82,7 +82,7 @@
   $max: false;
   $sorted-values-length: length($sorted-values);
 
-  $breakpoints: map-merge($breakpoints, ('': (false, nth($sorted-values, 1) - 1 + px)));
+  $breakpoints: map-merge($breakpoints, ('': (false, nth($sorted-values, 1) - 1)));
 
   @for $i from 1 through $sorted-values-length {
     $sorted-key: nth($sorted-values, $i);
@@ -104,7 +104,7 @@
     @if $i == length($sorted-values) {
       $max: false;
     } @else {
-      $max: $next-value - 1 + px;
+      $max: $next-value - 1
     }
 
     @if not $min {
@@ -117,7 +117,7 @@
 
     $breakpoints: map-merge($breakpoints, ($key: ($min, $max)));
   }
-  
+  @debug $breakpoints;
   @return $breakpoints;
 }
 
