@@ -5,7 +5,7 @@
  * @return (number): e.g. `16`
  */
 @function rm-unit($value) {
-  @return div($value, 1);
+  @return div($value, ($value * 0 + 1));
 }
 
 /*
