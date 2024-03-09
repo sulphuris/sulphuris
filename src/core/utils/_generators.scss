@@ -427,63 +427,57 @@
 }
 /* stylelint-enable */
 
-@mixin typography-rules-generator($typography-rules-array) {
-  $font-size: null;
-  $letter-spacing: null;
-  $line-height: null;
-  $font-weight: null;
-  $text-transform: null;
-  $font-family: null;
+@mixin typography-rules-generator($font-size, $letter-spacing: null, $line-height: null, $font-weight: null, $text-transform: null, $font-family: null) {
 
-  @if type-of($typography-rules-array) == 'list' {
-    @if length($typography-rules-array) > 0 {
-      $font-size: nth($typography-rules-array, 1);
+  @if type-of($font-size) == 'list' {
+    @if length($font-size) > 1 {
+      $letter-spacing: nth($font-size, 2);
     }
   
-    @if length($typography-rules-array) > 1 {
-      $letter-spacing: nth($typography-rules-array, 2);
+    @if length($font-size) > 2 {
+      $line-height: nth($font-size, 3);
     }
   
-    @if length($typography-rules-array) > 2 {
-      $line-height: nth($typography-rules-array, 3);
+    @if length($font-size) > 3 {
+      $font-weight: nth($font-size, 4);
     }
   
-    @if length($typography-rules-array) > 3 {
-      $font-weight: nth($typography-rules-array, 4);
-    }
-  
-    @if length($typography-rules-array) > 4 {
-      $text-transform: nth($typography-rules-array, 5);
+    @if length($font-size) > 4 {
+      $text-transform: nth($font-size, 5);
     }
 
-    @if length($typography-rules-array) > 5 {
-      $font-family: nth($typography-rules-array, 6);
+    @if length($font-size) > 5 {
+      $font-family: nth($font-size, 6);
+    }
+
+    @if length($font-size) > 0 {
+      $font-size: nth($font-size, 1);
     }
   }
 
-  @if type-of($typography-rules-array) == 'map' {
-    @if map-has-key($typography-rules-array, font-size) {
-      $font-size: map-get($typography-rules-array, font-size);
+  @if type-of($font-size) == 'map' {
+    @if map-has-key($font-size, letter-spacing) {
+      $letter-spacing: map-get($font-size, letter-spacing);
     }
 
-    @if map-has-key($typography-rules-array, letter-spacing) {
-      $letter-spacing: map-get($typography-rules-array, letter-spacing);
+    @if map-has-key($font-size, line-height) {
+      $line-height: map-get($font-size, line-height);
     }
 
-    @if map-has-key($typography-rules-array, line-height) {
-      $line-height: map-get($typography-rules-array, line-height);
+    @if map-has-key($font-size, font-weight) {
+      $font-weight: map-get($font-size, font-weight);
     }
 
-    @if map-has-key($typography-rules-array, font-weight) {
-      $font-weight: map-get($typography-rules-array, font-weight);
+    @if map-has-key($font-size, text-transform) {
+      $text-transform: map-get($font-size, text-transform);
     }
 
-    @if map-has-key($typography-rules-array, text-transform) {
-      $text-transform: map-get($typography-rules-array, text-transform);
+    @if map-has-key($font-size, font-family) {
+      $font-family: map-get($font-size, font-family);
     }
 
-    @if map-has-key($typography-rules-array, font-family) {
-      $font-family: map-get($typography-rules-array, font-family);
+    @if map-has-key($font-size, font-size) {
+      $font-size: map-get($font-size, font-size);
     }
   }
 
