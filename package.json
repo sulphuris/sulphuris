@@ -15,11 +15,11 @@
     "framework",
     "web"
   ],
-  "author": "OTILITO <nikola@otilito.com> (https://otilito.com)",
+  "author": "Stamat <@stamat> (https://github.com/stamat)",
   "homepage": "http://sulphuris.github.io",
   "private": false,
   "devDependencies": {
-    "poops": "^1.0.1"
+    "poops": "^1.0.18"
   },
   "scripts": {
     "dev": "npx poops"
