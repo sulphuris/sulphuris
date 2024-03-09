@@ -73,7 +73,7 @@ I noticed that this aspect of the tria prima (three primes) is ambiguous and can
 
 But then if we look the tria prima from perspective of the web development front-end would represent the soul, back-end would represent the spirit and the database would represent the body. This means that one philosopher's stone can be made of many other philosopher's stones, and so on. Like a fractal. That's Alchemy.
 
-*Full Web Alchemist* :laughing:
+*~Fullstack Alchemist* :laughing:
 
 ## License
 
