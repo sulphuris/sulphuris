@@ -94,7 +94,6 @@
       $next-index: $sorted-values-length;
     }
     $next-value: nth($sorted-values, $next-index);
-    $next-key: map-get($reverse-map, $next-value);
 
     @if $i == 1 {
       $min: $value;
@@ -105,7 +104,7 @@
     @if $i == length($sorted-values) {
       $max: false;
     } @else {
-      $max: map-get($map, $next-key) - 1;
+      $max: $next-value - 1 + px;
     }
 
     @if not $min {
