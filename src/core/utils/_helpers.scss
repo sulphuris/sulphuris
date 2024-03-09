@@ -1,3 +1,5 @@
+@import 'converters';
+
 @function div($a, $b) {
   @return $a / $b;
 }
@@ -29,6 +31,95 @@
   }
 
   @return $string;
+}
+
+@function bubble-sort($list) {
+  $length: length($list);
+  $temp: null;
+
+  @for $i from 1 through $length {
+    @for $j from 1 through $length - $i {
+      @if $j == 0 {
+        $j: 1;
+      }
+      $a: nth($list, $j);
+      $b: nth($list, $j + 1);
+
+      @if $a > $b {
+        $temp: $a;
+        $list: set-nth($list, $j, $b);
+        $list: set-nth($list, $j + 1, $temp);
+      }
+    }
+  }
+
+  @return $list;
+}
+
+
+@function reverse-map($map, $rm-unit: true) {
+  $reverse-map: ();
+
+  @each $key, $value in $map {
+    @if $rm-unit {
+      $value: rm-unit($value);
+    }
+    $reverse-map: map-merge($reverse-map, ($value: $key));
+  }
+
+  @return $reverse-map;
+}
+
+/**
+ * Turns a format of ('xxl': 1680px, 'xl': 1366px, 'lg': 1024px, 'md': 768px, 'sm': 420px) into a map of breakpoints: ("": (false, 419px), "sm": (420px, 767px), "md": (768px, 1023px), "lg": (1024px, 1365px), "xl": (1366px, 1679px), "xxl": (1680px, false))
+ */
+@function breakpoints($map) {
+  $reverse-map: reverse-map($map, true);
+  $values-list: map-keys($reverse-map);
+  $sorted-values: bubble-sort($values-list);
+  $breakpoints: ();
+  $min: false;
+  $max: false;
+  $sorted-values-length: length($sorted-values);
+
+  $breakpoints: map-merge($breakpoints, ('': (false, nth($sorted-values, 1) - 1 + px)));
+
+  @for $i from 1 through $sorted-values-length {
+    $sorted-key: nth($sorted-values, $i);
+    $key: map-get($reverse-map, $sorted-key);
+    $value: map-get($map, $key);
+    
+    $next-index: $i + 1;
+    @if $next-index > $sorted-values-length {
+      $next-index: $sorted-values-length;
+    }
+    $next-value: nth($sorted-values, $next-index);
+    $next-key: map-get($reverse-map, $next-value);
+
+    @if $i == 1 {
+      $min: $value;
+    } @else {
+      $min: $value;
+    }
+
+    @if $i == length($sorted-values) {
+      $max: false;
+    } @else {
+      $max: map-get($map, $next-key) - 1;
+    }
+
+    @if not $min {
+      $min: false;
+    }
+
+    @if not $max {
+      $max: false;
+    }
+
+    $breakpoints: map-merge($breakpoints, ($key: ($min, $max)));
+  }
+  
+  @return $breakpoints;
 }
 
 @mixin selection($color: primary) {
