@@ -28,6 +28,29 @@
  *
  * (font-size, letter-spacing, line-height, font-weight, text-transform)
  */
+/*
+ * Removes unit from a provided value
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (number): e.g. `16`
+ */
+/*
+ * Converts PX to EM values
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1em`
+ */
+/*
+ * Converts PX to REM values (document root relative EM)
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1rem`
+ */
+/**
+ * Turns a format of ('xxl': 1680px, 'xl': 1366px, 'lg': 1024px, 'md': 768px, 'sm': 420px) into a map of breakpoints: ("": (false, 419px), "sm": (420px, 767px), "md": (768px, 1023px), "lg": (1024px, 1365px), "xl": (1366px, 1679px), "xxl": (1680px, false))
+ */
 /* stylelint-disable */
 /*
  * Removes unit from a provided value
@@ -84,6 +107,29 @@
  */
 /* stylelint-disable max-nesting-depth */
 /* stylelint-enable */
+/*
+ * Removes unit from a provided value
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (number): e.g. `16`
+ */
+/*
+ * Converts PX to EM values
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1em`
+ */
+/*
+ * Converts PX to REM values (document root relative EM)
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1rem`
+ */
+/**
+ * Turns a format of ('xxl': 1680px, 'xl': 1366px, 'lg': 1024px, 'md': 768px, 'sm': 420px) into a map of breakpoints: ("": (false, 419px), "sm": (420px, 767px), "md": (768px, 1023px), "lg": (1024px, 1365px), "xl": (1366px, 1679px), "xxl": (1680px, false))
+ */
 /* stylelint-disable */
 .border, .border-y, .border-x, .border-r, .border-l, .border-b, .border-t {
   border-color: currentcolor;
@@ -145,7 +191,7 @@
   border-width: 8px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .border-sm-2 {
     border-width: 2px;
   }
@@ -272,7 +318,7 @@
   border-bottom: 0;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .border-sm-0 {
     border: 0;
   }
@@ -1062,7 +1108,7 @@ button.reset,
   color: var(--color-lime-400);
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .text-sm-foreground {
     color: var(--color-foreground);
   }
@@ -3052,7 +3098,7 @@ button.reset,
   background-color: var(--color-lime-400);
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .bg-sm-foreground {
     background-color: var(--color-foreground);
   }
@@ -5038,7 +5084,7 @@ button.reset,
   border-color: var(--color-lime-400);
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .border-sm-foreground {
     border-color: var(--color-foreground);
   }
@@ -6852,7 +6898,7 @@ h6 {
   text-align: center;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .text-sm-left {
     text-align: left;
   }
@@ -6928,7 +6974,7 @@ h6 {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .text-sm-underline {
     text-decoration: underline;
   }
@@ -7018,7 +7064,7 @@ h6 {
   text-transform: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .text-sm-uppercase {
     text-transform: uppercase;
   }
@@ -7633,7 +7679,7 @@ template {
   width: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .col-sm-1 {
     width: 8.3333333333%;
   }
@@ -7919,7 +7965,7 @@ template {
   margin-right: 91.6666666667%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .col-offset-sm-0 {
     margin-left: 0%;
   }
@@ -8495,7 +8541,7 @@ template {
   display: inline-flex;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .d-sm-block {
     display: block;
   }
@@ -8641,7 +8687,7 @@ template {
   visibility: inherit;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .v-sm-hidden {
     visibility: hidden;
   }
@@ -8723,7 +8769,7 @@ template {
   overflow: auto;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .overflow-sm-hidden {
     overflow: hidden;
   }
@@ -8790,7 +8836,7 @@ template {
   overflow-x: auto;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .overflow-x-sm-hidden {
     overflow-x: hidden;
   }
@@ -8857,7 +8903,7 @@ template {
   overflow-y: auto;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .overflow-y-sm-hidden {
     overflow-y: hidden;
   }
@@ -9962,7 +10008,7 @@ template {
   margin-bottom: -64px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .m-sm-0 {
     margin: 0px;
   }
@@ -14597,7 +14643,7 @@ template {
   padding-bottom: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .p-sm-0 {
     padding: 0px;
   }
@@ -16987,7 +17033,7 @@ template {
   top: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .t-sm-0 {
     top: 0px;
   }
@@ -17377,7 +17423,7 @@ template {
   right: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .r-sm-0 {
     right: 0px;
   }
@@ -17767,7 +17813,7 @@ template {
   bottom: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .b-sm-0 {
     bottom: 0px;
   }
@@ -18157,7 +18203,7 @@ template {
   left: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .l-sm-0 {
     left: 0px;
   }
@@ -18523,7 +18569,7 @@ template {
   top: -64px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .t-sm--1 {
     top: -1px;
   }
@@ -18799,7 +18845,7 @@ template {
   right: -64px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .r-sm--1 {
     right: -1px;
   }
@@ -19075,7 +19121,7 @@ template {
   bottom: -64px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .b-sm--1 {
     bottom: -1px;
   }
@@ -19351,7 +19397,7 @@ template {
   left: -64px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .l-sm--1 {
     left: -1px;
   }
@@ -19603,7 +19649,7 @@ template {
   top: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .t-sm-5p {
     top: 5%;
   }
@@ -19765,7 +19811,7 @@ template {
   right: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .r-sm-5p {
     right: 5%;
   }
@@ -19927,7 +19973,7 @@ template {
   bottom: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .b-sm-5p {
     bottom: 5%;
   }
@@ -20089,7 +20135,7 @@ template {
   left: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .l-sm-5p {
     left: 5%;
   }
@@ -20251,7 +20297,7 @@ template {
   top: -100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .t-sm--5p {
     top: -5%;
   }
@@ -20413,7 +20459,7 @@ template {
   right: -100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .r-sm--5p {
     right: -5%;
   }
@@ -20575,7 +20621,7 @@ template {
   bottom: -100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .b-sm--5p {
     bottom: -5%;
   }
@@ -20737,7 +20783,7 @@ template {
   left: -100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .l-sm--5p {
     left: -5%;
   }
@@ -20887,7 +20933,7 @@ template {
   position: sticky;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .position-sm-static {
     position: static;
   }
@@ -21024,7 +21070,7 @@ template {
   z-index: 100;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .z-sm--1 {
     z-index: -1;
   }
@@ -21261,7 +21307,7 @@ template {
   width: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-sm-5p {
     width: 5%;
   }
@@ -21423,7 +21469,7 @@ template {
   height: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-sm-5p {
     height: 5%;
   }
@@ -21585,7 +21631,7 @@ template {
   width: 100vw;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-sm-5vw {
     width: 5vw;
   }
@@ -21747,7 +21793,7 @@ template {
   height: 100vh;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-sm-5vh {
     height: 5vh;
   }
@@ -21957,7 +22003,7 @@ template {
   width: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-sm-0 {
     width: 0px;
   }
@@ -22347,7 +22393,7 @@ template {
   height: 256px;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-sm-0 {
     height: 0px;
   }
@@ -22661,7 +22707,7 @@ template {
   width: auto;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-sm-auto {
     width: auto;
   }
@@ -22690,7 +22736,7 @@ template {
   height: auto;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-sm-auto {
     height: auto;
   }
@@ -22719,7 +22765,7 @@ template {
   max-width: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-max-sm-100p {
     max-width: 100%;
   }
@@ -22748,7 +22794,7 @@ template {
   max-height: 100%;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-max-sm-100p {
     max-height: 100%;
   }
@@ -22777,7 +22823,7 @@ template {
   max-width: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .w-max-sm-none {
     max-width: none;
   }
@@ -22806,7 +22852,7 @@ template {
   max-height: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .h-max-sm-none {
     max-height: none;
   }
@@ -22861,7 +22907,7 @@ template {
   flex-direction: column-reverse;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .flex-sm-row {
     flex-direction: row;
   }
@@ -22939,7 +22985,7 @@ template {
   flex-wrap: nowrap;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .flex-sm-wrap {
     flex-wrap: wrap;
   }
@@ -22987,7 +23033,7 @@ template {
   flex-grow: 1;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .flex-grow-sm-0 {
     flex-grow: 0;
   }
@@ -23035,7 +23081,7 @@ template {
   flex-shrink: 1;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .flex-shrink-sm-0 {
     flex-shrink: 0;
   }
@@ -23091,7 +23137,7 @@ template {
   align-items: flex-end;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .align-sm-normal {
     align-items: normal;
   }
@@ -23185,7 +23231,7 @@ template {
   justify-content: space-around;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .justify-sm-normal {
     justify-content: normal;
   }
@@ -23301,7 +23347,7 @@ template {
   align-self: end;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .align-self-sm-normal {
     align-self: normal;
   }
@@ -23387,7 +23433,7 @@ template {
   justify-self: end;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .justify-self-sm-normal {
     justify-self: normal;
   }
@@ -23475,7 +23521,7 @@ template {
   float: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .float-sm-left {
     float: left;
   }
@@ -23546,7 +23592,7 @@ template {
   clear: none;
 }
 
-@media only screen and (min-width: 421px) {
+@media only screen and (min-width: 420px) {
   .clear-sm-left {
     clear: left;
   }
