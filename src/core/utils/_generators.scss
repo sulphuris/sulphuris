@@ -433,25 +433,58 @@
   $line-height: null;
   $font-weight: null;
   $text-transform: null;
+  $font-family: null;
 
-  @if length($typography-rules-array) > 0 {
-    $font-size: nth($typography-rules-array, 1);
+  @if type-of($typography-rules-array) == 'list' {
+    @if length($typography-rules-array) > 0 {
+      $font-size: nth($typography-rules-array, 1);
+    }
+  
+    @if length($typography-rules-array) > 1 {
+      $letter-spacing: nth($typography-rules-array, 2);
+    }
+  
+    @if length($typography-rules-array) > 2 {
+      $line-height: nth($typography-rules-array, 3);
+    }
+  
+    @if length($typography-rules-array) > 3 {
+      $font-weight: nth($typography-rules-array, 4);
+    }
+  
+    @if length($typography-rules-array) > 4 {
+      $text-transform: nth($typography-rules-array, 5);
+    }
+
+    @if length($typography-rules-array) > 5 {
+      $font-family: nth($typography-rules-array, 6);
+    }
   }
 
-  @if length($typography-rules-array) > 1 {
-    $letter-spacing: nth($typography-rules-array, 2);
-  }
+  @if type-of($typography-rules-array) == 'map' {
+    @if map-has-key($typography-rules-array, font-size) {
+      $font-size: map-get($typography-rules-array, font-size);
+    }
 
-  @if length($typography-rules-array) > 2 {
-    $line-height: nth($typography-rules-array, 3);
-  }
+    @if map-has-key($typography-rules-array, letter-spacing) {
+      $letter-spacing: map-get($typography-rules-array, letter-spacing);
+    }
 
-  @if length($typography-rules-array) > 3 {
-    $font-weight: nth($typography-rules-array, 4);
-  }
+    @if map-has-key($typography-rules-array, line-height) {
+      $line-height: map-get($typography-rules-array, line-height);
+    }
 
-  @if length($typography-rules-array) > 4 {
-    $text-transform: nth($typography-rules-array, 5);
+    @if map-has-key($typography-rules-array, font-weight) {
+      $font-weight: map-get($typography-rules-array, font-weight);
+    }
+
+    @if map-has-key($typography-rules-array, text-transform) {
+      $text-transform: map-get($typography-rules-array, text-transform);
+    }
+
+    @if map-has-key($typography-rules-array, font-family) {
+      $font-family: map-get($typography-rules-array, font-family);
+    }
   }
 
   @if $font-size {
@@ -472,6 +505,10 @@
 
   @if $text-transform {
     text-transform: $text-transform;
+  }
+
+  @if $font-family {
+    font-family: $font-family;
   }
 }
 
