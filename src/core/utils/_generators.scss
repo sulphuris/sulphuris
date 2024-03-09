@@ -515,29 +515,29 @@
 @mixin typography-generator($map) {
   @each $key, $value in $map {
     #{$key} {
-      @if type-of($value) == 'map'
-        and map-has-key($value, mobile)
-        and map-has-key($value, desktop) {
-        $mobile: map-get($value, mobile);
-        $desktop: map-get($value, desktop);
+      @if type-of($value) == 'map' 
+      and not map-has-key($value, font-size) {
+        @if map-has-key($value, mobile) or map-has-key($value, base) {
+          @include typography-rules-generator(map-get($value, mobile));
+        }
 
-        @include typography-rules-generator($mobile);
-
-        @include breakpoint($container-breakpoint) {
-          @include typography-rules-generator($desktop);
+        @each $b-name, $b-value in $breakpoints {
+          @if $b-name == $container-breakpoint and map-has-key($value, desktop) {
+            @include breakpoint($b-name) {
+              @include typography-rules-generator(map-get($value, desktop));
+            }
+          } 
+          @else {
+            @if map-has-key($value, $b-name) {
+              @include breakpoint($b-name) {
+                @include typography-rules-generator(map-get($value, $b-name));
+              }
+            }
+          }
         }
       }
-
       @else {
-        @if type-of($value) == 'map'
-          and map-has-key($value, desktop) {
-          $desktop: map-get($value, desktop);
-          @include typography-rules-generator($desktop);
-        }
-
-        @else {
-          @include typography-rules-generator($value);
-        }
+        @include typography-rules-generator($value);
       }
     }
   }
