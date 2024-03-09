@@ -537,7 +537,7 @@
   }
 }
 
-@function get-transiton-fn($easing) {
+@function get-transition-fn($easing) {
   @if map-has-key($custom-easings, $easing) {
     $easing: map-get($custom-easings, $easing);
   }
@@ -562,7 +562,7 @@
       @if type-of($easings) == 'list' {
         $easing: nth($easings, $i);
       }
-      $easing: get-transiton-fn($easing);
+      $easing: get-transition-fn($easing);
 
       $comma: ',';
       @if $i == $properties-ln {
@@ -573,7 +573,7 @@
     }
   }
   @else {
-    $easings: get-transiton-fn($easings);
+    $easings: get-transition-fn($easings);
     $transition: '#{$properties} #{$durations} #{$easings}';
   }
 
