@@ -117,7 +117,7 @@
 
     $breakpoints: map-merge($breakpoints, ($key: ($min, $max)));
   }
-  @debug $breakpoints;
+
   @return $breakpoints;
 }
 
