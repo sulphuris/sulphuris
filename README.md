@@ -44,15 +44,15 @@ The build process is powered by [Poops](https://github.com/stamat/poops), a simp
 
 Don't forget to `npm install` and have `Node 14+`!
 
-Build and watch, builds also minified version
-
 ```bash
 $ npm run dev
 ```
 
+This command will start a local development server. It will also watch for the changes and rebuild the project when necessary.
+
 ## 📝 Contributing
 
-If you have any ideas on how to improve Sulphuris, feel free to open an issue or a pull request. If you're not sure how to do that, check out the [contributing guidelines](CONTRIBUTING.md).
+If you have any ideas on how to improve Sulphuris, feel free to open an issue or a pull request. We're always looking for new contributors to help us make this project better.
 
 ### ToDo:
 * [ ] Inline links
