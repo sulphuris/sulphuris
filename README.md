@@ -10,6 +10,14 @@ An adaptable CSS utility library
 
 It achieves this by having a single `_config.scss` file as a source of truth. These variables are then used by generators to generate almost all of the utility classes. This makes it easy to extend and customize the library to suit your needs.
 
+### Highlights
+
+* **Themes** - separated from the rest of the code to enable quick and easy extension.
+* **Less !important usage** - abstaining from `!important` usage as much as possible.
+* **Spacing size classes in pixels** - e.g. `.pt-32` results in `padding-top: 32px;`, and `.pt--32` results in `padding-top: -32px;`. **Note:** this might not be smart cause reusability of html like components, revise.
+* **XXL screen breakpoint** -  from 1680px.
+* **REM units** - only for font sizes. **Note:** not sure if this was smart... revise
+
 ## 🚀 Getting Started
 
 ### Install
@@ -27,14 +35,6 @@ In your main SCSS file, import Sulphuris:
 ```
 
 Be sure to include the `node_modules` directory in your `sass` include paths. This is usually done in your build tool configuration.
-
-### Highlights
-
-* **Themes** - separated from the rest of the code to enable quick and easy extension.
-* **Less !important usage** - abstaining from `!important` usage as much as possible.
-* **Spacing size classes in pixels** - e.g. `.pt-32` results in `padding-top: 32px;`, and `.pt--32` results in `padding-top: -32px;`. **Note:** this might not be smart cause reusability of html like components, revise.
-* **XXL screen breakpoint** -  from 1680px.
-* **REM units** - only for font sizes. **Note:** not sure if this was smart... revise
 
 ## 💻 Local Development
 
@@ -55,6 +55,7 @@ This command will start a local development server. It will also watch for the c
 If you have any ideas on how to improve Sulphuris, feel free to open an issue or a pull request. We're always looking for new contributors to help us make this project better.
 
 ### ToDo:
+* [ ] Optional numerical utilities like bootstrap or primer
 * [ ] Inline links
 * [ ] Animations and transitions
 * [ ] Forms
