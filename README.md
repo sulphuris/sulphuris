@@ -55,6 +55,7 @@ This command will start a local development server. It will also watch for the c
 If you have any ideas on how to improve Sulphuris, feel free to open an issue or a pull request. We're always looking for new contributors to help us make this project better.
 
 ### ToDo:
+* [ ] Sort out the resets, they need to be reactive to margin and padding utilities (and other utilities)
 * [ ] Optional numerical utilities like bootstrap or primer
 * [ ] Inline links
 * [ ] Animations and transitions
