@@ -76,7 +76,10 @@
 @function breakpoints($map) {
   $reverse-map: reverse-map($map);
   $values-list: map-keys($reverse-map);
-  $sorted-values: bubble-sort($values-list);
+  $sorted-values: $values-list;
+  @if length($values-list) > 1 {
+    $sorted-values: bubble-sort($values-list);
+  }
   $breakpoints: ();
   $min: false;
   $max: false;
