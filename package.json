@@ -1,7 +1,7 @@
 {
   "name": "sulphuris",
   "description": "A CSS utility framework that adapts to your needs.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "style": "dist/sulphuris.css",
   "sass": "src/scss/index.scss",
