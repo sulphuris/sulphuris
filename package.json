@@ -1,19 +1,22 @@
 {
   "name": "sulphuris",
-  "description": "A CSS utility framework that adapts to your needs.",
+  "description": "An adaptable CSS utility library",
   "version": "1.0.8",
   "license": "MIT",
   "style": "dist/sulphuris.css",
-  "sass": "src/scss/index.scss",
-  "main": "src/scss/index.scss",
+  "sass": "src/index.scss",
+  "main": "src/index.scss",
   "repository": "https://github.com/sulphuris/sulphuris.git",
   "keywords": [
     "css",
+    "utility",
+    "utility-classes",
     "sass",
+    "scss",
+    "adaptive",
     "responsive",
-    "front-end",
-    "framework",
-    "web"
+    "grid-system",
+    "nested-grid"
   ],
   "author": "Stamat <@stamat> (https://github.com/stamat)",
   "homepage": "http://sulphuris.github.io",
