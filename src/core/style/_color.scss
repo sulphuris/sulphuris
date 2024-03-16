@@ -15,6 +15,14 @@ $colors: generate-color-palettes($colors, $palettes);
   color: transparent;
 }
 
+.text-color-inherit {
+  color: inherit;
+}
+
+.text-color-current {
+  color: currentColor;
+}
+
 @include utility-class-generator((
   prefix: 'bg',
   property: 'background-color',
