@@ -2682,6 +2682,14 @@ button.reset,
   color: transparent;
 }
 
+.text-color-inherit {
+  color: inherit;
+}
+
+.text-color-current {
+  color: currentColor;
+}
+
 .bg-foreground {
   background-color: var(--color-foreground);
 }
