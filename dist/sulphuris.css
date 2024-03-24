@@ -7198,7 +7198,7 @@ h6 {
 }
 
 @media screen and (prefers-reduced-motion: no-preference) {
-  html {
+  * {
     scroll-behavior: smooth;
   }
 }
