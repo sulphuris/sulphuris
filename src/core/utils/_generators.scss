@@ -175,15 +175,17 @@
 
   @if $condition == '' or $condition == $property {
     @each $o-name, $o-values in $orientations {
-      .#{$gen-pref}#{$o-name}#{$b-name}-#{$key}#{$suff}#{$alias} {
-        @if $var {
-          @if type-of($var) == 'string' {
-            #{$property}-#{$o-name}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}));
+      .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
+        @each $o-value in $o-values {
+          @if $var {
+            @if type-of($var) == 'string' {
+              #{$property}-#{$o-value}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}));
+            } @else {
+              #{$property}-#{$o-value}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}));
+            }
           } @else {
-            #{$property}-#{$o-name}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}));
+            #{$property}-#{$o-value}: #{$value}#{$unit};
           }
-        } @else {
-          #{$property}-#{$o-name}: #{$value}#{$unit};
         }
       }
     }
