@@ -3,11 +3,9 @@ $dimension_sizes: $sizes;
 @for $i from 1 through length($percent-sizes) {
   $value: nth($percent-sizes, $i);
   $dimension_sizes: append($dimension_sizes, (value: $value, unit: '%', suffix: 'p'));
-  // $dimension_sizes: append($dimension_sizes, (value: $value, unit: 'vw', suffix: 'vw'));
+  $dimension_sizes: append($dimension_sizes, (value: $value, unit: 'vw', suffix: 'vw', condition: 'width'));
+  $dimension_sizes: append($dimension_sizes, (value: $value, unit: 'vh', suffix: 'vh', condition: 'height'));
 }
-
-@include utility-class-generator('w', 'width', $percent-sizes, 'vw', 'vw');
-@include utility-class-generator('h', 'height', $percent-sizes, 'vh', 'vh');
 
 $dimension_sizes: append($dimension_sizes, 'auto');
 $dimension_sizes: append($dimension_sizes, 'inherit');
