@@ -2,7 +2,6 @@
 
 # Sulphuris
 [![npm version](https://img.shields.io/npm/v/sulphuris)](https://www.npmjs.com/package/sulphuris)
-[![CSS gzip size](https://img.badgesize.io/sulphuris/sulphuris/main/dist/sulphuris.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/sulphuris/sulphuris/blob/main/dist/sulphuris.min.css)
 
 An adaptable CSS utility library
 
