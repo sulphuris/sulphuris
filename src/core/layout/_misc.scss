@@ -16,11 +16,16 @@
   display: none !important;
 }
 
+.absolute-cover,
 .cover {
   height: 100%;
   left: 0;
   top: 0;
   width: 100%;
+}
+
+.absolute-cover {
+  position: absolute;
 }
 
 .absolute-center,
