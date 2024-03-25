@@ -75,6 +75,7 @@
 
 @mixin generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
   $alias: '';
+  $condition: ''; // if property is not the same as condition, it will be ignored
   $unit-copy: null;
 
   @if type-of($value) == 'map' {
@@ -91,6 +92,9 @@
     @if map-has-key($value, 'unit') {
       $unit: map-get($value, 'unit');
       $unit-copy: map-get($value, 'unit');
+    }
+    @if map-has-key($value, 'condition') {
+      $condition: map-get($value, 'condition');
     }
     $value: map-get($value, 'value');
   }
@@ -111,21 +115,24 @@
   }
   $key: '' + $key; // cause values create dart-sass warns
 
-  .#{$gen-pref}#{$b-name}-#{$key}#{$suff}#{$alias} {
-    @if $var {
-      @if type-of($var) == 'string' {
-        #{$property}: var(--#{$var}-#{$key}#{$suff});
+  @if $condition == '' or $condition == $property {
+    .#{$gen-pref}#{$b-name}-#{$key}#{$suff}#{$alias} {
+      @if $var {
+        @if type-of($var) == 'string' {
+          #{$property}: var(--#{$var}-#{$key}#{$suff});
+        } @else {
+          #{$property}: var(--#{$property}-#{$key}#{$suff});
+        }
       } @else {
-        #{$property}: var(--#{$property}-#{$key}#{$suff});
+        #{$property}: #{$value}#{$unit};
       }
-    } @else {
-      #{$property}: #{$value}#{$unit};
     }
   }
 }
 
 @mixin orientated-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var: false) {
   $alias: '';
+  $condition: ''; // if property is not the same as condition, it will be ignored
   $unit-copy: null;
   $suff-copy: null;
 
@@ -143,6 +150,9 @@
     @if map-has-key($value, 'unit') {
       $unit: map-get($value, 'unit');
       $unit-copy: map-get($value, 'unit');
+    }
+    @if map-has-key($value, 'condition') {
+      $condition: map-get($value, 'condition');
     }
     $value: map-get($value, 'value');
   }
@@ -163,17 +173,17 @@
   }
   $key: '' + $key; // cause values create dart-sass warns
 
-  @each $o-name, $o-values in $orientations {
-    .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
-      @each $o-value in $o-values {
+  @if $condition == '' or $condition == $property {
+    @each $o-name, $o-values in $orientations {
+      .#{$gen-pref}#{$o-name}#{$b-name}-#{$key}#{$suff}#{$alias} {
         @if $var {
           @if type-of($var) == 'string' {
-            #{$property}-#{$o-value}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}));
+            #{$property}-#{$o-name}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}));
           } @else {
-            #{$property}-#{$o-value}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}));
+            #{$property}-#{$o-name}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}));
           }
         } @else {
-          #{$property}-#{$o-value}: #{$value}#{$unit};
+          #{$property}-#{$o-name}: #{$value}#{$unit};
         }
       }
     }
