@@ -16,6 +16,8 @@
   display: none !important;
 }
 
+
+// TODO: v1.1.0 check if having absolute- classes is necessary, maybe .self-center .position-absolute? Is it worth it?
 .absolute-cover,
 .cover {
   height: 100%;
