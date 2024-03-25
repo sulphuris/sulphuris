@@ -2,7 +2,8 @@
 @include utility-class-generator('flex', 'flex-wrap', ('wrap', 'nowrap'));
 @include utility-class-generator('flex-grow', 'flex-grow', (0, 1));
 @include utility-class-generator('flex-shrink', 'flex-shrink', (0, 1));
-@include utility-class-generator('align', 'align-items', ('normal', 'center', 'flex-start', 'flex-end', 'stretch'));
-@include utility-class-generator('justify', 'justify-content', ('normal', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around'));
+// TODO: Prefer 'end' and 'start' over 'flex-end' and 'flex-start' in v1.1.0
+@include utility-class-generator('align', 'align-items', ('normal', 'center', 'flex-start', 'flex-end', 'end', 'start', 'stretch'));
+@include utility-class-generator('justify', 'justify-content', ('normal', 'center', 'flex-start', 'flex-end', 'end', 'start', 'space-between', 'space-around'));
 @include utility-class-generator('align-self', 'align-self', ('normal', 'center', 'start', 'end', 'stretch'));
 @include utility-class-generator('justify-self', 'justify-self', ('normal', 'center', 'start', 'end', 'stretch'));
