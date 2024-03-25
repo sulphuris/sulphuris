@@ -12,15 +12,15 @@
   @return var(--color-#{$color}, $color);
 }
 
-@function color-mode($mode) {
-  @if map-has-key($color-modes, $mode) {
+@function color-mode($mode: '') {
+  @if $mode != '' and map-has-key($color-modes, $mode) {
     @return map-get(map-get($color-modes, $mode), 'colors');
   }
 
   @return $colors;
 }
 
-@function get-color($color, $mode) {
+@function get-color($color, $mode: '') {
   @return map-get(color-mode($mode), $color);
 }
 
