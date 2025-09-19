@@ -107,30 +107,6 @@
  */
 /* stylelint-disable max-nesting-depth */
 /* stylelint-enable */
-/*
- * Removes unit from a provided value
- *
- * @param $value (string): e.g. `16px`
- * @return (number): e.g. `16`
- */
-/*
- * Converts PX to EM values
- * @see utils/_config.scss for $base-font-size
- *
- * @param $value (string): e.g. `16px`
- * @return (string): e.g. `1em`
- */
-/*
- * Converts PX to REM values (document root relative EM)
- * @see utils/_config.scss for $base-font-size
- *
- * @param $value (string): e.g. `16px`
- * @return (string): e.g. `1rem`
- */
-/**
- * Turns a format of ('xxl': 1680px, 'xl': 1366px, 'lg': 1024px, 'md': 768px, 'sm': 420px) into a map of breakpoints: ("": (false, 419px), "sm": (420px, 767px), "md": (768px, 1023px), "lg": (1024px, 1365px), "xl": (1366px, 1679px), "xxl": (1680px, false))
- */
-/* stylelint-disable */
 .border, .border-y, .border-x, .border-r, .border-l, .border-b, .border-t {
   border-color: currentcolor;
   border-style: solid;
