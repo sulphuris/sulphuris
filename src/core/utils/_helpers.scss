@@ -1,11 +1,15 @@
-@import 'converters';
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
+@use 'converters';
 
 @function div($a, $b) {
-  @return $a / $b;
+  @return math.div($a, $b);
 }
 
 @function color($color) {
-  @if map-has-key($colors, $color) {
+  @if map.has-key($colors, $color) {
     @return var(--color-#{$color});
   }
 
@@ -13,40 +17,40 @@
 }
 
 @function color-mode($mode: '') {
-  @if $mode != '' and map-has-key($color-modes, $mode) {
-    @return map-get(map-get($color-modes, $mode), 'colors');
+  @if $mode != '' and map.has-key($color-modes, $mode) {
+    @return map.get(map.get($color-modes, $mode), 'colors');
   }
 
   @return $colors;
 }
 
 @function get-color($color, $mode: '') {
-  @return map-get(color-mode($mode), $color);
+  @return map.get(color-mode($mode), $color);
 }
 
 @function trim-end($haystack, $needle) {
   @if ends-with($haystack, $needle) {
-    @return str-slice($haystack, 1, -(str-length($needle) + 1));
+    @return string.slice($haystack, 1, -(string.length($needle) + 1));
   }
   @return $haystack;
 }
 
 @function ends-with($haystack, $needle) {
-  @return str-slice($haystack, str-length($haystack) - str-length($needle) + 1) == $needle;
+  @return string.slice($haystack, string.length($haystack) - string.length($needle) + 1) == $needle;
 }
 
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
 
   @return $string;
 }
 
 @function bubble-sort($list) {
-  $length: length($list);
+  $length: list.length($list);
   $temp: null;
 
   @for $i from 1 through $length {
@@ -54,13 +58,13 @@
       @if $j == 0 {
         $j: 1;
       }
-      $a: nth($list, $j);
-      $b: nth($list, $j + 1);
+      $a: list.nth($list, $j);
+      $b: list.nth($list, $j + 1);
 
       @if $a > $b {
         $temp: $a;
-        $list: set-nth($list, $j, $b);
-        $list: set-nth($list, $j + 1, $temp);
+        $list: list.set-nth($list, $j, $b);
+        $list: list.set-nth($list, $j + 1, $temp);
       }
     }
   }
@@ -74,9 +78,9 @@
 
   @each $key, $value in $map {
     @if $rm-unit {
-      $value: rm-unit($value);
+      $value: converters.rm-unit($value);
     }
-    $reverse-map: map-merge($reverse-map, ($value: $key));
+    $reverse-map: map.merge($reverse-map, ($value: $key));
   }
 
   @return $reverse-map;
@@ -87,28 +91,28 @@
  */
 @function breakpoints($map) {
   $reverse-map: reverse-map($map);
-  $values-list: map-keys($reverse-map);
+  $values-list: map.keys($reverse-map);
   $sorted-values: $values-list;
-  @if length($values-list) > 1 {
+  @if list.length($values-list) > 1 {
     $sorted-values: bubble-sort($values-list);
   }
   $breakpoints: ();
   $min: false;
   $max: false;
-  $sorted-values-length: length($sorted-values);
+  $sorted-values-length: list.length($sorted-values);
 
-  $breakpoints: map-merge($breakpoints, ('': (false, nth($sorted-values, 1) - 1)));
+  $breakpoints: map.merge($breakpoints, ('': (false, list.nth($sorted-values, 1) - 1)));
 
   @for $i from 1 through $sorted-values-length {
-    $sorted-key: nth($sorted-values, $i);
-    $key: map-get($reverse-map, $sorted-key);
-    $value: map-get($map, $key);
+    $sorted-key: list.nth($sorted-values, $i);
+    $key: map.get($reverse-map, $sorted-key);
+    $value: map.get($map, $key);
     
     $next-index: $i + 1;
     @if $next-index > $sorted-values-length {
       $next-index: $sorted-values-length;
     }
-    $next-value: nth($sorted-values, $next-index);
+    $next-value: list.nth($sorted-values, $next-index);
 
     @if $i == 1 {
       $min: $value;
@@ -116,7 +120,7 @@
       $min: $value;
     }
 
-    @if $i == length($sorted-values) {
+    @if $i == list.length($sorted-values) {
       $max: false;
     } @else {
       $max: $next-value - 1
@@ -130,7 +134,7 @@
       $max: false;
     }
 
-    $breakpoints: map-merge($breakpoints, ($key: ($min, $max)));
+    $breakpoints: map.merge($breakpoints, ($key: ($min, $max)));
   }
 
   @return $breakpoints;

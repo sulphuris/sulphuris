@@ -1,6 +1,8 @@
-$margin-sizes: append($sizes, 'auto');
+@use 'sass:list';
+
+$margin-sizes: list.append($sizes, 'auto');
 @if $negative-sizes {
-  $margin-sizes: join($margin-sizes, $negative-sizes);
+  $margin-sizes: list.join($margin-sizes, $negative-sizes);
 }
 
 @include utility-class-generator((

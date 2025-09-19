@@ -1,8 +1,14 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:meta';
+@use 'sass:color';
+
 @if $breakpoints == null {
   @warn '🜍 Undefined breakpoints! Please check your `_config.scss`.';
 } 
 @else {
-  @if not map-has-key($breakpoints, '') {
+  @if not map.has-key($breakpoints, '') {
     $breakpoints: breakpoints($breakpoints);
   }
 }
@@ -19,17 +25,17 @@
  */
 @function generate-breakpoint($size, $explicit: false) {
   $query: 'only screen';
-  $breakpoint: map-get($breakpoints, $size);
+  $breakpoint: map.get($breakpoints, $size);
 
   @if $breakpoint != null {
-    @if nth($breakpoint, 1) {
-      $query: '#{$query} and (min-width: #{nth($breakpoint, 1)})';
+    @if list.nth($breakpoint, 1) {
+      $query: '#{$query} and (min-width: #{list.nth($breakpoint, 1)})';
     }
 
     @if $explicit {
       /* stylelint-disable-next-line max-nesting-depth */
-      @if nth($breakpoint, 2) {
-        $query: '#{$query} and (max-width: #{nth($breakpoint, 2)})';
+      @if list.nth($breakpoint, 2) {
+        $query: '#{$query} and (max-width: #{list.nth($breakpoint, 2)})';
       }
     }
   }
@@ -78,28 +84,28 @@
   $condition: ''; // if property is not the same as condition, it will be ignored
   $unit-copy: null;
 
-  @if type-of($value) == 'map' {
-    @if map-has-key($value, 'prefix') {
-      $pref: map-get($value, 'prefix');
+  @if meta.type-of($value) == 'map' {
+    @if map.has-key($value, 'prefix') {
+      $pref: map.get($value, 'prefix');
     }
-    @if map-has-key($value, 'suffix') {
-      $suff: map-get($value, 'suffix');
+    @if map.has-key($value, 'suffix') {
+      $suff: map.get($value, 'suffix');
     }
-    @if map-has-key($value, 'alias') {
-      $alias: map-get($value, 'alias');
+    @if map.has-key($value, 'alias') {
+      $alias: map.get($value, 'alias');
       $alias: ', .' + $alias;
     }
-    @if map-has-key($value, 'unit') {
-      $unit: map-get($value, 'unit');
-      $unit-copy: map-get($value, 'unit');
+    @if map.has-key($value, 'unit') {
+      $unit: map.get($value, 'unit');
+      $unit-copy: map.get($value, 'unit');
     }
-    @if map-has-key($value, 'condition') {
-      $condition: map-get($value, 'condition');
+    @if map.has-key($value, 'condition') {
+      $condition: map.get($value, 'condition');
     }
-    $value: map-get($value, 'value');
+    $value: map.get($value, 'value');
   }
 
-  @if type-of($value) == 'string' {
+  @if meta.type-of($value) == 'string' {
     @if $unit-copy == null {
       $unit: '';
     }
@@ -110,15 +116,15 @@
     $b-name: -#{$b-name};
   }
 
-  @if type-of($key) == 'map' {
-    $key: map-get($key, 'value');
+  @if meta.type-of($key) == 'map' {
+    $key: map.get($key, 'value');
   }
   $key: '' + $key; // cause values create dart-sass warns
 
   @if $condition == '' or $condition == $property {
     .#{$gen-pref}#{$b-name}-#{$key}#{$suff}#{$alias} {
       @if $var {
-        @if type-of($var) == 'string' {
+        @if meta.type-of($var) == 'string' {
           #{$property}: var(--#{$var}-#{$key}#{$suff});
         } @else {
           #{$property}: var(--#{$property}-#{$key}#{$suff});
@@ -136,28 +142,28 @@
   $unit-copy: null;
   $suff-copy: null;
 
-  @if type-of($value) == 'map' {
-    @if map-has-key($value, 'prefix') {
-      $pref: map-get($value, 'prefix');
+  @if meta.type-of($value) == 'map' {
+    @if map.has-key($value, 'prefix') {
+      $pref: map.get($value, 'prefix');
     }
-    @if map-has-key($value, 'suffix') {
-      $suff: map-get($value, 'suffix');
+    @if map.has-key($value, 'suffix') {
+      $suff: map.get($value, 'suffix');
     }
-    @if map-has-key($value, 'alias') {
-      $alias: map-get($value, 'alias');
+    @if map.has-key($value, 'alias') {
+      $alias: map.get($value, 'alias');
       $alias: ', .' + $alias;
     }
-    @if map-has-key($value, 'unit') {
-      $unit: map-get($value, 'unit');
-      $unit-copy: map-get($value, 'unit');
+    @if map.has-key($value, 'unit') {
+      $unit: map.get($value, 'unit');
+      $unit-copy: map.get($value, 'unit');
     }
-    @if map-has-key($value, 'condition') {
-      $condition: map-get($value, 'condition');
+    @if map.has-key($value, 'condition') {
+      $condition: map.get($value, 'condition');
     }
-    $value: map-get($value, 'value');
+    $value: map.get($value, 'value');
   }
 
-  @if type-of($value) == 'string' {
+  @if meta.type-of($value) == 'string' {
     @if $unit-copy == null {
       $unit: '';
     }
@@ -168,8 +174,8 @@
     $b-name: -#{$b-name};
   }
 
-  @if type-of($key) == 'map' {
-    $key: map-get($key, 'value');
+  @if meta.type-of($key) == 'map' {
+    $key: map.get($key, 'value');
   }
   $key: '' + $key; // cause values create dart-sass warns
 
@@ -178,7 +184,7 @@
       .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
         @each $o-value in $o-values {
           @if $var {
-            @if type-of($var) == 'string' {
+            @if meta.type-of($var) == 'string' {
               #{$property}-#{$o-value}: var(--#{$var}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$var}-#{$key}#{$suff}));
             } @else {
               #{$property}-#{$o-value}: var(--#{$property}-#{$o-name}#{$b-name}-#{$key}#{$suff}, var(--#{$property}-#{$key}#{$suff}));
@@ -202,7 +208,7 @@
   $orientations: false,
   $var: false) {
 
-  @if type-of($values) == 'map' {
+  @if meta.type-of($values) == 'map' {
     @each $key, $value in $values {
       @include generic-utility-class-generator($pref, $property, $b-name, $key, $value, $unit, $suff, $var);
 
@@ -246,35 +252,35 @@
   $responsive: true,
   $var: false ) {
 
-  @if type-of($pref) == 'map' {
-    $property: map-get($pref, 'property');
-    $values: map-get($pref, 'values');
-    @if map-has-key($pref, 'unit') {
-      $unit: map-get($pref, 'unit');
+  @if meta.type-of($pref) == 'map' {
+    $property: map.get($pref, 'property');
+    $values: map.get($pref, 'values');
+    @if map.has-key($pref, 'unit') {
+      $unit: map.get($pref, 'unit');
     } @else {
       $unit: '';
     }
-    @if map-has-key($pref, 'suffix') {
-      $suff: map-get($pref, 'suffix');
+    @if map.has-key($pref, 'suffix') {
+      $suff: map.get($pref, 'suffix');
     } @else {
       $suff: '';
     }
-    @if map-has-key($pref, 'orientations') {
-      $orientations: map-get($pref, 'orientations');
+    @if map.has-key($pref, 'orientations') {
+      $orientations: map.get($pref, 'orientations');
     } @else {
       $orientations: false;
     }
-    @if map-has-key($pref, 'responsive') {
-      $responsive: map-get($pref, 'responsive');
+    @if map.has-key($pref, 'responsive') {
+      $responsive: map.get($pref, 'responsive');
     } @else {
       $responsive: true;
     }
-    @if map-has-key($pref, 'variable') {
-      $var: map-get($pref, 'variable');
+    @if map.has-key($pref, 'variable') {
+      $var: map.get($pref, 'variable');
     } @else {
       $var: false;
     }
-    $pref: map-get($pref, 'prefix'); 
+    $pref: map.get($pref, 'prefix'); 
   }
 
   @include generic-and-orientated-utility-class-generator($pref, $property, null, $values, $unit, $suff, $orientations, $var);
@@ -294,25 +300,25 @@
 @function color-palette-generator($color-map, $color-name, $color-value, $mod: 10%) {
   $grade: 500;
   $combined-name: #{$color-name}-#{$grade};
-  $color-map: map-merge($color-map, ($combined-name: $color-value));
+  $color-map: map.merge($color-map, ($combined-name: $color-value));
 
   @for $i from 1 through 4 {
     $count: 5 + $i;
     $grade: $count * 100;
     $percentage: $i * $mod * 2;
     $combined-name: #{$color-name}-#{$grade};
-    $color-lightened: mix(#000000, $color-value, $percentage);
+    $color-lightened: color.mix(#000000, $color-value, $percentage);
 
-    $color-map: map-merge($color-map, ($combined-name: $color-lightened));
+    $color-map: map.merge($color-map, ($combined-name: $color-lightened));
   }
 
   @for $i from 1 through 4 {
     $grade: $i * 100;
     $percentage: $i * $mod * 2;
     $combined-name: #{$color-name}-#{$grade};
-    $color-lightened: mix($color-value, #ffffff, $percentage);
+    $color-lightened: color.mix($color-value, #ffffff, $percentage);
 
-    $color-map: map-merge($color-map, ($combined-name: $color-lightened));
+    $color-map: map.merge($color-map, ($combined-name: $color-lightened));
   }
 
   @return $color-map;
@@ -324,10 +330,10 @@
   }
   
   @each $name, $value in $palette-map {
-    @if type-of($value) == 'color' {
+    @if meta.type-of($value) == 'color' {
       $color-map: color-palette-generator($color-map, $name, $value);
     } @else {
-      $color-map: color-palette-generator($color-map, $name, nth($value, 1), nth($value, 2));
+      $color-map: color-palette-generator($color-map, $name, list.nth($value, 1), list.nth($value, 2));
     }
   }
 
@@ -373,7 +379,7 @@
 
   @each $b-name, $b-value in $breakpoints {
     @if $b-name == '' {
-      $value: nth($b-value, 2);
+      $value: list.nth($b-value, 2);
     }
   }
 
@@ -384,8 +390,8 @@
   $value: 0;
 
   @each $b-name, $b-value in $breakpoints {
-    @if nth($b-value, 2) == false {
-      $value: nth($b-value, 1);
+    @if list.nth($b-value, 2) == false {
+      $value: list.nth($b-value, 1);
     }
   }
 
@@ -449,55 +455,55 @@
 
 @mixin typography-rules-generator($font-size, $letter-spacing: null, $line-height: null, $font-weight: null, $text-transform: null, $font-family: null) {
 
-  @if type-of($font-size) == 'list' {
-    @if length($font-size) > 1 {
-      $letter-spacing: nth($font-size, 2);
+  @if meta.type-of($font-size) == 'list' {
+    @if list.length($font-size) > 1 {
+      $letter-spacing: list.nth($font-size, 2);
     }
   
-    @if length($font-size) > 2 {
-      $line-height: nth($font-size, 3);
+    @if list.length($font-size) > 2 {
+      $line-height: list.nth($font-size, 3);
     }
   
-    @if length($font-size) > 3 {
-      $font-weight: nth($font-size, 4);
+    @if list.length($font-size) > 3 {
+      $font-weight: list.nth($font-size, 4);
     }
   
-    @if length($font-size) > 4 {
-      $text-transform: nth($font-size, 5);
+    @if list.length($font-size) > 4 {
+      $text-transform: list.nth($font-size, 5);
     }
 
-    @if length($font-size) > 5 {
-      $font-family: nth($font-size, 6);
+    @if list.length($font-size) > 5 {
+      $font-family: list.nth($font-size, 6);
     }
 
-    @if length($font-size) > 0 {
-      $font-size: nth($font-size, 1);
+    @if list.length($font-size) > 0 {
+      $font-size: list.nth($font-size, 1);
     }
   }
 
-  @if type-of($font-size) == 'map' {
-    @if map-has-key($font-size, letter-spacing) {
-      $letter-spacing: map-get($font-size, letter-spacing);
+  @if meta.type-of($font-size) == 'map' {
+    @if map.has-key($font-size, letter-spacing) {
+      $letter-spacing: map.get($font-size, letter-spacing);
     }
 
-    @if map-has-key($font-size, line-height) {
-      $line-height: map-get($font-size, line-height);
+    @if map.has-key($font-size, line-height) {
+      $line-height: map.get($font-size, line-height);
     }
 
-    @if map-has-key($font-size, font-weight) {
-      $font-weight: map-get($font-size, font-weight);
+    @if map.has-key($font-size, font-weight) {
+      $font-weight: map.get($font-size, font-weight);
     }
 
-    @if map-has-key($font-size, text-transform) {
-      $text-transform: map-get($font-size, text-transform);
+    @if map.has-key($font-size, text-transform) {
+      $text-transform: map.get($font-size, text-transform);
     }
 
-    @if map-has-key($font-size, font-family) {
-      $font-family: map-get($font-size, font-family);
+    @if map.has-key($font-size, font-family) {
+      $font-family: map.get($font-size, font-family);
     }
 
-    @if map-has-key($font-size, font-size) {
-      $font-size: map-get($font-size, font-size);
+    @if map.has-key($font-size, font-size) {
+      $font-size: map.get($font-size, font-size);
     }
   }
 
@@ -529,22 +535,22 @@
 @mixin typography-generator($map) {
   @each $key, $value in $map {
     #{$key} {
-      @if type-of($value) == 'map' 
-      and not map-has-key($value, font-size) {
-        @if map-has-key($value, mobile) or map-has-key($value, base) {
-          @include typography-rules-generator(map-get($value, mobile));
+      @if meta.type-of($value) == 'map' 
+      and not map.has-key($value, font-size) {
+        @if map.has-key($value, mobile) or map.has-key($value, base) {
+          @include typography-rules-generator(map.get($value, mobile));
         }
 
         @each $b-name, $b-value in $breakpoints {
-          @if $b-name == $container-breakpoint and map-has-key($value, desktop) {
+          @if $b-name == $container-breakpoint and map.has-key($value, desktop) {
             @include breakpoint($b-name) {
-              @include typography-rules-generator(map-get($value, desktop));
+              @include typography-rules-generator(map.get($value, desktop));
             }
           } 
           @else {
-            @if map-has-key($value, $b-name) {
+            @if map.has-key($value, $b-name) {
               @include breakpoint($b-name) {
-                @include typography-rules-generator(map-get($value, $b-name));
+                @include typography-rules-generator(map.get($value, $b-name));
               }
             }
           }
@@ -558,8 +564,8 @@
 }
 
 @function get-transition-fn($easing) {
-  @if map-has-key($custom-easings, $easing) {
-    $easing: map-get($custom-easings, $easing);
+  @if map.has-key($custom-easings, $easing) {
+    $easing: map.get($custom-easings, $easing);
   }
 
   @return $easing;
@@ -568,19 +574,19 @@
 @function generate-transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
   $transition: '';
 
-  @if type-of($properties) == 'list' {
-    $properties-ln: length($properties);
+  @if meta.type-of($properties) == 'list' {
+    $properties-ln: list.length($properties);
     $i: 0;
     @each $property in $properties {
       $i: $i+1;
       $duration: $durations;
-      @if type-of($durations) == 'list' {
-        $duration: nth($durations, $i);
+      @if meta.type-of($durations) == 'list' {
+        $duration: list.nth($durations, $i);
       }
 
       $easing: $easings;
-      @if type-of($easings) == 'list' {
-        $easing: nth($easings, $i);
+      @if meta.type-of($easings) == 'list' {
+        $easing: list.nth($easings, $i);
       }
       $easing: get-transition-fn($easing);
 
@@ -597,7 +603,7 @@
     $transition: '#{$properties} #{$durations} #{$easings}';
   }
 
-  @return unquote($transition);
+  @return string.unquote($transition);
 }
 
 @mixin transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {

@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:list';
+
 $colors: generate-color-palettes($colors, $palettes);
 
 :root {
@@ -37,13 +40,13 @@ $colors: generate-color-palettes($colors, $palettes);
   variable: 'color'
 ));
 
-@if $color-modes and length($color-modes) > 0 {
+@if $color-modes and list.length($color-modes) > 0 {
   @each $key, $mode in $color-modes {
     $selector: str-replace($color-modes-selector, 'VALUE', $key);
-    $mode-colors: map-get($mode, 'colors');
+    $mode-colors: map.get($mode, 'colors');
 
-    @if map-has-key($mode, 'palettes') {
-      $mode-palettes: map-get($mode, 'palettes');
+    @if map.has-key($mode, 'palettes') {
+      $mode-palettes: map.get($mode, 'palettes');
       $mode-colors: generate-color-palettes($mode-colors, $mode-palettes);
     }
     

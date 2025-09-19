@@ -1,14 +1,16 @@
+@use 'sass:list';
+
 $dimension-sizes: $sizes;
 
-@for $i from 1 through length($percent-sizes) {
-  $value: nth($percent-sizes, $i);
-  $dimension-sizes: append($dimension-sizes, (value: $value, unit: '%', suffix: 'p'));
-  $dimension-sizes: append($dimension-sizes, (value: $value, unit: 'vw', suffix: 'vw', condition: 'width'));
-  $dimension-sizes: append($dimension-sizes, (value: $value, unit: 'vh', suffix: 'vh', condition: 'height'));
+@for $i from 1 through list.length($percent-sizes) {
+  $value: list.nth($percent-sizes, $i);
+  $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: '%', suffix: 'p'));
+  $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: 'vw', suffix: 'vw', condition: 'width'));
+  $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: 'vh', suffix: 'vh', condition: 'height'));
 }
 
-$dimension-sizes: append($dimension-sizes, 'auto');
-$dimension-sizes: append($dimension-sizes, 'inherit');
+$dimension-sizes: list.append($dimension-sizes, 'auto');
+$dimension-sizes: list.append($dimension-sizes, 'inherit');
 
 @include utility-class-generator('w', 'width', $dimension-sizes, 'px');
 @include utility-class-generator('h', 'height', $dimension-sizes, 'px');
