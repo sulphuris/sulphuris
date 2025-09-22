@@ -1,19 +1,23 @@
+@use "../config";
+@use "../utils/generators";
+@use "../utils/helpers";
+
 //stylelint-disable color-named
 
 html {
-  font-size: $base-font-size;
-  line-height: $line-height;
+  font-size: config.$base-font-size;
+  line-height: config.$line-height;
 }
 
 body {
-  color: color('foreground');
-  font-family: $paragraph-font;
-  background-color: color('background');
+  color: helpers.color('foreground');
+  font-family: config.$paragraph-font;
+  background-color: helpers.color('background');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@include typography-generator($typography);
+@include generators.typography-generator(config.$typography);
 
 h1,
 h2,
@@ -21,19 +25,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font;
+  font-family: config.$heading-font;
 }
 
 .font-paragraph {
-  font-family: $paragraph-font !important;
+  font-family: config.$paragraph-font !important;
 }
 
 .font-heading {
-  font-family: $heading-font !important;
+  font-family: config.$heading-font !important;
 }
 
 .font-mono {
-  font-family: $mono-font !important;
+  font-family: config.$mono-font !important;
 }
 
 //TODO: Prefer font over text for weight utility classes in v1.1.0
@@ -93,15 +97,15 @@ h6 {
   font-weight: bolder !important;
 }
 
-@include utility-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);
+@include generators.utility-class-generator('text', 'text-align', ('left', 'right', 'center'), '', '', false, true);
 
 .text-italic,
 .font-italic {
   font-style: italic;
 }
 
-@include utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through', (value: 'none', alias: 'text-decoration-none')), '', '', false, true);
-@include utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width', (value: 'none', prefix: 'text-transform')), '', '', false, true);
+@include generators.utility-class-generator('text', 'text-decoration', ('underline', 'overline', 'line-through', (value: 'none', alias: 'text-decoration-none')), '', '', false, true);
+@include generators.utility-class-generator('text', 'text-transform', ('uppercase', 'lowercase', 'capitalize', 'full-width', (value: 'none', prefix: 'text-transform')), '', '', false, true);
 
 h1 {
   margin-bottom: 0.33em;

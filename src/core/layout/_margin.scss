@@ -1,14 +1,17 @@
+@use "../config";
+@use "../utils/generators";
+
 @use 'sass:list';
 
-$margin-sizes: list.append($sizes, 'auto');
-@if $negative-sizes {
-  $margin-sizes: list.join($margin-sizes, $negative-sizes);
+$margin-sizes: list.append(config.$sizes, 'auto');
+@if config.$negative-sizes {
+  $margin-sizes: list.join($margin-sizes, config.$negative-sizes);
 }
 
-@include utility-class-generator((
+@include generators.utility-class-generator((
   prefix: 'm',
   property: 'margin',
   values: $margin-sizes,
   unit: 'px',
-  orientations: $orientations
+  orientations: config.$orientations
 ));

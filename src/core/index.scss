@@ -1,5 +1,4 @@
 //stylelint-disable color-named
-@import 'config';
-@import 'utils/index';
-@import 'style/index';
-@import 'layout/index';
+@forward 'utils/index';
+@forward 'style/index';
+@forward 'layout/index';

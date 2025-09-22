@@ -1,15 +1,19 @@
+@use "../config";
+@use "helpers";
+
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:string';
 @use 'sass:meta';
 @use 'sass:color';
+@use 'sass:math';
 
-@if $breakpoints == null {
+@if config.$breakpoints == null {
   @warn '🜍 Undefined breakpoints! Please check your `_config.scss`.';
 } 
 @else {
-  @if not map.has-key($breakpoints, '') {
-    $breakpoints: breakpoints($breakpoints);
+  @if not map.has-key(config.$breakpoints, '') {
+    config.$breakpoints: helpers.breakpoints(config.$breakpoints);
   }
 }
 
@@ -25,7 +29,7 @@
  */
 @function generate-breakpoint($size, $explicit: false) {
   $query: 'only screen';
-  $breakpoint: map.get($breakpoints, $size);
+  $breakpoint: map.get(config.$breakpoints, $size);
 
   @if $breakpoint != null {
     @if list.nth($breakpoint, 1) {
@@ -111,7 +115,7 @@
     }
   }
   
-  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
+  $gen-pref: helpers.trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
@@ -169,7 +173,7 @@
     }
   }
 
-  $gen-pref: trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
+  $gen-pref: helpers.trim-end($pref, '-'); // in case we want prefixes to have `-` in front of orientation
   @if $b-name {
     $b-name: -#{$b-name};
   }
@@ -180,7 +184,7 @@
   $key: '' + $key; // cause values create dart-sass warns
 
   @if $condition == '' or $condition == $property {
-    @each $o-name, $o-values in $orientations {
+    @each $o-name, $o-values in config.$orientations {
       .#{$pref}#{$o-name}#{$b-name}-#{$key}#{$suff} {
         @each $o-value in $o-values {
           @if $var {
@@ -287,7 +291,7 @@
 
   // responsive variations
   @if $responsive {
-    @each $b-name, $b-value in $breakpoints {
+    @each $b-name, $b-value in config.$breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @include generic-and-orientated-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
@@ -348,7 +352,7 @@
 }
 
 @mixin grid-column-generator($columns, $responsive: true) {
-  $base: div(100, $columns);
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 1 through $columns {
@@ -359,7 +363,7 @@
   }
 
   @if $responsive {
-    @each $b-name, $b-value in $breakpoints {
+    @each $b-name, $b-value in config.$breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 1 through $columns {
@@ -377,7 +381,7 @@
 @function get-min-breakpoint-value() {
   $value: 0;
 
-  @each $b-name, $b-value in $breakpoints {
+  @each $b-name, $b-value in config.$breakpoints {
     @if $b-name == '' {
       $value: list.nth($b-value, 2);
     }
@@ -389,7 +393,7 @@
 @function get-max-breakpoint-value() {
   $value: 0;
 
-  @each $b-name, $b-value in $breakpoints {
+  @each $b-name, $b-value in config.$breakpoints {
     @if list.nth($b-value, 2) == false {
       $value: list.nth($b-value, 1);
     }
@@ -399,16 +403,16 @@
 }
 
 @mixin grid-column-max-generator($columns) {
-  $base: div(100, $columns);
+  $base: math.div(100, $columns);
   $max-breakpoint-value: get-max-breakpoint-value();
 
   @for $i from 1 through $columns - 1 {
     .col-#{$i}-max {
       $width: $base * $i;
-      max-width: ($max-breakpoint-value - $container-offset-mobile * 2 + $grid-gutter-mobile) * div($width, 100);
+      max-width: ($max-breakpoint-value - config.$container-offset-mobile * 2 + config.$grid-gutter-mobile) * math.div($width, 100);
 
-      @include breakpoint($container-breakpoint) {
-        max-width: ($max-breakpoint-value - $container-offset * 2 + $grid-gutter) * div($width, 100);
+      @include breakpoint(config.$container-breakpoint) {
+        max-width: ($max-breakpoint-value - config.$container-offset * 2 + config.$grid-gutter) * math.div($width, 100);
       }
     }
   }
@@ -416,7 +420,7 @@
 
 /* stylelint-disable max-nesting-depth */
 @mixin grid-offset-generator($columns, $responsive: true) {
-  $base: div(100, $columns);
+  $base: math.div(100, $columns);
   $unit: '%';
 
   @for $i from 0 through $columns - 1 {
@@ -432,7 +436,7 @@
   }
 
   @if $responsive {
-    @each $b-name, $b-value in $breakpoints {
+    @each $b-name, $b-value in config.$breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 0 through $columns - 1 {
@@ -508,15 +512,15 @@
   }
 
   @if $font-size {
-    font-size: toRem($font-size);
+    font-size: helpers.toRem($font-size);
   }
 
   @if $letter-spacing {
-    letter-spacing: toRem($letter-spacing);
+    letter-spacing: helpers.toRem($letter-spacing);
   }
 
   @if $line-height {
-    line-height: toRem($line-height);
+    line-height: helpers.toRem($line-height);
   }
 
   @if $font-weight {
@@ -541,8 +545,8 @@
           @include typography-rules-generator(map.get($value, mobile));
         }
 
-        @each $b-name, $b-value in $breakpoints {
-          @if $b-name == $container-breakpoint and map.has-key($value, desktop) {
+        @each $b-name, $b-value in config.$breakpoints {
+          @if $b-name == config.$container-breakpoint and map.has-key($value, desktop) {
             @include breakpoint($b-name) {
               @include typography-rules-generator(map.get($value, desktop));
             }
@@ -564,14 +568,14 @@
 }
 
 @function get-transition-fn($easing) {
-  @if map.has-key($custom-easings, $easing) {
-    $easing: map.get($custom-easings, $easing);
+  @if map.has-key(config.$custom-easings, $easing) {
+    $easing: map.get(config.$custom-easings, $easing);
   }
 
   @return $easing;
 }
 
-@function generate-transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
+@function generate-transition($properties, $durations: config.$default-transition-duration, $easings: config.$default-transition-easing) {
   $transition: '';
 
   @if meta.type-of($properties) == 'list' {
@@ -606,6 +610,6 @@
   @return string.unquote($transition);
 }
 
-@mixin transition($properties, $durations: $default-transition-duration, $easings: $default-transition-easing) {
+@mixin transition($properties, $durations: config.$default-transition-duration, $easings: config.$default-transition-easing) {
   transition: generate-transition($properties, $durations, $easings);
 }

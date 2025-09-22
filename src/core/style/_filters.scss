@@ -1,4 +1,6 @@
-@include utility-class-generator((
+@use "../utils/generators";
+
+@include generators.utility-class-generator((
   prefix: 'filter',
   property: 'filter',
   values: (invert: 'invert(1)'),

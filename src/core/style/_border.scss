@@ -1,3 +1,7 @@
+@use "../config";
+@use "../utils/fixes";
+@use "../utils/generators";
+
 .border {
   border-color: currentcolor;
   border-style: solid;
@@ -44,9 +48,9 @@
   border-right: none;
 }
 
-@include utility-class-generator('border', 'border-width', $border-sizes, 'px', '');
-@include utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
-@include utility-class-generator('border-', 'border', (0), '', '', $orientations);
+@include generators.utility-class-generator('border', 'border-width', config.$border-sizes, 'px', '');
+@include generators.utility-class-generator('border', 'border-style', ('solid', 'dashed', 'dotted'), '', '', false, false);
+@include generators.utility-class-generator('border-', 'border', (0), '', '', config.$orientations);
 
 .round {
   border-radius: 50%;
@@ -58,10 +62,10 @@
 }
 
 .rounded-fix {
-  @include rounded-container-fix; //FYI: rounded fix is for fixing images only, if enabled on rounded block with shadow it will disable the shadow.
+  @include fixes.rounded-container-fix; //FYI: rounded fix is for fixing images only, if enabled on rounded block with shadow it will disable the shadow.
 }
 
-@include utility-class-generator('rounded', 'border-radius', $border-radiuses, 'px', '', false, false);
+@include generators.utility-class-generator('rounded', 'border-radius', config.$border-radiuses, 'px', '', false, false);
 
 .rounded-tl-0 {
   border-top-left-radius: 0;

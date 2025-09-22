@@ -1,1 +1,3 @@
-@include utility-class-generator('v', 'visibility', ('hidden', 'visible', 'collapse', 'inherit'));
+@use "../utils/generators";
+
+@include generators.utility-class-generator('v', 'visibility', ('hidden', 'visible', 'collapse', 'inherit'));

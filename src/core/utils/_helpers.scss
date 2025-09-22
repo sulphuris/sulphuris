@@ -1,15 +1,47 @@
+@use "../config";
+
 @use 'sass:math';
 @use 'sass:list';
 @use 'sass:string';
 @use 'sass:map';
-@use 'converters';
 
-@function div($a, $b) {
-  @return math.div($a, $b);
+@function rm-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+/*
+ * Converts PX to EM values
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1em`
+ */
+@function toEm($value, $unit: 'em') {
+  $rm-unit-value: rm-unit($value);
+
+  @if $rm-unit-value == 0 {
+    @return 0;
+  }
+
+  @return #{math.div($rm-unit-value, rm-unit(config.$base-font-size))}#{$unit};
+}
+
+/*
+ * Converts PX to REM values (document root relative EM)
+ * @see utils/_config.scss for $base-font-size
+ *
+ * @param $value (string): e.g. `16px`
+ * @return (string): e.g. `1rem`
+ */
+@function toRem($value) {
+  @if ends-with($value + '', 'px') {
+    @return toEm($value, 'rem');
+  }
+  @return $value;
 }
 
 @function color($color) {
-  @if map.has-key($colors, $color) {
+  @if map.has-key(config.$colors, $color) {
     @return var(--color-#{$color});
   }
 
@@ -17,11 +49,11 @@
 }
 
 @function color-mode($mode: '') {
-  @if $mode != '' and map.has-key($color-modes, $mode) {
-    @return map.get(map.get($color-modes, $mode), 'colors');
+  @if $mode != '' and map.has-key(config.$color-modes, $mode) {
+    @return map.get(map.get(config.$color-modes, $mode), 'colors');
   }
 
-  @return $colors;
+  @return config.$colors;
 }
 
 @function get-color($color, $mode: '') {
@@ -78,7 +110,7 @@
 
   @each $key, $value in $map {
     @if $rm-unit {
-      $value: converters.rm-unit($value);
+      $value: rm-unit($value);
     }
     $reverse-map: map.merge($reverse-map, ($value: $key));
   }
@@ -159,19 +191,19 @@
 }
 
 @mixin bg-image($filename, $ext: png) {
-  background-image: url('#{$image_dir}#{$filename}.#{$ext}');
+  background-image: url('#{config.$image_dir}#{$filename}.#{$ext}');
 }
 
 @mixin bg-image-retina($filename, $ext: png) {
   @include bg-image($filename, $ext);
 
   @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-    background-image: url('#{$image_dir}#{$filename}@2x.#{$ext}');
+    background-image: url('#{config.$image_dir}#{$filename}@2x.#{$ext}');
   }
 }
 
 @mixin icon($filename, $w, $h, $ext: png) {
-  background-image: url('#{$image_dir}#{$filename}.#{$ext}');
+  background-image: url('#{config.$image_dir}#{$filename}.#{$ext}');
   background-size: $w $h;
   background-position: center center;
   background-repeat: no-repeat;
@@ -187,6 +219,6 @@
   @include icon($filename, $w, $h, $ext);
 
   @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-    background-image: url('#{$image_dir}#{$filename}@2x.#{$ext}');
+    background-image: url('#{config.$image_dir}#{$filename}@2x.#{$ext}');
   }
 }
