@@ -1,1 +1,3 @@
-@include utility-class-generator('d', 'display', ('block', 'inline', 'flex', 'inline-block', 'none', 'table', 'table-cell', 'inline-flex'));
+@use "../utils/generators";
+
+@include generators.utility-class-generator('d', 'display', ('block', 'inline', 'flex', 'inline-block', 'none', 'table', 'table-cell', 'inline-flex'));

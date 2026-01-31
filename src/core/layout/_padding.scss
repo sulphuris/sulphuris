@@ -1,7 +1,10 @@
-@include utility-class-generator((
+@use "../config";
+@use "../utils/generators";
+
+@include generators.utility-class-generator((
   prefix: 'p',
   property: 'padding',
-  values: $sizes,
+  values: config.$sizes,
   unit: 'px',
-  orientations: $orientations
+  orientations: config.$orientations
 ));

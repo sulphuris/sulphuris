@@ -1,9 +1,12 @@
+@use "../config";
+@use "../utils/generators";
+
 @use 'sass:list';
 
-$dimension-sizes: $sizes;
+$dimension-sizes: config.$sizes;
 
-@for $i from 1 through list.length($percent-sizes) {
-  $value: list.nth($percent-sizes, $i);
+@for $i from 1 through list.length(config.$percent-sizes) {
+  $value: list.nth(config.$percent-sizes, $i);
   $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: '%', suffix: 'p'));
   $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: 'vw', suffix: 'vw', condition: 'width'));
   $dimension-sizes: list.append($dimension-sizes, (value: $value, unit: 'vh', suffix: 'vh', condition: 'height'));
@@ -12,10 +15,10 @@ $dimension-sizes: $sizes;
 $dimension-sizes: list.append($dimension-sizes, 'auto');
 $dimension-sizes: list.append($dimension-sizes, 'inherit');
 
-@include utility-class-generator('w', 'width', $dimension-sizes, 'px');
-@include utility-class-generator('h', 'height', $dimension-sizes, 'px');
+@include generators.utility-class-generator('w', 'width', $dimension-sizes, 'px');
+@include generators.utility-class-generator('h', 'height', $dimension-sizes, 'px');
 
 $max-sizes: ('none', (value: 100, unit: '%', suffix: 'p'));
 
-@include utility-class-generator('w-max', 'max-width', $max-sizes);
-@include utility-class-generator('h-max', 'max-height', $max-sizes);
+@include generators.utility-class-generator('w-max', 'max-width', $max-sizes);
+@include generators.utility-class-generator('h-max', 'max-height', $max-sizes);

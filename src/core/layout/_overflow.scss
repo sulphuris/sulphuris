@@ -1,3 +1,5 @@
-@include utility-class-generator('overflow', 'overflow', ('hidden', 'visible', 'auto'));
-@include utility-class-generator('overflow-x', 'overflow-x', ('hidden', 'visible', 'auto'));
-@include utility-class-generator('overflow-y', 'overflow-y', ('hidden', 'visible', 'auto'));
+@use "../utils/generators";
+
+@include generators.utility-class-generator('overflow', 'overflow', ('hidden', 'visible', 'auto'));
+@include generators.utility-class-generator('overflow-x', 'overflow-x', ('hidden', 'visible', 'auto'));
+@include generators.utility-class-generator('overflow-y', 'overflow-y', ('hidden', 'visible', 'auto'));

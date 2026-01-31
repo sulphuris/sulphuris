@@ -1,6 +1,6 @@
-@import 'border';
-@import 'button';
-@import 'color';
-@import 'list';
-@import 'typography';
-@import 'filters';
+@forward 'border';
+@forward 'button';
+@forward 'color';
+@forward 'list';
+@forward 'typography';
+@forward 'filters';

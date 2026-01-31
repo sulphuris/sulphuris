@@ -1,3 +1,7 @@
+@use "../config";
+@use "../utils/generators";
+@use "../utils/helpers";
+
 //stylelint-disable  property-no-vendor-prefix, color-named, order/order, selector-no-qualifying-type
 @use 'sass:map';
 
@@ -15,59 +19,59 @@ button.reset,
 }
 
 .btn {
-  background-color: color(primary);
-  border-radius: map.get($button, border-radius);
-  color: color('background');
+  background-color: helpers.color(primary);
+  border-radius: map.get(config.$button, border-radius);
+  color: helpers.color('background');
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
-  min-height: map.get($button, height);
-  padding: map.get($button, padding-y) map.get($button, padding-x);
+  min-height: map.get(config.$button, height);
+  padding: map.get(config.$button, padding-y) map.get(config.$button, padding-x);
 
-  @include breakpoint($container-breakpoint) {
+  @include generators.breakpoint(config.$container-breakpoint) {
     &:hover {
-      background-color: color('foreground');
+      background-color: helpers.color('foreground');
     }
   }
 }
 
 @media screen and (prefers-reduced-motion: no-preference) {
   .btn {
-    @include transition((color, background));
+    @include generators.transition((color, background));
   }
 }
 
 .btn-inverted {
-  background-color: color('foreground');
+  background-color: helpers.color('foreground');
 
-  @include breakpoint($container-breakpoint) {
+  @include generators.breakpoint(config.$container-breakpoint) {
     &:hover {
-      background-color: color(primary);
+      background-color: helpers.color(primary);
     }
   }
 }
 
 .btn-outline {
   background: transparent;
-  border: solid map.get($button, border-width) color('foreground');
-  color: color('foreground');
-  padding: map.get($button, padding-y - map.get($button, border-width)) map.get($button, padding-x - map.get($button, border-width));
+  border: solid map.get(config.$button, border-width) helpers.color('foreground');
+  color: helpers.color('foreground');
+  padding: map.get(config.$button, padding-y - map.get(config.$button, border-width)) map.get(config.$button, padding-x - map.get(config.$button, border-width));
 
-  @include breakpoint($container-breakpoint) {
+  @include generators.breakpoint(config.$container-breakpoint) {
     &:hover {
-      background-color: color('foreground');
-      color: color('background');
+      background-color: helpers.color('foreground');
+      color: helpers.color('background');
     }
   }
 
   &.btn-inverted {
-    border-color: color('background');
-    color: color('background');
+    border-color: helpers.color('background');
+    color: helpers.color('background');
 
-    @include breakpoint($container-breakpoint) {
+    @include generators.breakpoint(config.$container-breakpoint) {
       &:hover {
-        background-color: color('background');
-        color: color('foreground');
+        background-color: helpers.color('background');
+        color: helpers.color('foreground');
       }
     }
   }

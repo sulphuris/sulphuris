@@ -1,45 +1,50 @@
+@use "../config";
+@use "../utils/generators";
+@use "../utils/helpers";
+@use 'sass:math';
+
 .grid {
   display: flex;
   flex-flow: row wrap;
 }
 
 .grid-gutter {
-  margin-left: div(-$grid-gutter-mobile,2);
-  margin-right: div(-$grid-gutter-mobile,2);
+  margin-left: math.div(-(config.$grid-gutter-mobile),2);
+  margin-right: math.div(-(config.$grid-gutter-mobile),2);
 
-  @include breakpoint($container-breakpoint) {
-    margin-left: div(-$grid-gutter,2);
-    margin-right: div(-$grid-gutter,2);
+  @include generators.breakpoint(config.$container-breakpoint) {
+    margin-left: math.div(-(config.$grid-gutter),2);
+    margin-right: math.div(-(config.$grid-gutter),2);
   }
 
   &.container {
     margin-left: auto;
     margin-right: auto;
-    padding-left: $container-offset-mobile - div($grid-gutter-mobile,2);
-    padding-right: $container-offset-mobile - div($grid-gutter-mobile,2);
+    padding-left: config.$container-offset-mobile - math.div(config.$grid-gutter-mobile,2);
+    padding-right: config.$container-offset-mobile - math.div(config.$grid-gutter-mobile,2);
 
-    @include breakpoint($container-breakpoint) {
+    @include generators.breakpoint(config.$container-breakpoint) {
       margin-left: auto;
       margin-right: auto;
-      padding-left: $container-offset - div($grid-gutter,2);
-      padding-right: $container-offset - div($grid-gutter,2);
+      padding-left: config.$container-offset - math.div(config.$grid-gutter,2);
+      padding-right: config.$container-offset - math.div(config.$grid-gutter,2);
     }
   }
 
   > [class*='col-'] {
-    padding-left: div($grid-gutter-mobile,2);
-    padding-right: div($grid-gutter-mobile,2);
+    padding-left: math.div(config.$grid-gutter-mobile,2);
+    padding-right: math.div(config.$grid-gutter-mobile,2);
 
-    @include breakpoint($container-breakpoint) {
-      padding-left: div($grid-gutter,2);
-      padding-right: div($grid-gutter,2);
+    @include generators.breakpoint(config.$container-breakpoint) {
+      padding-left: math.div(config.$grid-gutter,2);
+      padding-right: math.div(config.$grid-gutter,2);
     }
   }
 }
 
-@include grid-column-generator($columns);
-@include grid-offset-generator($columns);
-@include grid-column-max-generator($columns);
+@include generators.grid-column-generator(config.$columns);
+@include generators.grid-offset-generator(config.$columns);
+@include generators.grid-column-max-generator(config.$columns);
 
 .grid-reverse {
   flex-direction: row-reverse;

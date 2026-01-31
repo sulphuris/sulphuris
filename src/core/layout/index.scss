@@ -1,14 +1,14 @@
-@import 'misc';
-@import 'normalize';
+@use 'misc';
+@use 'normalize';
 
-@import 'grid';
-@import 'display';
-@import 'visibility';
-@import 'overflow';
-@import 'margin';
-@import 'padding';
-@import 'position';
-@import 'dimension';
-@import 'container';
-@import 'flex';
-@import 'float';
+@use 'grid';
+@use 'display';
+@use 'visibility';
+@use 'overflow';
+@use 'margin';
+@use 'padding';
+@use 'position';
+@use 'dimension';
+@use 'container';
+@use 'flex';
+@use 'float';

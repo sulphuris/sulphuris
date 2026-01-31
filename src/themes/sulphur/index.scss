@@ -1,2 +1,7 @@
 //stylelint-disable color-named
-@import 'config'
+@use "_config" as c;
+
+@forward "../../core/_config" with (
+    $colors: c.$colors,
+    $breakpoints: c.$breakpoints,
+)
