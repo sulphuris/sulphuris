@@ -8,12 +8,14 @@
 @use 'sass:color';
 @use 'sass:math';
 
-@if config.$breakpoints == null {
+$breakpoints: config.$breakpoints;
+
+@if $breakpoints == null {
   @warn '🜍 Undefined breakpoints! Please check your `_config.scss`.';
 } 
 @else {
-  @if not map.has-key(config.$breakpoints, '') {
-    config.$breakpoints: helpers.breakpoints(config.$breakpoints);
+  @if not map.has-key($breakpoints, '') {
+    $breakpoints: helpers.breakpoints(config.$breakpoints);
   }
 }
 
@@ -29,7 +31,7 @@
  */
 @function generate-breakpoint($size, $explicit: false) {
   $query: 'only screen';
-  $breakpoint: map.get(config.$breakpoints, $size);
+  $breakpoint: map.get($breakpoints, $size);
 
   @if $breakpoint != null {
     @if list.nth($breakpoint, 1) {
@@ -291,7 +293,7 @@
 
   // responsive variations
   @if $responsive {
-    @each $b-name, $b-value in config.$breakpoints {
+    @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @include generic-and-orientated-utility-class-generator($pref, $property, $b-name, $values, $unit, $suff, $orientations, $var);
@@ -363,7 +365,7 @@
   }
 
   @if $responsive {
-    @each $b-name, $b-value in config.$breakpoints {
+    @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 1 through $columns {
@@ -381,7 +383,7 @@
 @function get-min-breakpoint-value() {
   $value: 0;
 
-  @each $b-name, $b-value in config.$breakpoints {
+  @each $b-name, $b-value in $breakpoints {
     @if $b-name == '' {
       $value: list.nth($b-value, 2);
     }
@@ -393,7 +395,7 @@
 @function get-max-breakpoint-value() {
   $value: 0;
 
-  @each $b-name, $b-value in config.$breakpoints {
+  @each $b-name, $b-value in $breakpoints {
     @if list.nth($b-value, 2) == false {
       $value: list.nth($b-value, 1);
     }
@@ -436,7 +438,7 @@
   }
 
   @if $responsive {
-    @each $b-name, $b-value in config.$breakpoints {
+    @each $b-name, $b-value in $breakpoints {
       @if $b-name != '' and $b-name != 'min' and $b-name != 'minimal' {
         @media #{generate-breakpoint($b-name)} {
           @for $i from 0 through $columns - 1 {
@@ -545,7 +547,7 @@
           @include typography-rules-generator(map.get($value, mobile));
         }
 
-        @each $b-name, $b-value in config.$breakpoints {
+        @each $b-name, $b-value in $breakpoints {
           @if $b-name == config.$container-breakpoint and map.has-key($value, desktop) {
             @include breakpoint($b-name) {
               @include typography-rules-generator(map.get($value, desktop));

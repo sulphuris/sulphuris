@@ -5,16 +5,16 @@
 @use 'sass:map';
 @use 'sass:list';
 
-config.$colors: generators.generate-color-palettes(config.$colors, config.$palettes);
+$colors: generators.generate-color-palettes(config.$colors, config.$palettes);
 
 :root {
-  @include generators.css-variable-generator('color', config.$colors);
+  @include generators.css-variable-generator('color', $colors);
 }
 
 @include generators.utility-class-generator((
   prefix: 'text',
   property: 'color',
-  values: config.$colors,
+  values: $colors,
   variable: true
 ));
 
@@ -33,14 +33,14 @@ config.$colors: generators.generate-color-palettes(config.$colors, config.$palet
 @include generators.utility-class-generator((
   prefix: 'bg',
   property: 'background-color',
-  values: config.$colors,
+  values: $colors,
   variable: 'color'
 ));
 
 @include generators.utility-class-generator((
   prefix: 'border',
   property: 'border-color',
-  values: config.$colors,
+  values: $colors,
   variable: 'color'
 ));
 
