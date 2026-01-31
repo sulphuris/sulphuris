@@ -1,7 +1,15 @@
 $colors: (
-  foreground: gold,
-  background: turquoise,
+  foreground: #1a1a1d,
+  background: #ffffff,
   black: #1a1a1d,
   white: #ffffff,
-  primary: pink
+  primary: #f6c026
+);
+
+$breakpoints: (
+  'xxl': 1680px, 
+  'xl': 1366px, 
+  'lg': 1024px, 
+  'md': 768px, 
+  'sm': 420px
 );

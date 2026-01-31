@@ -536,11 +536,11 @@ button.reset,
 }
 
 :root {
-  --color-foreground: gold;
-  --color-background: turquoise;
+  --color-foreground: #1a1a1d;
+  --color-background: #ffffff;
   --color-black: #1a1a1d;
   --color-white: #ffffff;
-  --color-primary: pink;
+  --color-primary: #f6c026;
   --color-gray-500: #8c8c8e;
   --color-gray-600: rgb(112, 112, 113.6);
   --color-gray-700: rgb(84, 84, 85.2);
