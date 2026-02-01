@@ -3,5 +3,5 @@
 
 @forward "../../core/_config" with (
     $colors: c.$colors,
-    $breakpoints: c.$breakpoints,
+    $breakpoints: c.$color-modes,
 )

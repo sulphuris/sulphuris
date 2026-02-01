@@ -6,10 +6,15 @@ $colors: (
   primary: #f6c026
 );
 
-$breakpoints: (
-  'xxl': 1680px, 
-  'xl': 1366px, 
-  'lg': 1024px, 
-  'md': 768px, 
-  'sm': 420px
-);
+$color-modes: (
+  dark: (
+    colors: (
+      foreground: #ffffff,
+      background: #1a1a1d,
+      black: #1a1a1d,
+      white: #ffffff,
+      primary: #3F00FF
+    )
+    // palettes: ( ... )
+  )
+) 
