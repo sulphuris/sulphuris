@@ -28,7 +28,7 @@ $ npm install sulphuris
 
 ### Usage
 
-### Version 2 (Current)
+#### Version 2 (Current)
 
 Uses SCSS modules (`@use`/`@forward`) for better scoping and tree-shaking. This makes it a bit difficult to override the config variables, but future proofs the usage.
 
@@ -76,9 +76,7 @@ Be sure to include the `node_modules` directory in your `sass` include paths. Th
 
 ## 💻 Local Development
 
-Sulphuris
-
-The build process is powered by [Poops](https://github.com/stamat/poops), a simple and fast build tool for modern web development.
+The build process is powered by [Poops](https://github.com/stamat/poops), a simple and fast build and bundle tool for modern web development.
 
 ### Running the local server
 
@@ -96,7 +94,7 @@ Will start a local development server. It will also watch for the changes and re
 $ script/publish
 ```
 
-Will run the publish script which will lead you through the npm publishing process. It can increment the version, build the code, tag it and publish it to npm.
+Will run the [publish script](https://github.com/sulphuris/sulphuris/blob/main/script/publish) which will lead you through the npm publishing process. It can increment the version, build the code, tag it and publish it to npm.
 
 If you want to create an GitHub release related to your version tag - make sure you have [GitHub CLI](https://cli.github.com) installed. This is purely optional.
 
