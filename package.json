@@ -6,6 +6,10 @@
   "style": "dist/sulphuris.css",
   "sass": "src/index.scss",
   "main": "src/index.scss",
+  "files": [
+    "dist",
+    "src"
+  ],
   "repository": "https://github.com/sulphuris/sulphuris.git",
   "keywords": [
     "css",
