@@ -8,14 +8,13 @@ An adaptable CSS utility library
 
 > Sulphuris aims to be the soul of your next front-end project. Inspired by [Bootstrap](https://github.com/twbs/bootstrap) and [Primer](https://github.com/primer/css), but tailored to suit your everyday front-end development needs.
 
-It achieves this by having a single [`_config.scss`](https://github.com/sulphuris/sulphuris/blob/main/src/core/_config.scss) file as a source of truth. These variables are then used by generators to generate almost all of the utility classes. This makes it easy to extend and customize the library to suit your needs.
+Sulphuris is built around a single [`_config.scss`](https://github.com/sulphuris/sulphuris/blob/main/src/core/_config.scss) file that defines almost all utility class generation. By overriding these configuration variables, you can customize breakpoints, colors, spacing, and more — tailoring the framework to each project's specific needs.
 
 ### Highlights
 
-- **Themes** - separated from the rest of the code to enable quick and easy extension.
 - **Less !important usage** - abstaining from `!important` usage as much as possible.
 - **Spacing size classes in pixels** - e.g. `.pt-32` results in `padding-top: 32px;`, and `.pt--32` results in `padding-top: -32px;`. **Note:** this might not be smart cause reusability of html like components, revise.
-- **XXL screen breakpoint** - from 1680px.
+- **XXL screen breakpoint** - from 1680px. Or even larger. You can add any number of breakpoints.
 - **REM units** - only for font sizes. **Note:** Do sizes really need rem units?
 
 ## 🚀 Getting Started
@@ -108,7 +107,7 @@ If you have any ideas on how to improve Sulphuris, feel free to open an issue or
 - [ ] Aliases: Optional numerical utilities like bootstrap or primer (like pt-2 actually being padding-top: 8px)
 - [ ] Inline links
 - [ ] Animations and transitions
-- [ ] Forms
+- [ ] Form elements
 - [ ] WRITE DOCS!!!!! (and complete the site)
 
 ## Name
